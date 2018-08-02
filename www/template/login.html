@@ -1,0 +1,110 @@
+<style>
+  input[type=text] {
+    text-align: left;
+    padding-left: 25px;
+}
+input[type=password] {
+    text-align: left;
+    padding-left: 25px;
+}
+.txtDesign{
+    margin-bottom: 15px;
+    padding: 0px 0 0px 0px;
+    border-radius: 24px;
+}
+
+</style>
+
+<ion-view id="login" hide-nav-bar="true">
+  <ion-content padding="true" scroll="false">
+    <form ng-controller="LoginController">
+      <div class="row " >
+        <div class="col " style="margin-left: 15px;">
+
+          <div class="header padding text-center">
+           <!-- <img src="../img/ionic.png">-->
+            <img src="img/ionic.png" alt="Your logo here"/>
+          </div>
+
+          <div class="list" style="margin-bottom:0px; ! important">
+            <label class="item item-input txtDesign" style="margin-bottom: 15px;">
+              <input type="text"  ng-model="emailId" placeholder="Email" >
+
+            </label>
+            <label class="item item-input txtDesign">
+              <input type="password" ng-model="password" placeholder="Password">
+            </label>
+          </div>
+         <div style="text-align: center;">
+           <p style="color: red">{{error}}</p>
+         </div>
+          <button class="button button-block button-positive txtDesignbutton " ng-click="submit()" >
+            Log In
+          </button>
+
+          <div class="row row-no-padding">
+            <div class="col">
+              <button class="button button-clear button-light">
+                Forgot password?
+              </button>
+            </div>
+
+            <div class="col text-right">
+             <!-- <button class="button button-clear button-light">
+                Sign up
+              </button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>
+
+
+<md-sidenav md-component-id="rightAddTask" class="md-sidenav-right" style="min-width: 100%;">
+  <ion-header-bar class="bar bar-positive">
+    <button ng-click="cancelAddTask()"  class="button icon 	glyphicon glyphicon-menu-left" style="display: block">
+    </button>
+    <h1 class="title" style="text-align: center;">Forgot Password</h1>
+  </ion-header-bar>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  <div class="row">
+    <div class="col-30 lableDesign" ><span >Email ID :</span></div>
+    <div class="col">
+      <!-- <input class="form-control" ng-model="class">-->
+      <select ng-model="class" class="form-control">
+        <option ng-repeat="sub in classData" ng-value="sub.classCode">{{sub.classTitle}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-30 lableDesign" ><span >Start Days :</span></div>
+    <div class="col">
+      <input class="form-control" type="datetime-local" ng-model="startdays ">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-30 lableDesign" ><span >End Days :</span></div>
+    <div class="col">
+      <input class="form-control" type="datetime-local" ng-model="enddays">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col" style="text-align: center;">
+          <span  id="btn1">
+          <input type="submit" id="edit_roomConcept" class="btn btn-primary btn-save" value="Save" ng-click="saveTaskInformation()">
+
+          </span>
+    </div>
+  </div>
+  </div>
+
+</md-sidenav>
+

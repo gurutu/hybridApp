@@ -1,0 +1,114 @@
+<style>
+  .row {
+     margin-right:0px;
+     margin-left: 0px;
+  }
+</style>
+
+<div class="bar bar-header bar-positive">
+  <button class="button button-icon icon ion-arrow-left-c" ng-click="goToBack()"></button>
+  <div class="h1 title">Admin Task</div>
+  <!--<button class="button button-clear button-positive">Remove</button>-->
+</div>
+
+<ion-content >
+  <div class="card" ng-repeat="task in tasksData" >
+    <div class="item item-text-wrap">
+      <div class="row">
+            <div class="col">{{task.classCode}}</div>
+            <div class="col">{{task.taskTitle}}</div>
+      </div>
+      <div class="row">
+             <div class="col">{{task.subjectCode}}</div>
+      </div>
+      <div class="row">
+        <div class="col">{{task.taskDescription}}</div>
+      </div>
+    </div>
+    <button class="button button-block button-assertive" style="margin: 0px" ng-click="showConfirm(task.taskCode)">
+     Delete Task
+    </button>
+  </div>
+</ion-content>
+<div class="bar bar-footer bar-light" style="margin-bottom: 4px;" ng-click="isOpenRightAddTask()">
+  <div class="title">Add Task</div>
+</div>
+
+<md-sidenav md-component-id="rightAddTask" class="md-sidenav-right" style="min-width: 100%;">
+  <ion-header-bar class="bar bar-positive">
+    <button ng-click="cancelAddTask()"  class="button icon 	glyphicon glyphicon-menu-left" style="display: block">
+    </button>
+    <h1 class="title" style="text-align: center;">Add Admin</h1>
+  </ion-header-bar>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  <div class="row">
+    <div class="col-30 lableDesign" ><span >Class :</span></div>
+    <div class="col">
+     <!-- <input class="form-control" ng-model="class">-->
+      <select ng-model="class" class="form-control">
+        <option ng-repeat="sub in classData" ng-value="sub.classCode">{{sub.classTitle}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-30 lableDesign" ><span >Start Days :</span></div>
+    <div class="col">
+      <input class="form-control" type="datetime-local" ng-model="startdays ">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-30 lableDesign" ><span >End Days :</span></div>
+    <div class="col">
+      <input class="form-control" type="datetime-local" ng-model="enddays">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-30 lableDesign" ><span >Subject : </span></div>
+    <div class="col">
+      <!--<input class="form-control" ng-model="subject">-->
+      <select ng-model="subject" class="form-control">
+        <option ng-repeat="sub in subjectData" ng-value="sub.subjectCode">{{sub.subjectTitle}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-30 lableDesign" ><span >Task Title : </span></div>
+    <div class="col">
+      <input class="form-control" ng-model="title">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-30 lableDesign" ><span >Task Discription : </span></div>
+    <div class="col">
+      <input class="form-control" ng-model="discription">
+    </div>
+  </div>
+<form ng-submit="uploadFile()">
+
+  <div class="row" >
+    <div class="col" style="text-align: center;">
+      <input type="file" id="file" name="file"  multiple="" />
+    </div>
+    <div  style="padding-top: 10px;">
+      <input type="submit" name="Upload File" value="Update File">
+     <!--<button ng-click="uploadFile()" >Upload File</button>-->
+    </div>
+  </div>
+</form>
+  <br>
+  <div class="row">
+    <div class="col" style="text-align: center;">
+          <span  id="btn1">
+          <input type="submit" id="edit_roomConcept" class="btn btn-primary btn-save" value="Save" ng-click="saveTaskInformation()">
+
+          </span>
+    </div>
+  </div>
+  </div>
+
+</md-sidenav>

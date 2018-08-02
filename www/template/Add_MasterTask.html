@@ -1,0 +1,170 @@
+
+<style>
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btnImage {
+  border: 1px solid #bdbdbd;
+  color: #bdbdbd;
+  background-color: white;
+  padding: 5px 32px;
+  border-radius: 40px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #ea5c36;
+    border-color: #ea5c36;
+    opacity: 0.8;
+}
+.btn-save {
+    border-radius: 20px !important;
+    padding: 8px 69px !important;
+    background-color: #ea5c36;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+</style>
+<body>
+
+<div class="container">
+  <h2>Add Master Task</h2>
+  <form action="/action_page">
+    <div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+		   <div class="col-sm-6 col-md-6 col-lg-6">
+			   <div class="form-group">
+					<label class="item item-input item-select">
+						<div class="input-label">
+							Select School
+						</div>
+						<select class="form-control">
+							<option>Baccalaureate School for Global Education</option>
+							<option selected>Select</option>
+							<option>High School of American Studies at Lehman College</option>
+							<option>Brooklyn Latin School</option>
+						</select>
+					</label>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<div class="form-group">
+					<label class="item item-input item-select">
+						<div class="input-label">
+							Select Class
+						</div>
+						<select class="form-control">
+							<option>1</option>
+							<option selected>Select</option>
+							<option>2</option>
+							<option>3</option>
+						</select>
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+		   <div class="col-sm-6 col-md-6 col-lg-6">
+				<div class="form-group">
+					<label class="item item-input item-select">
+						<div class="input-label">
+							Select Days
+						</div>
+						<select class="form-control">
+							<option>Monday</option>
+							<option selected>Select</option>
+							<option>Tuesday</option>
+							<option>Wednesday</option>
+						</select>
+					</label>
+				</div>
+			</div>
+			 <div class="col-sm-6 col-md-6 col-lg-6">
+				<div class="form-group">
+					<label class="item item-input item-select">
+						<div class="input-label">
+							Select Subject
+						</div>
+						<select class="form-control">
+							<option>English</option>
+							<option selected>Select</option>
+							<option>Math</option>
+							<option>Science</option>
+						</select>
+					</label>
+				</div>
+			</div>
+	    </div>
+	</div>
+    <div class="form-group">
+      <label for="taskTitle">Task Title:</label>
+      <input type="taskTitle" class="form-control" id="taskTitle" placeholder="Enter Task Title" name="taskTitle">
+    </div>
+	<div class="form-group">
+      <label for="taskDescription">Task Description:</label>
+      <input type="taskDescription" class="form-control" id="taskDescription" placeholder="Enter Task Description" name="taskDescription">
+    </div>
+	<div class="col-md-8" style="padding: 5px;margin-top: 20px;">
+		<div class="col-md-6 upload-btn-wrapper" style="padding: 5px;">
+			<button class="btnImage" style="background-color: #ea5c36;">Upload Image</button>
+			<input id="uploadImage" type="file" onchange="readURL(this);" name="uploadImage"/>
+		</div>
+		<div class="col-md-6">
+			<label id="file-nameEdit"></label>
+		</div>
+	</div>
+	<di
+    <div class="form-row">
+		<div class="form-group col-md-12 text-center" >
+			<span  id="btn1">
+				<input type="submit" id="edit_roomConcept" class="btn btn-primary btn-save" value="Save">
+			</span>
+		</div>
+	</div>
+  </form>
+</div>
+
+
+</body>
+ <script>
+	   $(document).ready(function () {
+         $("#uploadImage").change(function(){
+          $("#file-nameEdit").text(this.files[0].name);
+        });
+     });
+
+</script
+</html>

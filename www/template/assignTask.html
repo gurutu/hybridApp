@@ -1,0 +1,90 @@
+<style>
+  .headingCart{
+      background: #555;
+      color: #fff;
+      font-size: 12px;
+    }
+    .checkBox{
+    float: right;
+    right: -109px;
+    top: -44px;
+    }
+</style>
+<div ng-controller="AssignTaskController">
+<ion-header-bar class="bar bar-positive">
+  <button ng-click="goToBack()"  class="button icon 	glyphicon glyphicon-menu-left" style="display: block">
+  </button>
+  <h1 class="title" style="text-align: center;">Assign Task</h1>
+</ion-header-bar>
+<div class="card" style=" margin: 44px 0px;">
+  <div class="item item-text-wrap headingCart">
+    <div class="row" style="text-align: center;">
+      <div class="col" ><span >Task Title : </span></div>
+      <div class="col" ><span >Subject : </span></div>
+      <div class="col" ><span >Start Date : </span></div>
+      <div class="col" ><span >End Date : </span></div>
+
+    </div>
+  </div>
+
+    <div class="item item-text-wrap" style="font-size: 12px;background-color: #fff;" ng-repeat="task in TaskstudentListALL" ng-click="sideNavAssignTask(task.taskCode)">
+      <div class="row">
+        <div class="col" style="text-align:center;">
+          {{task.taskTitle}}
+        </div>
+        <div class="col" style="text-align:center;">
+          {{task.subjectCode}}
+        </div>
+        <div class="col" style="text-align:center;">
+          {{task.startDate | date:'medium'}}
+        </div >
+        <div class="col" style="text-align:center;">
+          {{task.endDate | date:'medium'}}
+        </div>
+      </div>
+    </div>
+
+</div>
+<md-sidenav md-component-id="sideAssignTask" class="md-sidenav-right" style="min-width: 100%;">
+  <ion-header-bar class="bar bar-positive">
+    <button ng-click="cancelNavAssignTask()"  class="button icon 	glyphicon glyphicon-menu-left" style="display: block">
+    </button>
+    <h1 class="title" style="text-align: center;">Assign Task To Student</h1>
+  </ion-header-bar>
+  <br>
+  <br>
+  <div class="row" style="padding-top: 0px;">
+    <div class="col">
+      <button ng-click="deselectCheckBox()"  class="button icon" style="display: block;">
+        clear All
+      </button>
+    </div>
+    <div class="col">
+      <button ng-click="selectAll()"  class="button icon" style="display: block;float: right; ">
+      select All
+      </button>
+    </div>
+  </div>
+  <div class="card"   ng-repeat="student in studentListClass">
+    <div class="item item-text-wrap">
+      <div class="row" >
+        <div class="col-70">
+          <b>Name:</b> <span> {{student.name}}</span><br>
+          <b>Email Id:</b><span>{{student.email}}</span><br>
+          <ul class="list checkBox checkbox-inline" >
+            <li class="item item-checkbox">
+              <label class="checkbox">
+                <input type="checkbox" id="{{student.id}}"  ng-click="saveCheck(student.id)"><!--ng-click="toggleSelection(taskCode,student.id)"-->
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <button ng-click="saveAssignTask(taskCode)"  class="button icon" style="position: absolute;display: block; float:right;">Assign Task</button>
+  </div>
+</md-sidenav>
+</div>

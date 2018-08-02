@@ -1,0 +1,290 @@
+<style>
+  .row{
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .wordStyle{
+      font-weight: bold;
+  }
+
+</style>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* The close1 Button */
+.close1 {
+    position: absolute;
+    top: 54px;
+    right: 8px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+
+}
+
+.close1:hover,
+.close1:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+</style>
+<ion-view view-title="Student" >
+  <div class="bar bar-header bar-positive">
+   <!-- <button class="button button-icon icon ion-navicon"></button>-->
+    <div class="h1 title">{{studentData.name}} Profile</div>
+    <button class="button button-icon icon ion-log-out" ng-click="logoutUser()"></button>
+  </div>
+  <ion-content >
+   <!-- <div class="row" style="margin-top: 3px;">
+      <div class="col-75">
+        <p>{{studentData.name}}</p>
+        <p>{{studentData.email}}</p>
+        <p>{{studentData.phone}}</p>
+      </div>
+      <div class="col-25" style="text-align: right;margin-left: -32px;">
+       <img src="https://res.cloudinary.com/gurutu/image/upload/v1532168222/user1.png" class="userIco">
+      </div>
+    </div>-->
+
+    <div class="row"  style="text-align:center;">
+      <img src="https://image.ibb.co/eF0PoG/person_1.jpg" class="userIco">
+    </div>
+    <div class="row text-center">
+      <div class="col-sm-12 text-center sp" style="margin-bottom: 0px;">
+
+        <h3 style="color:skyblue;">{{studentData.name}}</h3>
+      </div>
+
+    </div>
+    <div class="row text-center sp">
+      <div class="col-sm-12 text-center sp" style="margin-top: 0px;padding-top: 0px;">
+        <p>{{studentData.email}}</p>
+      </div>
+    </div>
+    <div class="row text-center sp">
+      <div class="col-sm-12 text-center sp" style="margin-top: 0px;padding-top: 0px;">
+        <p>{{studentData.phone}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <input class="form-control" type="date" ng-model="datevalue">
+      </div>
+      <div class="col">
+        <select ng-model="subject" class="form-control">
+          <option ng-repeat="sub in subjectData" ng-value="sub.subjectCode">{{sub.subjectTitle}}</option>
+        </select>
+        <!--<select class="form-control" ng-modal="subject">
+          <option selected>Select</option>
+          <option>English</option>
+          <option>Math</option>
+          <option>Science</option>
+        </select>-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="button button-calm button-block" ng-click="showTask()">
+          See Task
+        </button>
+      </div>
+    </div>
+    <ul class="list" >
+      <li class="item" ng-repeat="task in studentTaskData ">
+        <div class="row">
+          <div class="col-80">
+            {{task.taskTitle}}
+          </div>
+          <div class="col">
+            <button class="button button-block button-calm" ng-if="task.status=='Assigned'||task.status=='assigned'" ng-click="isOpenRight();getTaskDetail(task.taskCode);saveTaskStatus('In progress',task.id);">
+              Start
+            </button>
+            <button class="button button-block button-energized" ng-if="task.status=='In progress'||task.status=='In Progress'" ng-click="isOpenRight();getTaskDetail(task.taskCode);saveTaskStatus('In progress',task.id);">
+              Progress
+            </button>
+            <button class="button button-block" ng-if="task.status=='completed'||task.status=='Completed'" >
+              End
+            </button>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+  </ion-content>
+  </ion-view>
+
+<md-sidenav md-component-id="right" class="md-sidenav-right" style="min-width: 100%;">
+  <ion-header-bar class="bar bar-positive">
+    <button ng-click="cancel()"  class="button icon 	glyphicon glyphicon-menu-left" style="display: block">
+    </button>
+    <h1 class="title" style="text-align: center;">{{singleTaskData.subjectCode}} Problem</h1>
+    <!--<button class="button glyphicon glyphicon-ok" ng-click="SearchData()" style="font-size: 20px;margin-left: 12px;">
+    </button>-->
+  </ion-header-bar>
+  <br>
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col">
+      <p class="wordStyle">Title</p>
+      {{singleTaskData.taskTitle}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="wordStyle">Discription</p>
+      {{singleTaskData.taskDescription}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="wordStyle">
+        Start Date
+      </p>
+      {{singleTaskData.startDate | date:"MM/dd/yyyy 'at' h:mma"}}
+    </div>
+    <div class="col">
+      <p class="wordStyle">
+        End Date
+      </p>
+      {{singleTaskData.endDate | date:"MM/dd/yyyy 'at' h:mma"}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div ng-show="fileShow=='image'">
+
+        <img id="myImg" src="{{singleTaskData.linkUrl}}" alt="Snow" style="width:100%;">
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+          <span class="close1">&times;</span>
+          <img class="modal-content" id="img01">
+          <div id="caption"></div>
+        </div>
+      </div>
+      <div ng-if="fileShow=='video'">
+        <video controls>
+          <source src="{{singleTaskData.linkUrl}}" >
+          <source src="{{singleTaskData.linkUrl}}">
+        </video>
+      </div>
+      <div ng-if="fileShow=='audio'">
+        <audio controls>
+          <source src="{{singleTaskData.linkUrl}}" >
+          <source src="{{singleTaskData.linkUrl}}">
+        </audio>
+      </div>
+      <div ng-if="fileShow=='pdf'">
+        <object
+          data="{{singleTaskData.linkUrl}}" >
+        </object>
+      </div>
+
+
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="button button-calm button-block" ng-click="cancel();saveTaskStatus('completed',singleTaskData.id);">
+       Completed
+      </button>
+    </div>
+  </div>
+
+</md-sidenav>
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById('myImg');
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that close1s the modal
+var span = document.getElementsByClassName("close1")[0];
+
+// When the user clicks on <span> (x), close1 the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+</script>

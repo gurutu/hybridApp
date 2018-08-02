@@ -1,0 +1,17 @@
+md-checkbox.md-checked .md-icon,md-checkbox.md-default-theme.md-checked .md-icon{background-color:#29abe2}.applybutton,.mainHeading{background:#fff;padding-top:13px;padding-bottom:13px;margin-top:5px;padding-left:5px}.iconSpace{float:right;margin-right:5px}.text{display:block;width:100px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}ul#menu li{display:inline}div.inline{float:left}.clearBoth{clear:both}
+.filterCountCircle{width:17px;
+  height:17px;
+  background:green;
+  -moz-border-radius: 50px;
+  -webkit-border-radius:50px;
+  border-radius:50px;
+  position:absolute;
+  font-size:11px;
+  padding-left: 6px;
+  padding-top:1px;
+  padding-right:1px;
+  z-index:9;
+  margin-left: -27%;
+  margin-top: -35%;
+  font-family:Oxygen  }
+.okCancelButton{font-size:20px;padding:13px;background-color:#3f3f3f;color:#fff}.platform-android .filter,.platform-ios .filter{float:right;z-index:9;color:#fff;font-size:17px}.filterTitile{color:#fff;padding-right:20px}.clearclass{margin-left:80%;color:#fff;margin-top:10px}.applydivision{padding:8px;position:fixed;bottom:5px;width:100%;height:12%}.platform-android .filter{margin-top:12px;padding:10px 10px 19px;left:-1%}.platform-ios .filter{background-color:#3f3f3f;margin-top:30px;padding:10px 10px 5px}.platform-android .backButton,.platform-ios .backButton{background-color:#3f3f3f;float:left;z-index:9;color:#fff;font-size:16px}.platform-android .backButton{padding:21px 7px 20px 10px}.platform-ios .backButton{padding:30px 7px 5px 10px;margin-top:11px}

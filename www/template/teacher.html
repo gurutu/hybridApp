@@ -1,0 +1,85 @@
+<style>
+  .row{
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+</style>
+<ion-view view-title="Student" >
+  <div class="bar bar-header bar-positive">
+    <!-- <button class="button button-icon icon ion-log-out" ng-click="logoutUser()"> </button>-->
+    <div class="h1 title ">{{teacherData.name}} Profile</div>
+    <button class="button button-icon icon ion-log-out " ng-click="logoutUser()"></button>
+  </div>
+  <ion-content >
+    <div class="row"  style="margin-top: 43px;text-align:center;">
+      <img src="https://image.ibb.co/eF0PoG/person_1.jpg" class="userIco">
+    </div>
+    <div class="row text-center">
+      <div class="col-sm-12 text-center sp" style="margin-bottom: 0px;">
+
+        <h3 style="color:skyblue;">{{teacherData.name}}</h3>
+      </div>
+
+    </div>
+    <div class="row text-center sp">
+      <div class="col-sm-12 text-center sp" style="margin-top: 0px;padding-top: 0px;">
+        <p>{{teacherData.email}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <b>Select Class</b>
+        <select class="form-control" ng-model="myClass">
+          <option  ng-selected>Select</option>
+          <option ng-repeat="c in classList" value="{{c.classCode}}">{{c.classTitle}}</option>
+        </select>
+        <!--<select class="form-control" ng-modal="myClass">
+          <option ng-selected>Select</option>
+          <option ng-repeat="c in classList" value="{{c.classTitle}}" >
+           {{c.classTitle}}
+          </option>
+        </select>-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="button button-calm button-block txtDesignbutton" ng-click="showAllClass()">
+          Select Class
+        </button>
+      </div>
+    </div>
+    <ul class="list" ng-if="show">
+      <li class="item">
+        <div class="row">
+          <div class="col" style="text-align:center;">
+            <button class="button button-positive txtDesignbutton buttonDesign" ng-click="studentInformation()">
+              Student
+            </button>
+          </div>
+          <div class="col" style="text-align:center;">
+            <button class="button button-positive txtDesignbutton buttonDesign" ng-click="assignTask(3)">
+              Assign Task
+            </button>
+          </div>
+        </div>
+      </li>
+      <li class="item">
+        <div class="row">
+          <div class="col" style="text-align:center;">
+            <button class="button button-positive txtDesignbutton buttonDesign" ng-click="performance()">
+              Performance
+            </button>
+          </div>
+          <div class="col" style="text-align:center;">
+            <button class="button button-positive txtDesignbutton buttonDesign" ng-click="notification()">
+              Notification
+            </button>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,103 @@
+<style>
+  .headingCart{
+      background: #555;
+      color: #fff;
+      font-size: 12px;
+    }
+</style>
+
+<ion-header-bar class="bar bar-positive backgroundColorheader">
+  <button ng-click="goToBack()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
+  </button>
+  <h1 class="title colorTextHed" style="text-align: center;">Performance Student</h1>
+</ion-header-bar>
+<div class="card " style=" margin: 44px 0px;">
+  <div class="item item-text-wrap headingCart backgroundHeadingColor">
+    <div class="row" style="text-align: center;">
+      <div class="col colorTextHed" ><span >Task Title : </span></div>
+      <div class="col colorTextHed" ><span >Start Date : </span></div>
+      <div class="col colorTextHed" ><span >End Date : </span></div>
+
+    </div>
+  </div>
+
+  <div class="item item-text-wrap backgroundColor"  style="font-size: 12px;background-color: #fff;" ng-click="sideNavAssignTask(p.taskCode)">
+    <div class="row">
+      <div class="col colorText" style="text-align:center;">
+        {{p.taskTitle}}
+      </div>
+      <div class="col colorText" style="text-align:center;">
+        {{p.startDate | date:'medium'}}
+      </div>
+      <div class="col colorText" style="text-align:center;">
+        {{p.endDate | date:'medium'}}
+      </div>
+    </div>
+  </div>
+
+  <div class="item item-text-wrap backgroundColor" ng-repeat="p in performanceTaskList" style="font-size: 12px;background-color: #fff;" ng-click="sideNavAssignTask(p.taskCode)">
+    <div class="row">
+      <div class="col colorText" style="text-align:center;">
+        {{p.taskTitle}}
+      </div>
+      <div class="col colorText" style="text-align:center;">
+        {{p.startDate | date:'medium'}}
+      </div>
+      <div class="col colorText" style="text-align:center;">
+        {{p.endDate | date:'medium'}}
+      </div>
+    </div>
+  </div>
+
+</div>
+<md-sidenav md-component-id="sideAssignTask" class="md-sidenav-right" style="min-width: 100%;">
+  <ion-header-bar class="bar bar-positive backgroundColorheader">
+    <button ng-click="cancelNavAssignTask()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
+    </button>
+    <button ng-click="filterByStatus(studentListOfPer)"  class="button icon glyphicon glyphicon-filter backgroundColorButton" style="margin-left: 218px;">
+    </button>
+    <h1 class="title colorTextHed" style="text-align: center;">Perfromance Student List</h1>
+  </ion-header-bar>
+  <br>
+  <br>
+
+  <div class="card" style=" margin: 4px 0px;">
+    <div class="item item-text-wrap headingCart backgroundHeadingColor">
+      <div class="row" style="text-align: center;">
+        <div class="col colorTextHed" ><span >Completed Task : </span></div>
+        <div class="col colorTextHed" ><span >Status : </span></div>
+
+      </div>
+    </div>
+
+    <div class="item item-text-wrap backgroundColor" style="font-size: 12px;"  ng-repeat="per in studentListOfPer">
+      <div class="row">
+        <div class="col colorText">
+          {{per.name}}
+        </div>
+        <div class="col colorText">
+          {{per.status}}
+        </div>
+      </div>
+    </div>
+  </div>
+</md-sidenav>
+
+
+<md-sidenav md-component-id="filterByStatus" class="md-sidenav-right " style="min-width: 100%;">
+  <ion-header-bar class="bar bar-positive backgroundColorheader">
+    <button ng-click="cancelNavAssignTask()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
+    </button>
+    <h1 class="title colorTextHed" style="text-align: center;">Filter By</h1>
+  </ion-header-bar>
+  <br>
+  <br>
+
+  <div class="item item-text-wrap backgroundColor" style="font-size: 12px;"  ng-repeat="Status in uniqueStatus">
+    <md-checkbox ng-click="" style="border-color: #fff;">
+      <span class="colorText"> {{Status}}</span>
+    </md-checkbox>
+  </div>
+  </div>
+
+</md-sidenav>
