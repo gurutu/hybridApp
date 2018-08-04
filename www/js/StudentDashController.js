@@ -74,8 +74,27 @@ AppContoller
                 $scope.fileShow="";
              studentService.getTaskDetailById(requeatTaskId).then(function(result){
                   $scope.singleTaskData=result.data[0];
-                  if($scope.singleTaskData.linkUrl!=null)
-                 $scope.fileShow= utils.findfileExtention($scope.singleTaskData.linkUrl);
+                 // $scope.singleTaskData.linkUrl='http://kmmc.in/wp-content/uploads/2014/01/lesson2.pdf';
+                  if($scope.singleTaskData.linkUrl!=null){
+                  $scope.fileShow= utils.findfileExtention($scope.singleTaskData.linkUrl);
+                  var myVideo="";
+                  if($scope.fileShow=='video'){
+                  myVideo = document.getElementsByTagName('video')[0];
+                  }else if($scope.fileShow=='audio'){
+                    myVideo = document.getElementsByTagName('audio')[0];
+                  }else if($scope.fileShow=='pdf'){
+                   myVideo = document.getElementsByTagName('object')[0];
+                   var d1 = document.getElementById('PDFVIEW');
+                   d1.insertAdjacentHTML('beforeend', '<embed src="'+$scope.singleTaskData.linkUrl+'" style="width:100%;" height="500"  alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">');
+                  }
+                   if($scope.fileShow!='image'&&$scope.fileShow!='pdf'){
+                   myVideo.src = $scope.singleTaskData.linkUrl;
+                   myVideo.load();
+                   myVideo.play();
+                   }
+
+                  }
+
               })
       }
 

@@ -235,22 +235,21 @@ body {font-family: Arial, Helvetica, sans-serif;}
           <div id="caption"></div>
         </div>
       </div>
-      <div ng-if="fileShow=='video'">
-        <video controls>
-          <source src="{{singleTaskData.linkUrl}}" >
-          <source src="{{singleTaskData.linkUrl}}">
+      <div ng-show="fileShow=='video'">
+        <video controls  width="100%">
         </video>
-      </div>
-      <div ng-if="fileShow=='audio'">
-        <audio controls>
+        <!--<iframe width="560" height="300" ng-src="singleTaskData.linkUrl " frameborder="0" allowfullscreen controls></iframe>
+    -->  </div>
+      <div ng-show="fileShow=='audio'">
+        <audio controls width="100%">
           <source src="{{singleTaskData.linkUrl}}" >
           <source src="{{singleTaskData.linkUrl}}">
         </audio>
       </div>
-      <div ng-if="fileShow=='pdf'">
-        <object
-          data="{{singleTaskData.linkUrl}}" >
-        </object>
+      <div ng-show="fileShow=='pdf'" id="PDFVIEW">
+      <!-- <embed  src="/lesson2.pdf" width="600" height="500" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+        <object width="100%" height="100%" ng-attr-data="{{singleTaskData.linkUrl}}" ></object>-->
+
       </div>
 
 
