@@ -5,8 +5,8 @@ var AppContoller = angular.module('StudentDashController', []);
 
 AppContoller
   .controller(
-  "StudentDashController",['$scope','$mdSidenav','$stateParams','studentService','logoutUser','utils',
-   function($scope,$mdSidenav,$stateParams,studentService,logoutUser,utils) {
+  "StudentDashController",['$scope','$mdSidenav','$stateParams','studentService','logoutUser','utils','store',
+   function($scope,$mdSidenav,$stateParams,studentService,logoutUser,utils,store) {
 
     $scope.show="";
     $scope.studentData="";
@@ -14,6 +14,12 @@ AppContoller
     $scope.singleTaskData="";
     $scope.subjectData="";
     $scope.fileShow="";
+    $scope.datealert="";
+     $scope.studentSingleTaskData="";
+     $scope.saveDateValue="";
+     $scope.subjectCodeValue="";
+     $scope.taskStartTime="";
+     $scope.currentDateTime=new Date();
 
       $scope.logoutUser=function(){
             logoutUser.userLogout();
@@ -29,17 +35,53 @@ AppContoller
     }
 
     $scope.showTask=function(){
-         var requestfilter={
-                 "studentId":$stateParams.studentId,
-                	"subjectCode":this.subject,
-                	"startDate":this.datevalue,
+    if(this.datevalue==undefined){
+     $scope.datealert="Please Select Date";
+     return true;
+    }else{
+     $scope.saveDateValue=this.datevalue;
+      $scope.datealert="";
+    }
+
+           var requestFilter={
+               	"classCode":store.get('userdata').classCode,
+               	"studentId":$stateParams.studentId,
+               	"startDate":this.datevalue,
                	"endDate":this.datevalue
-             }
-               studentService.getTaskDetailByDateAndTime(requestfilter).then(function(result){
+           }
+                  studentService.getUniqueSubjects(requestFilter).then(function(result){
                              $scope.studentTaskData=result.data;
                })
+
       $scope.show=true;
     }
+
+    $scope.getAllTaskBasedOnSubject=function(val){
+    $scope.subjectCodeValue=val;
+           var requestfilter={
+                     "studentId":$stateParams.studentId,
+                    	"subjectCode":val,
+                    	"startDate":$scope.saveDateValue,
+                   	"endDate":$scope.saveDateValue
+                 }
+                   studentService.getTaskDetailByDateAndTime(requestfilter).then(function(result){
+                   $scope.studentSingleTaskData=[];
+                                 $scope.studentSingleTaskData=result.data;
+                   })
+    }
+
+
+
+
+     $scope.isOpenRightProblem = function(){
+          $mdSidenav('rightTaskProblem').toggle()
+            .then(function () { });
+        };
+    $scope.cancelProblem = function(){
+          $mdSidenav('rightTaskProblem').close()
+            .then(function () {
+            });
+        };
 
     $scope.isOpenRight = function(){
       $mdSidenav('right').toggle()
@@ -53,14 +95,21 @@ AppContoller
         });
     };
 
-    $scope.saveTaskStatus=function(status,id){
+    $scope.saveTaskStatus=function(status,id,sDate,eDate){
+          if(status=='completed'){
+          eDate=new Date();
+          }
         var requestSta={
-            "status":status,
-            "id":id
+           	"status":status,
+           	"id":id,
+           	"taskStartTime":sDate,
+           	"taskEndTime":eDate
         }
+        $scope.taskStartTime=sDate;
         studentService.saveTaskStatus(requestSta).then(function(result){
                         //  $scope.singleTaskData=result.data[0];
-                        $scope.getTask();
+                       // $scope.getTask();
+                       $scope.getAllTaskBasedOnSubject($scope.subjectCodeValue);
          })
 
     }
@@ -123,6 +172,6 @@ AppContoller
     }
 
     $scope.init();
-    $scope.getTask();
+   // $scope.getTask();
 
   }]);
