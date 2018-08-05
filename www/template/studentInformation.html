@@ -5,25 +5,25 @@
       font-size: 12px;
     }
 </style>
-<ion-header-bar class="bar bar-positive">
-  <button ng-click="goToBack()"  class="button icon 	glyphicon glyphicon-menu-left" style="display: block">
+<ion-header-bar class="bar bar-positive backgroundColorheader">
+  <button ng-click="goToBack()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
   </button>
-  <h1 class="title" style="text-align: center;">Student Task Information</h1>
+  <h1 class="title colorTextHed" style="text-align: center;">Student Task Information</h1>
 </ion-header-bar>
 <div class="card" style=" margin: 44px 0px;" >
-  <div class="item item-text-wrap headingCart">
+  <div class="item item-text-wrap headingCart backgroundHeadingColor">
     <div class="row" style="text-align: center;">
-      <div class="col" ><span >Name : </span></div>
-      <div class="col" ><span >Task Title : </span></div>
+      <div class="col colorTextHed" ><span >Name : </span></div>
+      <div class="col colorTextHed" ><span >Task Title : </span></div>
     </div>
   </div>
  <!-- <button class="button button-positive" style="background-color: #fff;">-->
-    <div class="item item-text-wrap" style="font-size: 12px; background-color: #fff;" ng-repeat="s in studentListInformation" ng-click="sideNavStudentTaskInformation(s.id,s.name)">
+    <div class="item item-text-wrap backgroundColor" style="font-size: 12px; background-color: #fff;" ng-repeat="s in studentListInformation" ng-click="sideNavStudentTaskInformation(s.id,s.name)">
       <div class="row">
-        <div class="col" style="text-align:center;">
+        <div class="col colorText" style="text-align:center;">
           {{s.name}}
         </div>
-        <div class="col" style="text-align:center;">
+        <div class="col colorText" style="text-align:center;">
           {{s.email}}
         </div>
       </div>
@@ -32,27 +32,39 @@
 </div>
 
 <md-sidenav md-component-id="sideStudentInformation" class="md-sidenav-right" style="min-width: 100%;">
-  <ion-header-bar class="bar bar-positive">
-    <button ng-click="cancelStudentInformation()"  class="button icon  glyphicon glyphicon-menu-left" style="display: block">
+  <ion-header-bar class="bar bar-positive backgroundColorheader">
+    <button ng-click="cancelStudentInformation()"  class="button icon  glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
     </button>
-    <h1 class="title" style="text-align: center;"> {{name}}</h1>
+    <h1 class="title colorTextHed" style="text-align: center;"> {{name}}</h1>
   </ion-header-bar>
   <br>
   <br>
-  <br>
-  <br>
 
-  <div class="card"   ng-repeat="t in taskList">
-    <div class="item item-text-wrap">
-      <div class="row" >
-        <div class="col-70">
-          <b>Task Title:</b><p> {{t.taskTitle}}</p>
-          <b>Subject:</b><p> {{t.subjectTitle}}</p>
-          <b>Status:</b><p>{{t.status}}</p>
-          <b>Start Date</b><p>{{t.startDate | date:'medium'}}</p>
-          <b>End Date</b><p>{{t.endDate | date:'medium'}}</p>
-        </div>
-      </div>
+  <div class="card "   ng-repeat="t in taskList" style="margin-bottom: -7px;margin-top: 13px">
+    <div class="item item-text-wrap backgroundColor">
+          <div clas="row " style="font-size: 14px;">
+            <div class="col colorText">
+              <span>Task Title:</span>
+              <span>{{t.taskTitle}}</span>
+            </div>
+            <div class="col colorText">
+             <span>Subject:</span>
+             <span>{{t.subjectTitle}}</span>
+            </div>
+            <div class="col colorText">
+             <span>Status:</span>
+             <span>{{t.status}}</span>
+            </div>
+            <div class="col colorText">
+             <span>Start Date:</span>
+             <span>{{t.startDate | date:'medium'}}</span>
+            </div>
+            <div class="col colorText">
+             <span>End Date:</span>
+             <span>{{t.endDate | date:'medium'}}</span>
+            </div>
+          </div>
     </div>
+
   </div>
 </md-sidenav>

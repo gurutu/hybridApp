@@ -11,14 +11,14 @@
     }
 </style>
 <div ng-controller="AssignTaskController">
-<ion-header-bar class="bar bar-positive">
-  <button ng-click="goToBack()"  class="button icon 	glyphicon glyphicon-menu-left" style="display: block">
+<ion-header-bar class="bar bar-positive backgroundColorheader">
+  <button ng-click="goToBack()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
   </button>
-  <h1 class="title" style="text-align: center;">Assign Task</h1>
+  <h1 class="title colorTextHed" style="text-align: center;">Assign Task</h1>
 </ion-header-bar>
 <div class="card" style=" margin: 44px 0px;">
-  <div class="item item-text-wrap headingCart">
-    <div class="row" style="text-align: center;">
+  <div class="item item-text-wrap headingCart backgroundHeadingColor">
+    <div class="row colorTextHed" style="text-align: center;">
       <div class="col" ><span >Task Title : </span></div>
       <div class="col" ><span >Subject : </span></div>
       <div class="col" ><span >Start Date : </span></div>
@@ -27,9 +27,9 @@
     </div>
   </div>
 
-    <div class="item item-text-wrap" style="font-size: 12px;background-color: #fff;" ng-repeat="task in TaskstudentListALL" ng-click="sideNavAssignTask(task.taskCode)">
-      <div class="row">
-        <div class="col" style="text-align:center;">
+    <div class="item item-text-wrap backgroundColor" style="font-size: 12px;background-color: #fff;" ng-repeat="task in TaskstudentListALL" ng-click="sideNavAssignTask(task.taskCode)">
+      <div class="row colorText">
+        <div class="col " style="text-align:center;">
           {{task.taskTitle}}
         </div>
         <div class="col" style="text-align:center;">
@@ -45,28 +45,27 @@
     </div>
 
 </div>
-<md-sidenav md-component-id="sideAssignTask" class="md-sidenav-right" style="min-width: 100%;">
-  <ion-header-bar class="bar bar-positive">
-    <button ng-click="cancelNavAssignTask()"  class="button icon 	glyphicon glyphicon-menu-left" style="display: block">
+<md-sidenav md-component-id="sideAssignTask" class="md-sidenav-right backgroundColor" style="min-width: 100%;">
+  <ion-header-bar class="bar bar-positive backgroundColorheader">
+    <button ng-click="cancelNavAssignTask()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
     </button>
-    <h1 class="title" style="text-align: center;">Assign Task To Student</h1>
+    <h1 class="title colorTextHed" style="text-align: center;">Assign Task To Student</h1>
   </ion-header-bar>
-  <br>
-  <br>
+  <br><br>
   <div class="row" style="padding-top: 0px;">
     <div class="col">
-      <button ng-click="deselectCheckBox()"  class="button icon" style="display: block;">
+      <button ng-click="deselectCheckBox()"  class="button icon backgroundColorButton text-left" style="display: block;">
         clear All
       </button>
     </div>
     <div class="col">
-      <button ng-click="selectAll()"  class="button icon" style="display: block;float: right; ">
+      <button ng-click="selectAll()"  class="button icon backgroundColorButton text-right" style="display: block;float: right; ">
       select All
       </button>
     </div>
   </div>
-  <div class="card"   ng-repeat="student in studentListClass">
-    <div class="item item-text-wrap">
+  <div class="card "   ng-repeat="student in studentListClass">
+    <div class="item item-text-wrap " style="height: 74px;">
       <div class="row" >
         <div class="col-70">
           <b>Name:</b> <span> {{student.name}}</span><br>
@@ -83,8 +82,11 @@
     </div>
   </div>
 
-  <div class="col">
-    <button ng-click="saveAssignTask(taskCode)"  class="button icon" style="position: absolute;display: block; float:right;">Assign Task</button>
+<!--  <div class="col">
+  </div>-->
+  <div class="bar bar-footer bar-light">
+    <button ng-click="saveAssignTask(taskCode)"  class="button icon backgroundColorButton buttonAssign" style="position: absolute;display: block;">Assign Task</button>
+
   </div>
 </md-sidenav>
 </div>

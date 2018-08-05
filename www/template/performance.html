@@ -35,19 +35,19 @@
     </div>
   </div>
 
-  <div class="item item-text-wrap backgroundColor" ng-repeat="p in performanceTaskList" style="font-size: 12px;background-color: #fff;" ng-click="sideNavAssignTask(p.taskCode)">
-    <div class="row">
-      <div class="col colorText" style="text-align:center;">
-        {{p.taskTitle}}
-      </div>
-      <div class="col colorText" style="text-align:center;">
-        {{p.startDate | date:'medium'}}
-      </div>
-      <div class="col colorText" style="text-align:center;">
-        {{p.endDate | date:'medium'}}
+    <div class="item item-text-wrap backgroundColor" ng-repeat="p in performanceTaskList" style="font-size: 12px;background-color: #fff;" ng-click="sideNavAssignTask(p.taskCode)">
+      <div class="row">
+        <div class="col colorText" style="text-align:center;">
+          {{p.taskTitle}}
+        </div>
+        <div class="col colorText" style="text-align:center;">
+          {{p.startDate | date:'medium'}}
+        </div>
+        <div class="col colorText" style="text-align:center;">
+          {{p.endDate | date:'medium'}}
+        </div>
       </div>
     </div>
-  </div>
 
 </div>
 <md-sidenav md-component-id="sideAssignTask" class="md-sidenav-right" style="min-width: 100%;">
@@ -103,6 +103,25 @@
       </div>
     </div>
   </div>
+</md-sidenav>
+
+
+<md-sidenav md-component-id="filterByStatus" class="md-sidenav-right " style="min-width: 100%;">
+  <ion-header-bar class="bar bar-positive backgroundColorheader">
+    <button ng-click="cancelNavAssignTask()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
+    </button>
+    <h1 class="title colorTextHed" style="text-align: center;">Filter By</h1>
+  </ion-header-bar>
+  <br>
+  <br>
+
+    <div class="item item-text-wrap backgroundColor" style="font-size: 12px;"  ng-repeat="Status in uniqueStatus">
+      <md-checkbox ng-click="" style="border-color: #fff;">
+        <span class="colorText"> {{Status}}</span>
+      </md-checkbox>
+    </div>
+  </div>
+
 </md-sidenav>
 
 

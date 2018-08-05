@@ -78,5 +78,28 @@ margin:auto;
     background-color: #f8f8f8 ! important;
 }
 .txtDesignbutton{
-border-radius: 24px ! important;;
+border-radius: 24px ! important;
 }
+ .backgroundColor{
+     background-color: #171a29 ! important;
+ }
+ .backgroundColorButton{
+      background-color: #11c1f3 ! important;
+ }
+ .backgroundColorheader{
+      background-color: #fff ! important;
+ }
+ .backgroundHeadingColor{
+      background-color: #e46d47 ! important;
+ }
+ .colorText{
+    color: #fff ! important;
+ }
+ .colorTextHed{
+     color: #000! important;
+  }
+  .buttonAssign{
+     width: 100%;
+     font-size: 20px;
+     font-weight: 700;
+  }
