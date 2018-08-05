@@ -17,14 +17,14 @@ AppContoller
       $state.go('admin');
     }
     $scope.isOpenRightAddTask = function(){
-      $mdSidenav('rightAddTask').toggle()
+      $mdSidenav('rightadminTask').toggle()
         .then(function () {
 
         });
     };
 
     $scope.cancelAddTask = function(){
-      $mdSidenav('rightAddTask').close()
+      $mdSidenav('rightadminTask').close()
         .then(function () {
 
         });
