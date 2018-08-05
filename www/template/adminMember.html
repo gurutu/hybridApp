@@ -17,17 +17,19 @@
   md-tabs-canvas{
     background-color: #58c8f8;
   }
-
+  .addMember{
+   background-image: -webkit-linear-gradient(top, #11c1f3 0%, #11c1f3 100%);
+  }
 </style>
-<div class="bar bar-header bar-positive">
-  <button class="button button-icon icon ion-arrow-left-c" ng-click="goToBack()"></button>
-  <div class="h1 title">Admin Member</div>
+<div class="bar bar-header bar-positive backgroundColorheader">
+  <button class="button button-icon icon ion-arrow-left-c backgroundColorButton " ng-click="goToBack()"></button>
+  <div class="h1 title colorTextHed">Admin Member</div>
   <!--<button class="button button-clear button-positive">Remove</button>-->
 </div>
 <md-tabs layout="column" active="activeTab"   md-selected="selectedIndex"
-         md-stretch-tabs="always" style="margin-top:45px;min-height:600px;max-height:600px;">
-  <md-tab layout="column" label="Admin" index="1" id="1" md-on-select="changeFooterContant('Add Admin');">
-    <md-content class="md-padding" style="padding: 4px;  "  >
+         md-stretch-tabs="always" style="margin-top:45px;min-height:600px;max-height:600px;" class="backgroundColor">
+  <md-tab layout="column"   label="Admin" index="1" id="1" md-on-select="changeFooterContant('Add Admin');">
+    <md-content class="md-padding backgroundColor " style="padding: 4px;  "  >
      <!--Admin List will come -->
         <div class="card"  ng-repeat="x in adminData">
           <div class="item item-text-wrap">
@@ -38,11 +40,11 @@
                 <b>Phone No:</b><p>{{x.phone}}</p>
               </div>
               <div class="col">
-                <img src="https://res.cloudinary.com/gurutu/image/upload/v1532168222/user1.png" style="width:130px;">
+                <img src="https://res.cloudinary.com/gurutu/image/upload/v1532168222/user1.png" style="width:80px;">
               </div>
             </div>
-            <button class="button button-block button-assertive txtDesignbutton" style="margin: 0px" ng-click="showConfirm(x.id)">
-              Delete Admin
+            <button class="button button-block button-assertive txtDesignbutton backgroundColorButton" style="margin: 0px" ng-click="showConfirm(x.id)">
+              <span class="colorTextHed">Delete Admin</span>
             </button>
           </div>
         </div>
@@ -52,8 +54,8 @@
 
   </md-tab>
 
-  <md-tab ng-hide="activeTab == 2" label="Teacher" index="2" id="2" md-on-select="changeFooterContant('Add Teacher')">
-    <md-content class="md-padding" style="padding: 4px;" >
+  <md-tab ng-hide="activeTab == 2" label="Teacher" index="2" id="2" md-on-select="changeFooterContant('Add Teacher')" class="backgroundColor">
+    <md-content class="md-padding backgroundColor" style="padding: 4px;" >
       <!--Teacher List Will come -->
       <div class="card"  ng-repeat="x in teacherData">
         <div class="item item-text-wrap">
@@ -64,10 +66,10 @@
               <b>Phone No:</b><p>{{x.phone}}</p>
             </div>
             <div class="col">
-              <img src="https://res.cloudinary.com/gurutu/image/upload/v1532168222/user1.png" style="width:130px;">
+              <img src="https://res.cloudinary.com/gurutu/image/upload/v1532168222/user1.png" style="width:80px;">
             </div>
           </div>
-          <button class="button button-block button-assertive txtDesignbutton" style="margin: 0px" ng-click="showConfirm(x.id)">
+          <button class="button button-block button-assertive backgroundColorButton txtDesignbutton" style="margin: 0px" ng-click="showConfirm(x.id)">
             Delete Teacher
           </button>
         </div>
@@ -80,8 +82,8 @@
       <div class="title">Add Teacher</div>
     </div>-->
   </md-tab>
-  <md-tab ng-hide="activeTab == 3" label="Student" index="3" id="3" md-on-select="changeFooterContant('Add Student')">
-    <md-content class="md-padding" style="padding: 4px;" >
+  <md-tab ng-hide="activeTab == 3" label="Student" index="3" id="3" md-on-select="changeFooterContant('Add Student')" class="backgroundColor">
+    <md-content class="md-padding backgroundColor" style="padding: 4px;" >
       <!--Student LIst will come -->
 
       <div class="card"  ng-repeat="x in studentData">
@@ -93,10 +95,10 @@
               <b>Phone No:</b><p>{{x.phone}}</p>
             </div>
             <div class="col">
-              <img src="https://res.cloudinary.com/gurutu/image/upload/v1532168222/user1.png" style="width:130px;">
+              <img src="https://res.cloudinary.com/gurutu/image/upload/v1532168222/user1.png" style="width:80px;">
             </div>
           </div>
-          <button class="button button-block button-assertive txtDesignbutton" style="margin: 0px" ng-click="showConfirm(x.id)">
+          <button class="button button-block button-assertive txtDesignbutton backgroundColorButton" style="margin: 0px" ng-click="showConfirm(x.id)">
             Delete Student
           </button>
         </div>
@@ -110,40 +112,40 @@
     </div>-->
   </md-tab>
 </md-tabs>
-<div class="bar bar-footer bar-light"  ng-click="openAllPanal()">
+<div class="bar bar-footer bar-light backgroundColorButton"  ng-click="openAllPanal()">
   <div class="title">{{footerName}}</div>
 </div>
 <!--   Admin Side Nave bar-->
-<md-sidenav md-component-id="rightAdmin" class="md-sidenav-right" style="min-width: 100%;">
-  <ion-header-bar class="bar bar-positive">
-    <button ng-click="cancelAdmin()"  class="button icon 	glyphicon glyphicon-menu-left" style="display: block">
+<md-sidenav md-component-id="rightAdmin" class="md-sidenav-right backgroundColor" style="min-width: 100%;">
+  <ion-header-bar class="bar bar-positive backgroundColorheader">
+    <button ng-click="cancelAdmin()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
     </button>
-    <h1 class="title" style="text-align: center;">Add Admin</h1>
+    <h1 class="title colorTextHed" style="text-align: center;">Add Admin</h1>
   </ion-header-bar>
   <br>
   <br>
   <br>
   <br>
 
-  <div class="row">
+  <div class="row colorText">
     <div class="col-30 lableDesign" ><span >Name : </span></div>
     <div class="col">
       <input class="form-control txtDesignbutton" ng-model="name">
     </div>
   </div>
-  <div class="row">
+  <div class="row colorText">
     <div class="col-30 lableDesign" ><span >Email :</span></div>
     <div class="col">
       <input class="form-control txtDesignbutton" ng-model="emailId">
     </div>
   </div>
-  <div class="row">
+  <div class="row colorText">
     <div class="col-30 lableDesign" ><span >Phone :</span></div>
     <div class="col">
       <input class="form-control txtDesignbutton" ng-model="phone">
     </div>
   </div>
-  <div class="row">
+  <div class="row colorText">
     <div class="col-30 lableDesign" ><span >Type : </span></div>
     <div class="col">
       <input class="form-control txtDesignbutton" ng-model="type" value="Admin" disabled placeholder="Admin">
@@ -153,7 +155,7 @@
   <div class="row">
     <div class="col" style="text-align: center;">
           <span  >
-          <input type="submit"  class="btn btn-primary btn-save" value="Save" ng-click="saveData('admin')">
+          <input type="submit"  class="btn btn-primary btn-save addMember" value="Save" ng-click="saveData('admin')">
           </span>
     </div>
   </div>
@@ -162,36 +164,36 @@
 
 
 <!--   Teacher Side Nave bar-->
-<md-sidenav md-component-id="rightTeacher" class="md-sidenav-right" style="min-width: 100%;">
-  <ion-header-bar class="bar bar-positive">
-    <button ng-click="cancelTeacher()"  class="button icon 	glyphicon glyphicon-menu-left" style="display: block">
+<md-sidenav md-component-id="rightTeacher" class="md-sidenav-right backgroundColor" style="min-width: 100%;">
+  <ion-header-bar class="bar bar-positive backgroundColorheader">
+    <button ng-click="cancelTeacher()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
     </button>
-    <h1 class="title" style="text-align: center;">Add Teacher</h1>
+    <h1 class="title colorTextHed" style="text-align: center;">Add Teacher</h1>
   </ion-header-bar>
   <br>
   <br>
   <br>
   <br>
 
-  <div class="row">
+  <div class="row colorText">
     <div class="col-30 lableDesign" ><span >Name : </span></div>
     <div class="col">
       <input class="form-control txtDesignbutton" ng-model="name">
     </div>
   </div>
-  <div class="row">
+  <div class="row colorText">
     <div class="col-30 lableDesign" ><span >Email :</span></div>
     <div class="col">
       <input class="form-control txtDesignbutton" ng-model="emailId">
     </div>
   </div>
-  <div class="row">
+  <div class="row colorText">
     <div class="col-30 lableDesign" ><span >Phone :</span></div>
     <div class="col">
       <input class="form-control txtDesignbutton" ng-model="phone">
     </div>
   </div>
-  <div class="row">
+  <div class="row colorText">
     <div class="col-30 lableDesign" ><span >Type : </span></div>
     <div class="col">
       <input class="form-control txtDesignbutton" ng-model="type" value="Teacher" disabled placeholder="Teacher">
@@ -201,7 +203,7 @@
   <div class="row">
     <div class="col" style="text-align: center;">
           <span  id="btn2">
-          <input type="submit" id="" class="btn btn-primary btn-save" value="Save" ng-click="saveData('teacher')">
+          <input type="submit" id="" class="btn btn-primary btn-save addMember" value="Save" ng-click="saveData('teacher')" style="background-color: #11c1f3 ! important;">
           </span>
     </div>
   </div>
@@ -209,36 +211,45 @@
 </md-sidenav>
 
 <!--   Student Side Nave bar-->
-<md-sidenav md-component-id="rightStudent" class="md-sidenav-right" style="min-width: 100%;">
-  <ion-header-bar class="bar bar-positive">
-    <button ng-click="cancelStudent()"  class="button icon 	glyphicon glyphicon-menu-left" style="display: block">
+<md-sidenav md-component-id="rightStudent" class="md-sidenav-right backgroundColor" style="min-width: 100%;">
+  <ion-header-bar class="bar bar-positive backgroundColorheader">
+    <button ng-click="cancelStudent()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
     </button>
-    <h1 class="title" style="text-align: center;">Add Student</h1>
+    <h1 class="title colorTextHed" style="text-align: center;">Add Student</h1>
   </ion-header-bar>
   <br>
   <br>
   <br>
   <br>
 
-  <div class="row">
+  <div class="row colorText">
     <div class="col-30 lableDesign" ><span >Name : </span></div>
     <div class="col">
       <input class="form-control txtDesignbutton"  ng-model="name">
     </div>
   </div>
-  <div class="row">
+  <div class="row colorText">
     <div class="col-30 lableDesign" ><span >Email :</span></div>
     <div class="col">
       <input class="form-control txtDesignbutton"  ng-model="emailId">
     </div>
   </div>
-  <div class="row">
+  <div class="row colorText">
     <div class="col-30 lableDesign" ><span >Phone :</span></div>
     <div class="col">
       <input class="form-control txtDesignbutton"  ng-model="phone">
     </div>
   </div>
-  <div class="row">
+  <div class="row colorText">
+    <div class="col-30 lableDesign" ><span >Class :</span></div>
+    <div class="col">
+      <select class="form-control txtDesignbutton" ng-model="myClass">
+        <option  selected >Select</option>
+        <option ng-repeat="c in classList" value="{{c.classCode}}">{{c.classTitle}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row colorText">
     <div class="col-30 lableDesign" ><span >Type : </span></div>
     <div class="col">
       <input class="form-control txtDesignbutton"  value="Student" ng-model="type" ng-disabled="true" placeholder="Student">
@@ -248,7 +259,7 @@
   <div class="row">
     <div class="col" style="text-align: center;">
           <span  >
-          <input type="submit" class="btn btn-primary btn-save" value="Save" ng-click="saveData('student')">
+          <input type="submit" class="btn btn-primary btn-save addMember" value="Save" ng-click="saveData('student')" style="background-color: #11c1f3 ! important;">
           </span>
     </div>
   </div>

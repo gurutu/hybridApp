@@ -5,8 +5,8 @@ var AppContoller = angular.module('adminMamberController', []);
 
 AppContoller
   .controller(
-  "adminMamberController",['$scope','$state','$mdSidenav','adminservice','$ionicPopup',
-    function($scope,$state,$mdSidenav,adminservice,$ionicPopup) {
+  "adminMamberController",['$scope','$state','$mdSidenav','adminservice','$ionicPopup','allClass',
+    function($scope,$state,$mdSidenav,adminservice,$ionicPopup,allClass) {
     $scope.adminData="";
     $scope.teacherData="";
     $scope.studentData="";
@@ -105,6 +105,16 @@ AppContoller
         "phone": this.phone,
         "name": this.name
       }
+        if(role=="student"){
+          $scope.request={
+                  "email": this.emailId,
+                  "password": "N/A",
+                  "role": role,
+                  "phone": this.phone,
+                  "name": this.name,
+                  "class": this.myClass
+           }
+         }
       adminservice.saveUserInfo( $scope.request).then(function(result) {
         if(role=="admin"){
           $scope.init();
@@ -160,6 +170,9 @@ AppContoller
       $scope.request.role="teacher";
       adminservice.searchByRole( $scope.request).then(function(result) {
         $scope.teacherData=result.data;//role
+
+        console.log("@@@@@@@@@@@@@ teacherData  @@@@@@@@@@@@@@");
+        console.log($scope.teacherData);
       });
     }
 
@@ -167,6 +180,9 @@ AppContoller
       $scope.request.role="student";
       adminservice.searchByRole( $scope.request).then(function(result) {
         $scope.studentData=result.data;//role
+
+        console.log("@@@@@@@@@@@@@ studentData  @@@@@@@@@@@@@@");
+        console.log($scope.studentData);
       });
     }
 
@@ -175,7 +191,23 @@ AppContoller
       $scope.request.role="admin";
       adminservice.searchByRole( $scope.request).then(function(result) {
         $scope.adminData=result.data;//role
+
+        console.log("@@@@@@@@@@@@@ adminData  @@@@@@@@@@@@@@");
+        console.log($scope.adminData);
+
       });
+
+       var request = {
+                  };
+       allClass.allClassList(request).then(function(results) {
+          if(results.status=="200") {
+
+            console.log("=============All Class================");
+            console.log(results.data);
+
+            $scope.classList = results.data;
+          }
+       });
     }
 
     $scope.init();

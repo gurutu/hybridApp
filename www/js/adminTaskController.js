@@ -113,6 +113,9 @@ AppContoller
     $scope.init=function(){
       adminservice.showAllTasks().then(function(result){
         $scope.tasksData=result.data;
+
+         console.log("@@@@@@@@@@@@@ tasksData  @@@@@@@@@@@@@@");
+         console.log($scope.tasksData);
       })
     }
 

@@ -7,14 +7,14 @@
 
 </style>
 <ion-view view-title="admin" >
-  <div class="bar bar-header bar-positive">
+  <div class="bar bar-header bar-positive backgroundColorheader">
     <!-- <button class="button button-icon icon ion-navicon"></button>-->
-    <div class="h1 title">Admin Panel</div>
-    <button class="button button-icon icon ion-log-out" ng-click="logoutUser()"></button>
+    <div class="h1 title colorTextHed">Admin Panel</div>
+    <button class="button button-icon icon ion-log-out backgroundColorButton" ng-click="logoutUser()"></button>
   </div>
 
-<ion-content>
-<br><br><br><br><br><br>
+<ion-content class="backgroundColor">
+<br><br><br>
 <div class="container ">
   <div class="row" style="display: block;">
   <div class="col-xs 12 col-sm-6 ">
@@ -22,7 +22,7 @@
       <img class="card-img-top" src="http://res.cloudinary.com/gurutu/image/upload/c_scale,w_150/v1532963896/Hybrid-app/add_user.png" alt="Card image cap">
       <div class="card-body" style="padding: 10%;">
         <h5 class="card-title">Click below to add / delete members</h5>
-        <button class="button button-positive button-full" ng-click="sendToMember()">
+        <button class="button button-positive button-full backgroundColorButton txtDesignbutton" ng-click="sendToMember()">
           Member
         </button>
       </div>
@@ -33,7 +33,7 @@
       <img class="card-img-top" src="http://res.cloudinary.com/gurutu/image/upload/h_150,w_150/v1532963896/Hybrid-app/add_tasks.png" alt="Card image cap">
       <div class="card-body" style="padding: 10%;">
         <h5 class="card-title">Click below to add / delete members</h5>
-        <button class="button button-positive button-full" ng-click="sendToTasks()">
+        <button class="button button-positive button-full backgroundColorButton txtDesignbutton" ng-click="sendToTasks()">
           Tasks
         </button>
       </div>

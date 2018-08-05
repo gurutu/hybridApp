@@ -76,6 +76,12 @@ AppContoller
         });
       };
 
+      function closeAssign() {
+       $mdSidenav('sideAssignTask').close()
+              .then(function () {
+              });
+      }
+
       $scope.init=function(){
       var request = {
           "classCode":$stateParams.paramValue
@@ -106,7 +112,9 @@ AppContoller
               if(results.status=="200") {
                 console.log("=============Successfully Assign Task To Student================");
                 console.log(results.data);
-                console.log("Successfullly Add To student");
+                console.log("Successfullly Assign Task To Student");
+                alert("Successfullly Assign Task To Student.");
+                closeAssign();
               }
             });
       };
