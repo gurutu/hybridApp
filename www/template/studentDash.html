@@ -140,17 +140,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
       <div class="col">
         <input class="form-control" type="date" ng-model="datevalue">
       </div>
-      <div class="col">
+      <!--<div class="col">
         <select ng-model="subject" class="form-control">
           <option ng-repeat="sub in subjectData" ng-value="sub.subjectCode">{{sub.subjectTitle}}</option>
         </select>
-        <!--<select class="form-control" ng-modal="subject">
-          <option selected>Select</option>
-          <option>English</option>
-          <option>Math</option>
-          <option>Science</option>
-        </select>-->
-      </div>
+
+      </div>-->
     </div>
     <div class="row">
       <div class="col">
@@ -159,6 +154,18 @@ body {font-family: Arial, Helvetica, sans-serif;}
         </button>
       </div>
     </div>
+
+
+   <!-- <uib-accordion close-others="oneAtATime">
+      <div uib-accordion-group ng-repeat="task in studentTaskData " class="panel-default" is-open="$index">
+        <uib-accordion-heading>
+          I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': $index, 'glyphicon-chevron-right': !$index}"></i>
+        </uib-accordion-heading>
+        This is just some content to illustrate fancy headings.
+      </div>
+    </uib-accordion>-->
+
+
     <ul class="list" >
       <li class="item backgroundColor " ng-repeat="task in studentTaskData ">
         <div class="row">
@@ -166,13 +173,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
             {{task.taskTitle}}
           </div>
           <div class="col">
-            <button class="button button-block button-calm txtDesignbutton" ng-if="task.status=='Assigned'" ng-click="isOpenRight();getTaskDetail(task.taskCode);saveTaskStatus('In progress',task.id);">
+            <button class="button button-block button-calm txtDesignbutton" ng-if="task.status=='Assigned'||task.status=='assigned'" ng-click="isOpenRight();getTaskDetail(task.taskCode);saveTaskStatus('In progress',task.id);">
               Start
             </button>
-            <button class="button button-block button-energized txtDesignbutton" ng-if="task.status=='In progress'" ng-click="isOpenRight();getTaskDetail(task.taskCode);saveTaskStatus('In progress',task.id);">
+            <button class="button button-block button-energized txtDesignbutton" ng-if="task.status=='In Progress'||task.status=='In progress'" ng-click="isOpenRight();getTaskDetail(task.taskCode);saveTaskStatus('In progress',task.id);">
               Start
             </button>
-            <button class="button button-block txtDesignbutton" ng-if="task.status=='completed'" >
+            <button class="button button-block txtDesignbutton" ng-if="task.status=='completed'||task.status=='Completed'" >
               End
             </button>
           </div>
