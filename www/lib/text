@@ -1,0 +1,2 @@
+/*******************This Is for Tost*********************************/
+cordova plugin add https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git

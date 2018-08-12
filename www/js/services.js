@@ -6,161 +6,152 @@ var AppServices = angular.module('starter');
 
 AppServices.value('version', '0.1');
 
-AppServices.service('login',['$http','$rootScope', function($http,$rootScope){
+AppServices.service('login', ['$http', '$rootScope', function ($http, $rootScope) {
   function loginRequest(request) {
-    return $http.post($rootScope.MAINURL +'user.auth', JSON.stringify(request));
+    return $http.post($rootScope.MAINURL + 'user.auth', JSON.stringify(request));
   }
-  return{
-    loginRequest:loginRequest
+  return {
+    loginRequest: loginRequest
   }
 }]);
 
-AppServices.service('studentService',['$http','$rootScope', function($http,$rootScope){
-    function getStudentById(request){
-      return $http.post($rootScope.MAINURL +'user/selectbyid', JSON.stringify(request));
-    }
-     function getAllStudentTask(request) {
-          return $http.post($rootScope.MAINURL +'performance/student/gettask', JSON.stringify(request));
-     }
-     function getTaskDetailById(request){
-        return $http.post($rootScope.MAINURL +'task/select/taskcode', JSON.stringify(request));
-     }
-     function getTaskDetailByDateAndTime(request){
-           return $http.post($rootScope.MAINURL +'performance/student/gettaskontime', JSON.stringify(request));
-     }
-      function getAllSubject(request){
-                return $http.post($rootScope.MAINURL +'class/subject/select', JSON.stringify(request));
-       }
-      function saveTaskStatus(request){
-             return $http.post($rootScope.MAINURL +'performance/student/updatetask', JSON.stringify(request));
-       }
-     function getUniqueSubjects(request){
-                return $http.post($rootScope.MAINURL +'tasks/student/getuniquesubjects', JSON.stringify(request));
-          }
+AppServices.service('studentService', ['$http', '$rootScope', function ($http, $rootScope) {
+  function getStudentById(request) {
+    return $http.post($rootScope.MAINURL + 'user/selectbyid', JSON.stringify(request));
+  }
+  function getAllStudentTask(request) {
+    return $http.post($rootScope.MAINURL + 'performance/student/gettask', JSON.stringify(request));
+  }
+  function getTaskDetailById(request) {
+    return $http.post($rootScope.MAINURL + 'task/select/taskcode', JSON.stringify(request));
+  }
+  function getTaskDetailByDateAndTime(request) {
+    return $http.post($rootScope.MAINURL + 'performance/student/gettaskontime', JSON.stringify(request));
+  }
+  function getAllSubject(request) {
+    return $http.post($rootScope.MAINURL + 'class/subject/select', JSON.stringify(request));
+  }
+  function saveTaskStatus(request) {
+    return $http.post($rootScope.MAINURL + 'performance/student/updatetask', JSON.stringify(request));
+  }
+  function getUniqueSubjects(request) {
+    return $http.post($rootScope.MAINURL + 'tasks/student/getuniquesubjects', JSON.stringify(request));
+  }
 
-    return{
-      getStudentById:getStudentById,
-      getAllStudentTask:getAllStudentTask,
-      getTaskDetailById:getTaskDetailById,
-      getTaskDetailByDateAndTime:getTaskDetailByDateAndTime,
-      getAllSubject:getAllSubject,
-      saveTaskStatus:saveTaskStatus,
-      getUniqueSubjects:getUniqueSubjects
-    }
+  return {
+    getStudentById: getStudentById,
+    getAllStudentTask: getAllStudentTask,
+    getTaskDetailById: getTaskDetailById,
+    getTaskDetailByDateAndTime: getTaskDetailByDateAndTime,
+    getAllSubject: getAllSubject,
+    saveTaskStatus: saveTaskStatus,
+    getUniqueSubjects: getUniqueSubjects
+  }
 
 }]);
-AppServices.service('adminservice',['$http','$rootScope', function($http,$rootScope){
+AppServices.service('adminservice', ['$http', '$rootScope', function ($http, $rootScope) {
   function searchByRole(request) {
-    return $http.post($rootScope.MAINURL +'user/selectbyrole', JSON.stringify(request));
+    return $http.post($rootScope.MAINURL + 'user/selectbyrole', JSON.stringify(request));
   }
 
   function saveUserInfo(request) {
-    return $http.post($rootScope.MAINURL +'user.reg', JSON.stringify(request));
+    return $http.post($rootScope.MAINURL + 'user.reg', JSON.stringify(request));
   }
 
   function deleteUserInfo(request) {
-    return $http.post($rootScope.MAINURL +'user/delete', JSON.stringify(request));
+    return $http.post($rootScope.MAINURL + 'user/delete', JSON.stringify(request));
   }
 
   function saveTaskInfo(request) {
-    return $http.post($rootScope.MAINURL +'task/create', JSON.stringify(request));
+    return $http.post($rootScope.MAINURL + 'task/create', JSON.stringify(request));
   }
 
   function showAllTasks(request) {
-    return $http.get($rootScope.MAINURL +'task/selectall');
+    return $http.get($rootScope.MAINURL + 'task/selectall');
   }
 
   function deleteTaskInfo(request) {
-    return $http.post($rootScope.MAINURL +'task/delete', JSON.stringify(request));
+    return $http.post($rootScope.MAINURL + 'task/delete', JSON.stringify(request));
   }
 
-   function uploadFileToS3(request) {
-      /* $httpProvider.defaults.headers.post['Content-Type'] = 'multipart/form-data; charset=utf-8';*/
-      return $http.post($rootScope.MAINURL +'upload/file', JSON.stringify(request));
-    }
-    function getSubjectAndClass(request) {
-        return $http.get($rootScope.MAINURL +'class/subject/select/all');
-      }
+  function uploadFileToS3(request) {
+    /* $httpProvider.defaults.headers.post['Content-Type'] = 'multipart/form-data; charset=utf-8';*/
+    return $http.post($rootScope.MAINURL + 'upload/file', JSON.stringify(request));
+  }
+  function getSubjectAndClass(request) {
+    return $http.get($rootScope.MAINURL + 'class/subject/select/all');
+  }
 
-  return{
-    searchByRole:searchByRole,
-    saveUserInfo:saveUserInfo,
-    deleteUserInfo:deleteUserInfo,
-    saveTaskInfo:saveTaskInfo,
-    showAllTasks:showAllTasks,
-    deleteTaskInfo:deleteTaskInfo,
-    uploadFileToS3:uploadFileToS3,
-    getSubjectAndClass:getSubjectAndClass
+  return {
+    searchByRole: searchByRole,
+    saveUserInfo: saveUserInfo,
+    deleteUserInfo: deleteUserInfo,
+    saveTaskInfo: saveTaskInfo,
+    showAllTasks: showAllTasks,
+    deleteTaskInfo: deleteTaskInfo,
+    uploadFileToS3: uploadFileToS3,
+    getSubjectAndClass: getSubjectAndClass
   }
 }]);
 
 
-AppServices.service('student',['$http','$rootScope', function($http,$rootScope){
+AppServices.service('student', ['$http', '$rootScope', function ($http, $rootScope) {
   function studentList(request) {
-    return $http.post($rootScope.MAINURL +'user/selectbyrole', JSON.stringify(request));
+    return $http.post($rootScope.MAINURL + 'user/selectbyrole', JSON.stringify(request));
   }
-  return{
-    studentList:studentList
-  }
-}]);
-
-
-
-AppServices.service('allClass',['$http','$rootScope', function($http,$rootScope){
-   function allClassList(request) {
-     return $http.post($rootScope.MAINURL +'class/select', JSON.stringify(request));
-   }
-  return{
-    allClassList:allClassList,
-
-  }
-}]);
-AppServices.service('studentTask',['$http','$rootScope', function($http,$rootScope){
-   function studentALLTaskList(request) {
-     return $http.post($rootScope.MAINURL +'task/select/class', JSON.stringify(request));
-   }
-   function studentListTaskBasedOnId(request) {
-     return $http.post($rootScope.MAINURL +'performance/student/gettask', JSON.stringify(request));
-   }
-  return{
-   studentALLTaskList:studentALLTaskList,
-   studentListTaskBasedOnId:studentListTaskBasedOnId
-  }
-}]);
-AppServices.service('stduentList',['$http','$rootScope', function($http,$rootScope){
-   function studentListBasedOnClass(request) {
-     return $http.post($rootScope.MAINURL +'class/students/select', JSON.stringify(request));
-   }
-  return{
-   studentListBasedOnClass:studentListBasedOnClass
-  }
-}]);
-AppServices.service('assignTaskToStudent',['$http','$rootScope', function($http,$rootScope){
-   function assignTaskStudent(request) {
-     return $http.post($rootScope.MAINURL +'task/assign', JSON.stringify(request));
-   }
-  return{
-   assignTaskStudent:assignTaskStudent
-  }
-}]);
-
-AppServices.service('performnanceList',['$http','$rootScope', function($http,$rootScope){
-   function performnanceListStudent(request) {
-     return $http.post($rootScope.MAINURL +'performance/student/getstatus', JSON.stringify(request));
-   }
-  return{
-   performnanceListStudent:performnanceListStudent
+  return {
+    studentList: studentList
   }
 }]);
 
 
 
+AppServices.service('allClass', ['$http', '$rootScope', function ($http, $rootScope) {
+  function allClassList(request) {
+    return $http.post($rootScope.MAINURL + 'class/select', JSON.stringify(request));
+  }
+  return {
+    allClassList: allClassList,
 
+  }
+}]);
+AppServices.service('studentTask', ['$http', '$rootScope', function ($http, $rootScope) {
+  function studentALLTaskList(request) {
+    return $http.post($rootScope.MAINURL + 'task/select/class', JSON.stringify(request));
+  }
+  function studentListTaskBasedOnId(request) {
+    return $http.post($rootScope.MAINURL + 'performance/student/gettask', JSON.stringify(request));
+  }
+  return {
+    studentALLTaskList: studentALLTaskList,
+    studentListTaskBasedOnId: studentListTaskBasedOnId
+  }
+}]);
+AppServices.service('stduentList', ['$http', '$rootScope', function ($http, $rootScope) {
+  function studentListBasedOnClass(request) {
+    return $http.post($rootScope.MAINURL + 'class/students/select', JSON.stringify(request));
+  }
+  return {
+    studentListBasedOnClass: studentListBasedOnClass
+  }
+}]);
+AppServices.service('assignTaskToStudent', ['$http', '$rootScope', function ($http, $rootScope) {
+  function assignTaskStudent(request) {
+    return $http.post($rootScope.MAINURL + 'task/assign', JSON.stringify(request));
+  }
+  return {
+    assignTaskStudent: assignTaskStudent
+  }
+}]);
 
-
-
-
-
+AppServices.service('performnanceList', ['$http', '$rootScope', function ($http, $rootScope) {
+  function performnanceListStudent(request) {
+    return $http.post($rootScope.MAINURL + 'performance/student/getstatus', JSON.stringify(request));
+  }
+  return {
+    performnanceListStudent: performnanceListStudent
+  }
+}]);
 
 // Saving and Fetching Data From / To Local Storage
 AppServices.service('store', ['$window', function ($window) {
@@ -168,15 +159,15 @@ AppServices.service('store', ['$window', function ($window) {
   return {
 
     check: function (key) {
-      if ($window.localStorage [key]) {
+      if ($window.localStorage[key]) {
         return true;
       }
       return false;
     },
 
     get: function (key) {
-      if ($window.localStorage [key]) {
-        var element = angular.fromJson($window.localStorage [key]);
+      if ($window.localStorage[key]) {
+        var element = angular.fromJson($window.localStorage[key]);
         return JSON.parse(element);
       }
       return false;
@@ -187,21 +178,21 @@ AppServices.service('store', ['$window', function ($window) {
       if (val === undefined) {
         $window.localStorage.removeItem(key);
       } else {
-        $window.localStorage [key] = angular.toJson(JSON.stringify(val));
+        $window.localStorage[key] = angular.toJson(JSON.stringify(val));
       }
-      return $window.localStorage [key];
+      return $window.localStorage[key];
     }
   }
 }]);
 
-AppServices.service('logoutUser',['$state','store', function($state,store){
-function userLogout() {
-         store.set("userdata");
-          $state.go('login');
-     return true;
-   }
-  return{
-   userLogout:userLogout
+AppServices.service('logoutUser', ['$state', 'store', function ($state, store) {
+  function userLogout() {
+    store.set("userdata");
+    $state.go('login');
+    return true;
+  }
+  return {
+    userLogout: userLogout
   }
 }]);
 
@@ -254,21 +245,21 @@ AppServices.service('utils', ['$filter', '$dateParser', '$http', function ($filt
 
   function getWeekDay(day) {
     switch (day) {
-      case 1 :
+      case 1:
         return "Mon";
-      case 2 :
+      case 2:
         return "Tue";
-      case 3 :
+      case 3:
         return "Wed";
-      case 4 :
+      case 4:
         return "Thu";
-      case 5 :
+      case 5:
         return "Fri";
-      case 6 :
+      case 6:
         return "Sat";
-      case 7 :
+      case 7:
         return "Sun";
-      case 8 :
+      case 8:
         return "All Days";
     }
   }
@@ -308,7 +299,7 @@ AppServices.service('utils', ['$filter', '$dateParser', '$http', function ($filt
       case "Friday":
         day = "5";
         break;
-      case  "Saturday":
+      case "Saturday":
         day = "6";
     }
     return day;
@@ -462,7 +453,7 @@ AppServices.service('utils', ['$filter', '$dateParser', '$http', function ($filt
   function checkDateInBetween(startDate, endDate, selectedDate) {
     if (!isNullAndEmpty(startDate)) {
       var startDateFormatted;
-      if (typeof(startDate) === "number")
+      if (typeof (startDate) === "number")
         startDateFormatted = new Date(startDate);
       else
         startDateFormatted = $dateParser(startDate, 'yyyy-MM-dd');
@@ -470,7 +461,7 @@ AppServices.service('utils', ['$filter', '$dateParser', '$http', function ($filt
       if (!isNullAndEmpty(endDate)) {
 
         var endDateFormatted;
-        if (typeof(endDate) === "number")
+        if (typeof (endDate) === "number")
           endDateFormatted = new Date(endDate);
         else
           endDateFormatted = $dateParser(endDate, 'yyyy-MM-dd');
@@ -588,80 +579,80 @@ AppServices.service('utils', ['$filter', '$dateParser', '$http', function ($filt
   function getProperty() {
     return $http.get('lib/mainProperties.properties');
   }
-  function getDateBackOneMonth(valueParameter){
-    var convertInDate=new Date(valueParameter);
-    if(convertInDate.getMonth()==0){
+  function getDateBackOneMonth(valueParameter) {
+    var convertInDate = new Date(valueParameter);
+    if (convertInDate.getMonth() == 0) {
       convertInDate.setMonth(11);
-      convertInDate.setFullYear(convertInDate.getFullYear()-1);
-    }else{
-      convertInDate.setMonth(convertInDate.getMonth()-1);
+      convertInDate.setFullYear(convertInDate.getFullYear() - 1);
+    } else {
+      convertInDate.setMonth(convertInDate.getMonth() - 1);
     }
     return convertInDate;
   }
   function LastDayOfMonth(Year, Month) {
-    return new Date( (new Date(Year, Month+1,1))-1 );
+    return new Date((new Date(Year, Month + 1, 1)) - 1);
   }
-   function getMainProperties(){
-   return $http.get('lib/mainProperties.properties');
-   }
+  function getMainProperties() {
+    return $http.get('lib/mainProperties.properties');
+  }
 
-   function getClassSubject(data){
-         var subTem=[];
-         var calTem=[];
-         var sub=[];
-         var cal=[];
-         var add=[]
-        for(var i=0;i<data.length;i++){
-           if(!calTem.includes(data[i].classCode)) {
-           var res={
-                     "classCode": data[i].classCode,
-                      "classTitle": data[i].classTitle
-                  }
-              cal.push(res) ;
-              calTem.push(data[i].classCode);
-           }
-           if(!subTem.includes(data[i].subjectCode)) {
-                  var res={
-                            "subjectCode": data[i].subjectCode,
-                             "subjectTitle": data[i].subjectTitle
-                         }
-                     sub.push(res) ;
-                     subTem.push(data[i].subjectCode);
-            }
+  function getClassSubject(data) {
+    var subTem = [];
+    var calTem = [];
+    var sub = [];
+    var cal = [];
+    var add = []
+    for (var i = 0; i < data.length; i++) {
+      if (!calTem.includes(data[i].classCode)) {
+        var res = {
+          "classCode": data[i].classCode,
+          "classTitle": data[i].classTitle
+        }
+        cal.push(res);
+        calTem.push(data[i].classCode);
+      }
+      if (!subTem.includes(data[i].subjectCode)) {
+        var res = {
+          "subjectCode": data[i].subjectCode,
+          "subjectTitle": data[i].subjectTitle
+        }
+        sub.push(res);
+        subTem.push(data[i].subjectCode);
+      }
 
-        }
-        add.push(sub);
-        add.push(cal);
-    return add;
-   }
-
-   function findfileExtention(url){
-     var video=['.mpg','.mpeg', '.avi', '.wmv', '.mov', '.rm','.ram','.swf','.flv','.ogg','.webm','.mp4'];
-     var audio=['.mid','.midi', '.wma', '.aac', '.wav', '.ogg','.mp3'];
-     var img=['.jpg','.jpeg', '.jpe', '.jfif', '.bmp', '.dip','.gif','.tif','.tiff','.png','.svg'];
-     var pdf=['.ppt','.pptx','.pptm','.pdf','.txt','.doc'];
-     var flag=true;
-     var value="";
-    for(var i=0;i<video.length;i++){
-        if(url.includes(video[i])){
-           value="video";
-           break;
-        }
-        if(audio[i]!=undefined&&url.includes(audio[i])){
-        value="audio";
-        break;
-        }
-        if(img[i]!=undefined&&url.includes(img[i])){
-         value="image";
-          break;
-        }
-         if(pdf[i]!=undefined&&url.includes(pdf[i])){
-         value="pdf";
-          break;
-         }
     }
-  return value;
-   }
+    add.push(sub);
+    add.push(cal);
+    return add;
+  }
+
+  function findfileExtention(url) {
+    var video = ['.mpg', '.mpeg', '.avi', '.wmv', '.mov', '.rm', '.ram', '.swf', '.flv', '.ogg', '.webm', '.mp4'];
+    var audio = ['.mid', '.midi', '.wma', '.aac', '.wav', '.ogg', '.mp3'];
+    var img = ['.jpg', '.jpeg', '.jpe', '.jfif', '.bmp', '.dip', '.gif', '.tif', '.tiff', '.png', '.svg'];
+    var pdf = ['.ppt', '.pptx', '.pptm', '.pdf', '.txt', '.doc'];
+    var flag = true;
+    var value = "";
+    for (var i = 0; i < video.length; i++) {
+      if (url.includes(video[i])) {
+        value = "video";
+        break;
+      }
+      if (audio[i] != undefined && url.includes(audio[i])) {
+        value = "audio";
+        break;
+      }
+      if (img[i] != undefined && url.includes(img[i])) {
+        value = "image";
+        break;
+      }
+      if (pdf[i] != undefined && url.includes(pdf[i])) {
+        value = "pdf";
+        break;
+      }
+    }
+    return value;
+  }
 
 
 
@@ -692,12 +683,79 @@ AppServices.service('utils', ['$filter', '$dateParser', '$http', function ($filt
     getIndex: getIndex,
     getProperty: getProperty,
     getFormatedBookingStatus: getFormatedBookingStatus,
-    getDateBackOneMonth:getDateBackOneMonth,
-    LastDayOfMonth:LastDayOfMonth,
-    getMainProperties:getMainProperties,
-    getClassSubject:getClassSubject,
-    findfileExtention:findfileExtention
+    getDateBackOneMonth: getDateBackOneMonth,
+    LastDayOfMonth: LastDayOfMonth,
+    getMainProperties: getMainProperties,
+    getClassSubject: getClassSubject,
+    findfileExtention: findfileExtention
   }
 }]);
+
+
+AppServices.service('NativeTost', ['$http', '$rootScope','$cordovaToast', function ($http, $rootScope,$cordovaToast) {
+  function showTost(message,duration,position) {
+    /* 
+    duration: 'short', 'long'
+    position: 'top', 'center', 'bottom'
+    */
+    try {
+      $cordovaToast
+      .show(message,duration, position)
+      .then(function(success) {
+        // success
+      }, function (error) {
+        // error
+      });
+    } catch (error) {
+    }
+    return true;
+  }
+  return {
+    showTost: showTost
+  }
+}]);
+
+
+
+AppServices.directive('countDown', ['Util2', '$interval', function (Util2, $interval) {
+  return {
+    restrict: 'E',
+    transclude: 'true',
+    template: '<span ></span>',
+    scope :{dateVal:'@' },
+    link: function (scope, element, attr) {
+      scope.$watch("dateVal",function(newValue,oldValue) {
+        console.log("Hi Pranav");
+         });
+      var future = new Date(attr.dateval);
+      var val = "";
+      var stop= $interval(function () {
+        var diff = Math.floor(future.getTime() - new Date().getTime()) / 1000;
+        val = Util2.dhms(diff);
+        attr.dateVal = val;
+        document.getElementById("counDown").textContent = attr.dateVal;
+        element.text = "<strong>" + attr.dateVal + "</strong>";
+      }, 1000);
+
+    }
+  };
+}]);
+
+AppServices.factory('Util2', [function () {
+  return {
+    dhms: function (t) {
+      days = Math.floor(t / 86400);
+      t -= days * 86400;
+      hours = Math.floor(t / 3600) % 24;
+      t -= hours * 3600;
+      minutes = Math.floor(t / 60) % 60;
+      t -= minutes * 60;
+      seconds = Math.floor(t % 60);
+      return [days + 'd', hours + 'h', minutes + 'm', seconds + 's'].join(' ');
+    }
+  }
+
+}
+]);
 
 

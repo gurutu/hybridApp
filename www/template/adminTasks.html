@@ -96,7 +96,7 @@
 
   <div class="row colorText" >
     <div class="col" style="text-align: center;">
-      <input type="file" id="file" name="file"  multiple="" />
+      <input type="file" id="file" name="file"   />
     </div>
     <div  style="padding-top: 10px;">
       <input type="submit" name="Upload File" value="Update File" style="color: #000;">
@@ -104,6 +104,35 @@
     </div>
   </div>
 </form>
+
+
+<div class="row">
+    <div class="col-80" style="color: white;text-align: center">
+        Do you want upload Voice File
+    </div>
+    <div class="col">
+        <label class = "toggle">
+            <input type = "checkbox" ng-model="showVoicetag"/>
+            <div class = "track">
+               <div class = "handle"></div>
+            </div>
+         </label>
+    </div>
+</div>
+
+<form ng-submit="uploadVoiceFile()" ng-if="showVoicetag==true">
+ 
+  <div class="row colorText" >
+    <div class="col" style="text-align: center;">
+     <input type="file" id="filevoice" name="file"  />
+    </div>
+    <div  style="padding-top: 10px;">
+      <input type="submit" name="Upload File" value="Update Voice File" style="color: #000;">
+     <!--<button ng-click="uploadFile()" >Upload File</button>-->
+    </div>
+  </div>
+</form>
+
   <br>
   <div class="row">
     <div class="col" style="text-align: center;">

@@ -10,7 +10,8 @@ angular.module('app.routes', ['ngMaterial',
   'StudentInformationController',
   'AssignTaskController',
   'PerformanceDashController',
-  'NotificationDashController'
+  'NotificationDashController',
+  'SubStudentDashController'
 ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -44,6 +45,12 @@ angular.module('app.routes', ['ngMaterial',
         templateUrl: 'template/studentDash.html',
         controller: 'StudentDashController'
 
+      });
+      $stateProvider
+      .state('substudentdash', {
+        url: '/substudentdash',
+        templateUrl: 'template/subStudentTask.html',
+        controller: 'SubStudentDashController'
       });
     $stateProvider
       .state('teacherDash', {
