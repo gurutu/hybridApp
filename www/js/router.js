@@ -11,7 +11,8 @@ angular.module('app.routes', ['ngMaterial',
   'AssignTaskController',
   'PerformanceDashController',
   'NotificationDashController',
-  'SubStudentDashController'
+  'SubStudentDashController',
+  'adminAddToClassSubjectController'
 ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
@@ -38,6 +39,12 @@ angular.module('app.routes', ['ngMaterial',
         url: '/adminTask',
         templateUrl: 'template/adminTasks.html',
         controller: 'adminTaskController'
+      });
+      $stateProvider
+      .state('addToClassSubject', {
+        url: '/addToClassSubject',
+        templateUrl: 'template/adminAddToClassSubjectController.html',
+        controller: 'adminAddToClassSubjectController'
       });
     $stateProvider
       .state('studentDash', {

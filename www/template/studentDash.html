@@ -12,7 +12,12 @@
   body {
     font-family: Arial, Helvetica, sans-serif;
   }
-
+  .titleCut{
+    white-space: nowrap;
+    width: 10px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    }
   #myImg {
     border-radius: 5px;
     cursor: pointer;
@@ -164,8 +169,9 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col">
+    <div class="row" style=" border-top: 2px inset #fff;">
+      <div class="col" style="text-align: center;">
+        <label class="colorText" style="font-size: 17px;">Select Date</label>
         <input class="form-control" type="date" ng-model="datevalue">
       </div>
       <!--<div class="col">
@@ -176,7 +182,7 @@
       </div>-->
 
     </div>
-    
+
     <p style="color:red;text-align: center;">{{datealert}}</p>
     <div class="row">
       <div class="col">
@@ -205,7 +211,7 @@
   </ion-header-bar>
   <br>
   <br>
-  
+
  <ion-scroll>
   <ul class="list">
     <li class="item backgroundColor " ng-repeat="task in studentSingleTaskData ">
@@ -236,14 +242,14 @@
 
 
 <md-sidenav md-component-id="rightMain" class="md-sidenav-right backgroundColor" style="min-width: 100%;">
- 
+
   <div class="bar bar-header">
-    
-      <button ng-click="cancel()" class="button glyphicon glyphicon-menu-left"></button>
+
+      <button ng-click="cancel()" class="button glyphicon glyphicon-menu-left backgroundColorButton"></button>
       <div class="h1 title">{{singleTaskData.subjectCode}} Problem</div>
-      <button class="button button-clear button-positive"> 
+      <!--<button class="button button-clear button-positive">
       {{coundownValue}}
-      </button>
+      </button>-->
 
 </div>
   <br>
@@ -253,27 +259,26 @@
 <!-- <p ng-click="stopTimer()">Stop Timer</p> -->
   <div class="row colorText">
     <div class="col">
-      <p class="wordStyle">Title</p>
-      {{singleTaskData.id}}
-      {{singleTaskData.taskTitle}}
+      <p class="wordStyle">Title: <span style="float: right;">Time Remaining:</span></p>
+      <span class="titleCut">{{singleTaskData.taskTitle}}</span><span style="float: right;">{{coundownValue}}</span>
     </div>
   </div>
   <div class="row colorText">
     <div class="col">
-      <p class="wordStyle">Discription</p>
+      <p class="wordStyle">Discription:</p>
       {{singleTaskData.taskDescription}}
     </div>
   </div>
   <div class="row colorText">
     <div class="col">
       <p class="wordStyle">
-        Start Date
+        Start Date:
       </p>
       {{singleTaskData.startDate | date:"MM/dd/yyyy 'at' h:mma"}}
     </div>
     <div class="col colorText">
       <p class="wordStyle">
-        End Date
+        End Date:
       </p>
       {{singleTaskData.endDate | date:"MM/dd/yyyy 'at' h:mma"}}
     </div>
@@ -313,7 +318,7 @@
 
     </div>
   </div>
- 
+
   <div class="row colorText" ng-show="singleTaskData.voiceNoteUrl!=null">
      <div class="col" style="text-align: center">
         <div >
@@ -322,7 +327,7 @@
           </div>
      </div>
   </div>
-  
+
   <div class="row colorText">
     <div class="col">
       <button class="button button-calm button-block txtDesignbutton" ng-click="cancel();saveTaskStatus('completed',singleTaskData.id,taskStartTime,currentDateTime);">

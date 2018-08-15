@@ -152,6 +152,14 @@ AppServices.service('performnanceList', ['$http', '$rootScope', function ($http,
     performnanceListStudent: performnanceListStudent
   }
 }]);
+AppServices.service('addClassAndSubject', ['$http', '$rootScope', function ($http, $rootScope) {
+    function adminAddClassAndSubject(request) {
+      return $http.post($rootScope.MAINURL + 'classAndSubject/create', JSON.stringify(request));
+    }
+  return {
+    adminAddClassAndSubject: adminAddClassAndSubject
+  }
+}]);
 
 // Saving and Fetching Data From / To Local Storage
 AppServices.service('store', ['$window', function ($window) {
@@ -694,7 +702,7 @@ AppServices.service('utils', ['$filter', '$dateParser', '$http', function ($filt
 
 AppServices.service('NativeTost', ['$http', '$rootScope','$cordovaToast', function ($http, $rootScope,$cordovaToast) {
   function showTost(message,duration,position) {
-    /* 
+    /*
     duration: 'short', 'long'
     position: 'top', 'center', 'bottom'
     */

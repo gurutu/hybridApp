@@ -17,6 +17,9 @@ AppContoller
     $scope.sendToTasks=function(){
       $state.go('adminTask');
     }
+    $scope.addToClassSubject=function(){
+      $state.go('addToClassSubject');
+    }
 
 
   }]);
