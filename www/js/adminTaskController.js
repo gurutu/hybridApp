@@ -12,8 +12,13 @@ AppContoller
       $scope.imagePathS3 = "";
       $scope.subjectData = "";
       $scope.classData = "";
-      $scope.voiceFileS3="";
+      $scope.voiceFileS3="";  
       $scope.showVoicetag=false;
+
+     
+      $scope.dateStyle={
+        "width":$scope.widthvalue-"24px"+"px",
+      }
 
       $scope.goToBack = function () {
         $state.go('admin');
@@ -21,7 +26,8 @@ AppContoller
       $scope.isOpenRightAddTask = function () {
         $mdSidenav('rightadminTask').toggle()
           .then(function () {
-
+            $scope.widthvalue=document.getElementById("getwidth").offsetWidth;
+            
           });
       };
 
@@ -135,6 +141,7 @@ AppContoller
 
 
       $scope.init = function () {
+       
         adminservice.showAllTasks().then(function (result) {
           $scope.tasksData = result.data;
 

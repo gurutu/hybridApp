@@ -23,11 +23,11 @@
 </style>
 <div class="bar bar-header bar-positive backgroundColorheader">
   <button class="button button-icon icon ion-arrow-left-c backgroundColorButton " ng-click="goToBack()"></button>
-  <div class="h1 title colorTextHed">Admin Member</div>
+  <div class="h1 title colorTextHed">View Members</div>
   <!--<button class="button button-clear button-positive">Remove</button>-->
 </div>
-<md-tabs layout="column" active="activeTab"   md-selected="selectedIndex"
-         md-stretch-tabs="always" style="margin-top:45px;min-height:600px;max-height:600px;" class="backgroundColor">
+<md-tabs id="adminId" layout="column" active="activeTab"   md-selected="selectedIndex"
+         md-stretch-tabs="always" ng-style="admin" class="backgroundColor">
   <md-tab layout="column"   label="Admin" index="1" id="1" md-on-select="changeFooterContant('Add Admin');">
     <md-content class="md-padding backgroundColor " style="padding: 4px;  "  >
      <!--Admin List will come -->
@@ -112,8 +112,8 @@
     </div>-->
   </md-tab>
 </md-tabs>
-<div class="bar bar-footer bar-light backgroundColorButton"  ng-click="openAllPanal()">
-  <div class="title">{{footerName}}</div>
+<div class="bar bar-footer bar-light backgroundColorButton txtDesignbutton"  ng-click="openAllPanal()">
+  <div class="title" style="color:white">{{footerName}}</div>
 </div>
 <!--   Admin Side Nave bar-->
 <md-sidenav md-component-id="rightAdmin" class="md-sidenav-right backgroundColor" style="min-width: 100%;">

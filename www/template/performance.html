@@ -11,7 +11,8 @@
   </button>
   <h1 class="title colorTextHed" style="text-align: center;">Performance Student</h1>
 </ion-header-bar>
-<div class="card " style=" margin: 44px 0px;">
+<ion-content>
+<div class="card " style=" margin: 2px 0px;">
   <div class="item item-text-wrap headingCart backgroundHeadingColor">
     <div class="row" style="text-align: center;">
       <div class="col colorTextHed" ><span >Task Title : </span></div>
@@ -21,7 +22,7 @@
     </div>
   </div>
 
-  <div class="item item-text-wrap backgroundColor"  style="font-size: 12px;background-color: #fff;" ng-click="sideNavAssignTask(p.taskCode)">
+  <!-- <div class="item item-text-wrap backgroundColor"  style="font-size: 12px;background-color: #fff;" ng-click="sideNavAssignTask(p.taskCode)">
     <div class="row">
       <div class="col colorText" style="text-align:center;">
         {{p.taskTitle}}
@@ -33,7 +34,7 @@
         {{p.endDate | date:'medium'}}
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="item item-text-wrap backgroundColor" ng-repeat="p in performanceTaskList" style="font-size: 12px;background-color: #fff;" ng-click="sideNavAssignTask(p.taskCode)">
     <div class="row">
@@ -50,6 +51,7 @@
   </div>
 
 </div>
+</ion-content>
 <md-sidenav md-component-id="sideAssignTask" class="md-sidenav-right" style="min-width: 100%;">
   <ion-header-bar class="bar bar-positive backgroundColorheader">
     <button ng-click="cancelNavAssignTask()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">

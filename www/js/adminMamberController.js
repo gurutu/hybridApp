@@ -13,6 +13,14 @@ AppContoller
     $scope.request = {
       "role":"admin"
     };
+     $scope.admin={
+      "margin-top":"65px",
+      "min-height":screen.height+"px",
+      "max-height" :screen.height+"px"
+     }
+    //document.getElementById("adminId").style.height=screen.height+"px";
+
+    $scope.height=screen.height;
       $scope.empty=function(){
         $scope.name="";
         $scope.emailId="";
