@@ -56,6 +56,7 @@ performnanceList.performnanceListStudent(request).then(function(results)
          };
 
        $scope.selectValue=function(val){
+        $scope.selectFilter=this.selectFilter;
           if(val==undefined||$scope.selectFilter==""||$scope.selectFilter=='select'){
           return true;
           }
