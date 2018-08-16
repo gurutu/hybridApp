@@ -16,9 +16,7 @@ AppContoller
       $scope.showVoicetag=false;
 
      
-      $scope.dateStyle={
-        "width":$scope.widthvalue-"24px"+"px",
-      }
+      
 
       $scope.goToBack = function () {
         $state.go('admin');
@@ -27,7 +25,10 @@ AppContoller
         $mdSidenav('rightadminTask').toggle()
           .then(function () {
             $scope.widthvalue=document.getElementById("getwidth").offsetWidth;
-            
+            $scope.dateStyle={
+              "width":$scope.widthvalue-"24"+"px",
+            }
+
           });
       };
 

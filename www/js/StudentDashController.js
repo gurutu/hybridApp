@@ -27,10 +27,10 @@ AppContoller
       var voice;
       var myVideo;
       $scope.dateStyle={
-        "width":screen.width-"24px"+"px",
+        "width":screen.width-"24"+"px",
       }
-      
-      
+     
+      //document.getElementById("datestudent").style.width=screen.width-"24"+"px";
 
       $scope.logoutUser = function () {
         logoutUser.userLogout();
