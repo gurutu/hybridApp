@@ -12,7 +12,7 @@ var app=angular.module('starter', ['ionic','app.routes',
 
 ])
 
-app.run(function($ionicPlatform,$rootScope,utils,$cordovaPushV5) {
+app.run(function($ionicPlatform,$rootScope,utils,$cordovaPushV5,$http,pushNOtification) {
   //............................../*Main Properties*/
  utils.getMainProperties().then(function (resp) {
    $rootScope.version = resp.data.VERSION_NAME;
@@ -28,58 +28,21 @@ app.run(function($ionicPlatform,$rootScope,utils,$cordovaPushV5) {
   $ionicPlatform.ready(function() {
     
 
-    var options = {
-      android: {
-        senderID: "831699383142"
-      },
-      ios: {
-        alert: "true",
-        badge: "true",
-        sound: "true"
-      },
-      windows: {}
-    };
-    
-    // initialize
-    $cordovaPushV5.initialize(options).then(function() {
-      // start listening for new notifications
-      $cordovaPushV5.onNotification();
-      // start listening for errors
-      $cordovaPushV5.onError();
-      
-      // register to get registrationId
-      $cordovaPushV5.register().then(function(registrationId) {
-        console.log("My devise Id :---   " + window.device.uuid);
-        console.log("registrationId_GcmId  =  " + registrationId);
-        $rootScope.GcmId = registrationId;
-        var currentPlatform = ionic.Platform.platform();
-        $rootScope.DeviseName;
-        console.log("My DEVIse iS----" + currentPlatform);
-        if (currentPlatform === 'ios') {
-            $rootScope.DeviseName = "User_ios";
-        } else if (currentPlatform === 'android') {
-            $rootScope.DeviseName = "User_android";
-        }
+    var notificationOpenedCallback = function (jsonData) { console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData)); };
+    window.plugins.OneSignal
+      .startInit("be2368d2-5845-40a7-b8c4-d626465ce258")
+      .handleNotificationOpened(notificationOpenedCallback)
+      .endInit();
 
-        $rootScope.deviceId = window.device.uuid;
-       // $rootScope.saveFcmId();
-      })
+    window.plugins.OneSignal.getIds(function (ids) {
+      //alert(ids.userId);
+      pushNOtification.saveTokenForPushNotification(ids.userId);
+      /* alert(JSON.stringify(ids));
+         alert(JSON.parse(ids)); */
+      /*  $resolve(); $parameters.yourOutputParameter = ids.userId; */
     });
     
-    // triggered every time notification received
-    $rootScope.$on('$cordovaPushV5:notificationReceived', function(event, data){
-      // data.message,
-      // data.title,
-      // data.count,
-      // data.sound,
-      // data.image,
-      // data.additionalData
-    });
-  
-    // triggered every time error occurs
-    $rootScope.$on('$cordovaPushV5:errorOcurred', function(event, e){
-      // e.message
-    });
+    
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)

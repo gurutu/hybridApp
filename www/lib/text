@@ -1,2 +1,5 @@
 /*******************This Is for Tost*********************************/
 cordova plugin add https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git
+/***********************For Pushpush Notificatio*****************/
+ionic cordova plugin add onesignal-cordova-plugin@2.1.0
+//please remove in congig.xml  ^2.1.0

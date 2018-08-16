@@ -104,6 +104,19 @@ AppServices.service('student', ['$http', '$rootScope', function ($http, $rootSco
   }
 }]);
 
+AppServices.service('pushNOtification', ['$http', '$rootScope','store', function ($http, $rootScope,store) {
+  function saveTokenForPushNotification(token) {
+    var request={
+      "id":store.get('userdata').id,
+      "onesignalDeviceId":token
+    }
+    return $http.post($rootScope.MAINURL + 'user.update/saveonesignalid', JSON.stringify(request));
+  }
+  return {
+    saveTokenForPushNotification: saveTokenForPushNotification
+  }
+}]);
+
 
 
 AppServices.service('allClass', ['$http', '$rootScope', function ($http, $rootScope) {

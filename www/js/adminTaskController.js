@@ -26,7 +26,7 @@ AppContoller
           .then(function () {
             $scope.widthvalue=document.getElementById("getwidth").offsetWidth;
             $scope.dateStyle={
-              "width":$scope.widthvalue-"24"+"px",
+              "width":$scope.widthvalue-"11"+"px",
             }
 
           });
