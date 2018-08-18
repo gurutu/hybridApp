@@ -14,19 +14,23 @@
     padding: 0px 0 0px 0px;
     border-radius: 24px;
   }
+  .row {
+     margin-right:0px;
+     margin-left: 0px;
+  }
 </style>
 
-<ion-view id="login" hide-nav-bar="true">
-  <ion-content padding="true" scroll="false" class="backgroundColor" style="margin-top: 20px">
+<ion-view id="login" hide-nav-bar="true" class="backgroundColor">
+  <ion-content padding="true" scroll="false"  style="margin-top: 20px">
     <br>
     <center >
       <h2 style="color: tomato">Welcome To Students</h2>
     </center>
       <br>
-      <div layout="row"       layout-align="center center" >
-      <form ng-controller="LoginController" >
-        <div class="row ">
-          <div class="col " style="margin-left: 15px;width:60%">
+      <div >
+      <form ng-controller="LoginController" layout="row"       layout-align="center center"  >
+        <div class="row " style="width:60%">
+          <div class="col " >
 
             <div class="header padding text-center">
               <!-- <img src="../img/ionic.png">-->
