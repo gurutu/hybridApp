@@ -39,6 +39,7 @@ AppContoller
       $scope.stopVideoVoice=function(){
         try {
           myVideo.pause();
+          voice.pause();
         voice.pause();
         } catch (error) {
         }
