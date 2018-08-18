@@ -29,7 +29,7 @@
 <md-tabs id="adminId" layout="column" active="activeTab"   md-selected="selectedIndex"
          md-stretch-tabs="always" ng-style="admin" class="backgroundColor">
   <md-tab layout="column"   label="Admin" index="1" id="1" md-on-select="changeFooterContant('Add Admin');">
-    <md-content class="md-padding backgroundColor main-content" style="padding: 4px;margin-bottom: 100px;"  >
+    <md-content class="md-padding backgroundColor main-content" style="padding: 4px;  "  >
      <!--Admin List will come -->
     
         <div class="card"  ng-repeat="x in adminData">
@@ -51,13 +51,15 @@
         </div>
       
       <br> <br> <br> <br> <br> <br> <br>
+      <br> <br> <br> <br> <br> <br> <br>
+      <br> <br> <br> <br> <br> <br> <br>
 
     </md-content>
 
   </md-tab>
 
   <md-tab ng-hide="activeTab == 2" label="Teacher" index="2" id="2" md-on-select="changeFooterContant('Add Teacher')" class="backgroundColor">
-    <md-content class="md-padding backgroundColor main-content" style="padding: 4px;margin-bottom: 100px;" >
+    <md-content class="md-padding backgroundColor main-content" style="padding: 4px;" >
       <!--Teacher List Will come -->
       <div class="card"  ng-repeat="x in teacherData">
         <div class="item item-text-wrap">
@@ -77,7 +79,8 @@
         </div>
       </div>
      <br> <br> <br> <br> <br> <br> <br>
-
+     <br> <br> <br> <br> <br> <br> <br>
+     <br> <br> <br> <br> <br> <br> <br>
 
     </md-content>
     <!--<div class="bar bar-footer bar-light" style="margin-bottom: 89px;" ng-click="isOpenRightTeacher()">
@@ -107,7 +110,8 @@
       </div>
 
       <br> <br> <br> <br> <br> <br> <br>
-
+      <br> <br> <br> <br> <br> <br> <br>
+      <br> <br> <br> <br> <br> <br> <br>
     </md-content>
     <!--<div class="bar bar-footer bar-light" style="margin-bottom: 89px;" ng-click="isOpenRightStudent()">
       <div class="title">Add Student</div>
