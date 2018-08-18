@@ -12,11 +12,11 @@ AppContoller
       $scope.imagePathS3 = "";
       $scope.subjectData = "";
       $scope.classData = "";
-      $scope.voiceFileS3="";  
-      $scope.showVoicetag=false;
+      $scope.voiceFileS3 = "";
+      $scope.showVoicetag = false;
 
-     
-      
+
+
 
       $scope.goToBack = function () {
         $state.go('admin');
@@ -24,9 +24,9 @@ AppContoller
       $scope.isOpenRightAddTask = function () {
         $mdSidenav('rightadminTask').toggle()
           .then(function () {
-            $scope.widthvalue=document.getElementById("getwidth").offsetWidth;
-            $scope.dateStyle={
-              "width":$scope.widthvalue-"11"+"px",
+            $scope.widthvalue = document.getElementById("getwidth").offsetWidth;
+            $scope.dateStyle = {
+              "width": $scope.widthvalue - "11" + "px",
             }
 
           });
@@ -51,7 +51,7 @@ AppContoller
             "startDate": this.startdays,//"2018-07-22 10:00:00",
             "endDate": this.enddays,//"2018-07-22 12:00:00"
             "linkUrl": $scope.imagePathS3[0],
-            "voiceNoteUrl":$scope.voiceFileS3[0]
+            "voiceNoteUrl": $scope.voiceFileS3[0]
           }
           adminservice.saveTaskInfo(request).then(function (result) {
 
@@ -142,7 +142,7 @@ AppContoller
 
 
       $scope.init = function () {
-       
+
         adminservice.showAllTasks().then(function (result) {
           $scope.tasksData = result.data;
 

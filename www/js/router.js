@@ -40,7 +40,7 @@ angular.module('app.routes', ['ngMaterial',
         templateUrl: 'template/adminTasks.html',
         controller: 'adminTaskController'
       });
-      $stateProvider
+    $stateProvider
       .state('addToClassSubject', {
         url: '/addToClassSubject',
         templateUrl: 'template/adminAddToClassSubjectController.html',
@@ -53,7 +53,7 @@ angular.module('app.routes', ['ngMaterial',
         controller: 'StudentDashController'
 
       });
-      $stateProvider
+    $stateProvider
       .state('substudentdash', {
         url: '/substudentdash',
         templateUrl: 'template/subStudentTask.html',
@@ -75,7 +75,7 @@ angular.module('app.routes', ['ngMaterial',
       .state('assignTaskUrl', {
         url: '/assignTaskDashboard/:paramValue',
         templateUrl: 'template/assignTask.html',
-      controller: 'AssignTaskController'
+        controller: 'AssignTaskController'
       });
     $stateProvider
       .state('performance', {

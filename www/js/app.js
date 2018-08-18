@@ -3,8 +3,8 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app=angular.module('starter', ['ionic','app.routes',
-  'ngCordova',  'ionic-material',
+var app = angular.module('starter', ['ionic', 'app.routes',
+  'ngCordova', 'ionic-material',
   'ionicLazyLoad',
   'ui.bootstrap',
   'ngAnimate',
@@ -12,21 +12,21 @@ var app=angular.module('starter', ['ionic','app.routes',
 
 ])
 
-app.run(function($ionicPlatform,$rootScope,utils,$cordovaPushV5,$http,pushNOtification) {
+app.run(function ($ionicPlatform, $rootScope, utils, $cordovaPushV5, $http, pushNOtification) {
   //............................../*Main Properties*/
- utils.getMainProperties().then(function (resp) {
-   $rootScope.version = resp.data.VERSION_NAME;
-   $rootScope.MAINURL = resp.data.MAINURL_NAME;
+  utils.getMainProperties().then(function (resp) {
+    $rootScope.version = resp.data.VERSION_NAME;
+    $rootScope.MAINURL = resp.data.MAINURL_NAME;
 
-   //Cashfree release end
-   });
-
-
+    //Cashfree release end
+  });
 
 
 
-  $ionicPlatform.ready(function() {
-    
+
+
+  $ionicPlatform.ready(function () {
+
 
     var notificationOpenedCallback = function (jsonData) { console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData)); };
     window.plugins.OneSignal
@@ -36,14 +36,15 @@ app.run(function($ionicPlatform,$rootScope,utils,$cordovaPushV5,$http,pushNOtifi
 
     window.plugins.OneSignal.getIds(function (ids) {
       //alert(ids.userId);
+      $rootScope.OneSignalToken = ids.userId;
       pushNOtification.saveTokenForPushNotification(ids.userId);
       /* alert(JSON.stringify(ids));
          alert(JSON.parse(ids)); */
       /*  $resolve(); $parameters.yourOutputParameter = ids.userId; */
     });
-    
-    
-    if(window.cordova && window.cordova.plugins.Keyboard) {
+
+
+    if (window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -53,7 +54,7 @@ app.run(function($ionicPlatform,$rootScope,utils,$cordovaPushV5,$http,pushNOtifi
       // a much nicer keyboard experience.
       cordova.plugins.Keyboard.disableScroll(true);
     }
-    if(window.StatusBar) { 
+    if (window.StatusBar) {
       StatusBar.styleDefault();
     }
 

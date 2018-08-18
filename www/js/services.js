@@ -110,7 +110,12 @@ AppServices.service('pushNOtification', ['$http', '$rootScope','store', function
       "id":store.get('userdata').id,
       "onesignalDeviceId":token
     }
-    return $http.post($rootScope.MAINURL + 'user.update/saveonesignalid', JSON.stringify(request));
+    if(store.get('userdata')){
+      return $http.post($rootScope.MAINURL + 'user.update/saveonesignalid', JSON.stringify(request));
+    }else{
+      return true;
+    }
+   
   }
   return {
     saveTokenForPushNotification: saveTokenForPushNotification
