@@ -29,8 +29,9 @@
 <md-tabs id="adminId" layout="column" active="activeTab"   md-selected="selectedIndex"
          md-stretch-tabs="always" ng-style="admin" class="backgroundColor">
   <md-tab layout="column"   label="Admin" index="1" id="1" md-on-select="changeFooterContant('Add Admin');">
-    <md-content class="md-padding backgroundColor " style="padding: 4px;  "  >
+    <md-content class="md-padding backgroundColor main-content" style="padding: 4px;margin-bottom: 100px;"  >
      <!--Admin List will come -->
+    
         <div class="card"  ng-repeat="x in adminData">
           <div class="item item-text-wrap">
             <div class="row" >
@@ -48,6 +49,7 @@
             </button>
           </div>
         </div>
+      
       <br> <br> <br> <br> <br> <br> <br>
 
     </md-content>
@@ -55,7 +57,7 @@
   </md-tab>
 
   <md-tab ng-hide="activeTab == 2" label="Teacher" index="2" id="2" md-on-select="changeFooterContant('Add Teacher')" class="backgroundColor">
-    <md-content class="md-padding backgroundColor" style="padding: 4px;" >
+    <md-content class="md-padding backgroundColor main-content" style="padding: 4px;margin-bottom: 100px;" >
       <!--Teacher List Will come -->
       <div class="card"  ng-repeat="x in teacherData">
         <div class="item item-text-wrap">
@@ -83,7 +85,7 @@
     </div>-->
   </md-tab>
   <md-tab ng-hide="activeTab == 3" label="Student" index="3" id="3" md-on-select="changeFooterContant('Add Student')" class="backgroundColor">
-    <md-content class="md-padding backgroundColor" style="padding: 4px;" >
+    <md-content class="md-padding backgroundColor main-content" style="padding: 4px;margin-bottom: 100px;" >
       <!--Student LIst will come -->
 
       <div class="card"  ng-repeat="x in studentData">

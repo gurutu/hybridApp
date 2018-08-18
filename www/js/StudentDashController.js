@@ -26,12 +26,12 @@ AppContoller
       var interval;
       var voice;
       var myVideo;
-      $scope.dateStyle={
-        "width":screen.width-"24"+"px",
-      }
      
+      $scope.widthvalue = document.getElementById("getwidth").offsetWidth;
       //document.getElementById("datestudent").style.width=screen.width-"24"+"px";
-
+      $scope.dateStyle={
+        "width": $scope.widthvalue-"1"+"px",
+      }
       $scope.logoutUser = function () {
         logoutUser.userLogout();
       }
