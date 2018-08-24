@@ -350,7 +350,7 @@ $scope.showPopupFinish = function() {
           "taskCode":$scope.singleTaskData.taskCode
         }
         studentService.saveTheDuration(request).then(function(result){
-          $scope.teacherDetail= result.data[0];
+         // $scope.teacherDetail= result.data[0];
         })
       }
      
