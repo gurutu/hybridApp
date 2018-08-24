@@ -10,7 +10,7 @@
 
 <div class="bar bar-header bar-positive backgroundColorheader">
   <button class="button button-icon icon ion-arrow-left-c backgroundColorButton" ng-click="goToBack()"></button>
-  <div class="h1 title colorTextHed">View Tasks</div>
+  <div class="h1 title colorTextHed fontStyle">View Tasks</div>
   <!--<button class="button button-clear button-positive">Remove</button>-->
 </div>
 
@@ -18,31 +18,31 @@
   <div class="card" ng-repeat="task in tasksData" >
     <div class="item item-text-wrap">
       <div class="row">
-            <div class="col">{{task.classCode}}</div>
-            <div class="col">{{task.taskTitle}}</div>
+            <div class="col fontStyle">{{task.classCode}}</div>
+            <div class="col fontStyle">{{task.taskTitle}}</div>
       </div>
       <div class="row">
-             <div class="col">{{task.subjectCode}}</div>
+             <div class="col fontStyle">{{task.subjectCode}}</div>
       </div>
       <div class="row">
-        <div class="col">{{task.taskDescription}}</div>
+        <div class="col fontStyle">{{task.taskDescription}}</div>
       </div>
     </div>
-    <button class="button button-block button-assertive txtDesignbutton backgroundColorButton" style="margin: 0px" ng-click="showConfirm(task.taskCode)">
+    <button class="button button-block button-assertive txtDesignbutton backgroundColorButton fontStyle" style="margin: 0px" ng-click="showConfirm(task.taskCode)">
      Delete Task
     </button>
   </div>
   <br>
 </ion-content>
 <div class="bar bar-footer bar-light backgroundColorButton"  ng-click="isOpenRightAddTask()">
-  <div class="title" style="color:white">Add Task</div>
+  <div class="title fontStyle" style="color:white">Add Task</div>
 </div>
 
 <md-sidenav md-component-id="rightadminTask" class="md-sidenav-right backgroundColor" style="min-width: 100%;">
   <ion-header-bar class="bar bar-positive backgroundColorheader">
     <button ng-click="cancelAddTask()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
     </button>
-    <h1 class="h1 title colorTextHed" style="text-align: center;">Add Task</h1>
+    <h1 class="h1 title colorTextHed fontStyle" style="text-align: center;">Add Task</h1>
   </ion-header-bar>
   <br>
   <br>
@@ -51,28 +51,28 @@
 
 
   <div class="row colorText">
-    <div class="col-20 lableDesign" ><span >Class:</span></div>
+    <div class="col-20 lableDesign fontStyle" ><span >Class:</span></div>
     <div class="col" id="getwidth">
      <!-- <input class="form-control" ng-model="class">-->
-      <select ng-model="class" class="form-control">
+      <select ng-model="class" class="form-control fontStyle">
         <option ng-repeat="sub in classData" ng-value="sub.classCode">{{sub.classTitle}}</option>
       </select>
     </div>
   </div>
   <div class="row colorText">
-    <div class="col-20 lableDesign" ><span >Start Days:</span></div>
+    <div class="col-20 lableDesign fontStyle" ><span >Date:</span></div>
     <div class="col">
-      <input  type="datetime-local" ng-style="dateStyle" ng-model="startdays">
+      <input  type="date" ng-style="dateStyle" ng-model="startdays">
     </div>
   </div>
   <div class="row colorText">
-    <div class="col-20 lableDesign" ><span >End Days:</span></div>
+    <div class="col-20 lableDesign fontStyle" ><span >Duration in Minute:</span></div>
     <div class="col">
-      <input  type="datetime-local" ng-style="dateStyle" ng-model="enddays">
+      <input  type="number" ng-style="number" ng-model="duration">
     </div>
   </div>
   <div class="row colorText">
-    <div class="col-20 lableDesign" ><span >Subject: </span></div>
+    <div class="col-20 lableDesign fontStyle" ><span >Subject: </span></div>
     <div class="col">
       <!--<input class="form-control" ng-model="subject">-->
       <select ng-model="subject" class="form-control">
@@ -81,25 +81,25 @@
     </div>
   </div>
   <div class="row colorText">
-    <div class="col-20 lableDesign" ><span >Task Title: </span></div>
+    <div class="col-20 lableDesign fontStyle" ><span >Task Title: </span></div>
     <div class="col">
       <input class="form-control" ng-model="title">
     </div>
   </div>
   <div class="row colorText">
-    <div class="col-20 lableDesign" ><span >Task Discription: </span></div>
+    <div class="col-20 lableDesign fontStyle" ><span >Task Discription: </span></div>
     <div class="col">
       <input class="form-control" ng-model="discription">
     </div>
   </div>
 <form ng-submit="uploadFile()">
 
-  <div class="row colorText" >
+  <div class="row colorText fontStyle" >
     <div class="col" style="text-align: center;">
       <input type="file" id="file" name="file"   />
     </div>
     <div  style="padding-top: 10px;">
-      <input type="submit" name="Upload File" value="Update File" style="color: #000;">
+      <input type="submit" name="Upload File" class="fontStyle" value="Update File" style="color: #000;">
      <!--<button ng-click="uploadFile()" >Upload File</button>-->
     </div>
   </div>
@@ -107,7 +107,7 @@
 
 
 <div class="row">
-    <div class="col-80 colorText" style="text-align: center">
+    <div class="col-80 colorText fontStyle" style="text-align: center">
         Do you want upload Voice File
     </div>
     <div class="col">
@@ -121,13 +121,13 @@
 </div>
 
 <form ng-submit="uploadVoiceFile()" ng-if="showVoicetag==true">
- 
-  <div class="row colorText" >
+
+  <div class="row colorText fontStyle" >
     <div class="col" style="text-align: center;">
      <input type="file" id="filevoice" name="file"  />
     </div>
     <div  style="padding-top: 10px;">
-      <input type="submit" name="Upload File" value="Update Voice File" style="color: #000;">
+      <input type="submit" name="Upload File" class="fontStyle" value="Update Voice File" style="color: #000;">
      <!--<button ng-click="uploadFile()" >Upload File</button>-->
     </div>
   </div>
@@ -135,10 +135,10 @@
 
   <br>
   <div class="row">
-    <div class="col" style="text-align: center;">
+    <div class="col fontStyle" style="text-align: center;">
+    <div class="col fontStyle" style="text-align: center;">
           <span  id="btn1">
-          <input type="submit" id="edit_roomConcept" class="btn btn-primary btn-save addMember" value="Save" ng-click="saveTaskInformation()">
-
+          <input type="submit" id="edit_roomConcept" class="btn btn-primary btn-save addMember fontStyle" value="Save" ng-click="saveTaskInformation()">
           </span>
     </div>
   </div>

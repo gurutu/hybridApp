@@ -8,7 +8,7 @@ AppContoller
   "TeacherDashController",['$scope','$mdSidenav', '$state', 'student', '$rootScope', 'allClass', 'studentTask','logoutUser','studentService','$stateParams',
   function($scope,$mdSidenav, $state, student, $rootScope, allClass,studentTask,logoutUser,studentService,$stateParams) {
 
-    $scope.show="";
+   $scope.show=true;
     $scope.teacherData="";
 
     $scope.studentInformation = function(){
@@ -20,7 +20,7 @@ AppContoller
       }
 
 
-    $scope.showAllClass = function(){
+   $scope.showAllClass = function(){
          $scope.classSel= this.myClass;
          if($scope.classSel != undefined){
            var checkClass=$scope.classSel
@@ -41,6 +41,9 @@ AppContoller
     $scope.notification = function(){
        $state.go('notification');
     };
+     $scope.sendToTasks = function () {
+        $state.go('adminTask');
+     }
 
      $scope.cancel = function(){
       $mdSidenav('right').close()

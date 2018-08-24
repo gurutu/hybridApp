@@ -6,8 +6,8 @@ var AppContoller = angular.module('PerformanceDashController', []);
 AppContoller
   .controller(
   "PerformanceDashController", ['$scope', '$mdSidenav', '$state',
-    '$rootScope', '$stateParams', 'studentTask', 'performnanceList', 'store',
-    function ($scope, $mdSidenav, $state, $rootScope, $stateParams, studentTask, performnanceList, store) {
+    '$rootScope', '$stateParams', 'studentTask', 'performnanceList', 'store', 'adminservice', 'utils',
+    function ($scope, $mdSidenav, $state, $rootScope, $stateParams, studentTask, performnanceList, store, adminservice, utils) {
 
       $scope.show = "";
       $scope.completed = 0;
@@ -53,6 +53,26 @@ AppContoller
           });
       };
 
+      $scope.getPerformanceList = function () {
+            if(this.subject !=undefined && this.datevalue !=undefined){
+          var request = {
+          "subject": this.subject,//"ENG",
+           "date": this.datevalue,//"2018-07-22 10:00:00",
+           "teacherId": store.get('userdata').id ,//"2",
+         }
+          studentTask.studentALLTaskList(request).then(function (results) {
+            if (results.status == "200") {
+              console.log("=============Selected Class TaskList================");
+              console.log(results.data);
+              $scope.performanceTaskList = results.data;
+            }
+          });
+          }else{
+               alert("Please Select Date and Subject")
+         }
+
+      }
+
       $scope.selectValue = function (val) {
         $scope.selectFilter = this.selectFilter;
         if (val == undefined || $scope.selectFilter == "" || $scope.selectFilter == 'select') {
@@ -86,16 +106,21 @@ AppContoller
       };
 
       $scope.init = function () {
-        var request = {
-          "classCode": $stateParams.classSel
-        };
-        studentTask.studentALLTaskList(request).then(function (results) {
-          if (results.status == "200") {
-            console.log("=============Selected Class TaskList================");
-            console.log(results.data);
-            $scope.performanceTaskList = results.data;
-          }
-        });
+
       }
+       $scope.getSubjectAndClass = function () {
+         $scope.dateStyle = {
+               "width": $scope.widthvalue - "11" + "px",
+         }
+
+        adminservice.getSubjectAndClass().then(function (result) {
+         // var dataAll = utils.getClassSubject(result.data);
+          $scope.subjectData = result.data;
+          //$scope.classData = dataAll[1];
+        })
+      }
+
       $scope.init();
+      $scope.getSubjectAndClass();
+
     }]);

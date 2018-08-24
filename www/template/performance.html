@@ -9,15 +9,39 @@
 <ion-header-bar class="bar bar-positive backgroundColorheader">
   <button ng-click="goToBack()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
   </button>
-  <h1 class="title colorTextHed" style="text-align: center;">Performance Student</h1>
+  <h1 class="title colorTextHed fontStyle" style="text-align: center;">Performance Student</h1>
 </ion-header-bar>
 <ion-content>
+  <div class="row">
+    <div class="col fontStyle">Select Subject
+      <select ng-model="subject" class="form-control fontStyle">
+        <option ng-repeat="sub in subjectData" ng-value="sub.subjectCode">{{sub.subjectTitle}}</option>
+      </select>
+
+    </div>
+    <div class="col fontStyle">Select Date
+      <input  type="date" ng-style="dateStyle"  ng-model="datevalue">
+    </div>
+    <div class="col">
+      <button class="button button-calm button-block txtDesignbutton" ng-click="getPerformanceList()">
+        Go
+      </button>
+    </div>
+  </div>
+<!--  <div class="row">
+
+  </div>
+  <div class="row">
+
+  </div>-->
 <div class="card " style=" margin: 2px 0px;">
   <div class="item item-text-wrap headingCart backgroundHeadingColor">
     <div class="row" style="text-align: center;">
-      <div class="col colorTextHed" ><span >Task Title : </span></div>
-      <div class="col colorTextHed" ><span >Start Date : </span></div>
-      <div class="col colorTextHed" ><span >End Date : </span></div>
+      <div class="col colorTextHed fontStyle" ><span >Task Title : </span></div>
+      <div class="col colorTextHed fontStyle" ><span >Duration : </span></div>
+<!--
+      <div class="col colorTextHed fontStyle" ><span >End Date : </span></div>
+-->
 
     </div>
   </div>
@@ -38,15 +62,15 @@
 
   <div class="item item-text-wrap backgroundColor" ng-repeat="p in performanceTaskList" style="font-size: 12px;background-color: #fff;" ng-click="sideNavAssignTask(p.taskCode)">
     <div class="row">
-      <div class="col colorText" style="text-align:center;">
+      <div class="col colorText fontStyle" style="text-align:center;">
         {{p.taskTitle}}
       </div>
-      <div class="col colorText" style="text-align:center;">
-        {{p.startDate | date:'medium'}}
+      <div class="col colorText fontStyle" style="text-align:center;">
+        {{p.duration}}
       </div>
-      <div class="col colorText" style="text-align:center;">
+      <!--<div class="col colorText fontStyle" style="text-align:center;">
         {{p.endDate | date:'medium'}}
-      </div>
+      </div>-->
     </div>
   </div>
 
@@ -58,13 +82,13 @@
     </button>
     <!--  <button ng-click="filterByStatus(studentListOfPer)"  class="button icon glyphicon glyphicon-filter backgroundColorButton" style="margin-left: 218px;">
     </button>-->
-    <h1 class="title colorTextHed" style="text-align: center;">Perfromance Student List</h1>
+    <h1 class="title colorTextHed fontStyle" style="text-align: center;">Perfromance Student List</h1>
   </ion-header-bar>
   <ion-content>
     <div class="row">
-      <div class="col">Total Task : {{totalTask}}</div>
+      <div class="col fontStyle">Total Task : {{totalTask}}</div>
       <div class="col">
-        <select class="form-control" name="cars" ng-model="selectFilter">
+        <select class="form-control fontStyle" name="cars" ng-model="selectFilter">
           <option value="select" selected>Select All</option>
           <option value="completed">Completed</option>
           <option value="In Progress">In Progress</option>
@@ -74,23 +98,23 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col fontStyle">
         Completed : {{completed}}
       </div>
-      <div class="col">
+      <div class="col fontStyle">
         Not Started : {{start}}
       </div>
-      <div class="col">
+      <div class="col fontStyle">
         In Progress : {{inprogress}}
       </div>
     </div>
     <div class="card" style=" margin: 4px 0px;">
       <div class="item item-text-wrap headingCart backgroundHeadingColor">
         <div class="row" style="text-align: center;">
-          <div class="col colorTextHed">
+          <div class="col colorTextHed fontStyle">
             <span>Completed Task : </span>
           </div>
-          <div class="col colorTextHed">
+          <div class="col colorTextHed fontStyle">
             <span>Status : </span>
           </div>
 
@@ -99,10 +123,10 @@
 
       <div class="item item-text-wrap backgroundColor" style="font-size: 12px;" ng-repeat="per in studentListOfPer " ng-if="selectValue(per.status)">
         <div class="row">
-          <div class="col colorText">
+          <div class="col colorText fontStyle">
             {{per.name}}
           </div>
-          <div class="col colorText">
+          <div class="col colorText fontStyle">
             {{per.status}}
           </div>
         </div>

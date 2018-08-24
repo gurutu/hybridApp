@@ -8,22 +8,22 @@
 <ion-header-bar class="bar bar-positive backgroundColorheader">
   <button ng-click="goToBack()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
   </button>
-  <h1 class="title colorTextHed" style="text-align: center;">Student Task Information</h1>
+  <h1 class="title colorTextHed fontStyle" style="text-align: center;">Student Task Information</h1>
 </ion-header-bar>
 <div class="card" style=" margin: 44px 0px;" >
   <div class="item item-text-wrap headingCart backgroundHeadingColor">
     <div class="row" style="text-align: center;">
-      <div class="col colorTextHed" ><span >Name : </span></div>
-      <div class="col colorTextHed" ><span >Task Title : </span></div>
+      <div class="col colorTextHed fontStyle" ><span >Name : </span></div>
+      <div class="col colorTextHed fontStyle" ><span >Email Id : </span></div>
     </div>
   </div>
  <!-- <button class="button button-positive" style="background-color: #fff;">-->
     <div class="item item-text-wrap backgroundColor" style="font-size: 12px; background-color: #fff;" ng-repeat="s in studentListInformation" ng-click="sideNavStudentTaskInformation(s.id,s.name)">
       <div class="row">
-        <div class="col colorText" style="text-align:center;">
+        <div class="col colorText fontStyle" style="text-align:center;">
           {{s.name}}
         </div>
-        <div class="col colorText" style="text-align:center;">
+        <div class="col colorText fontStyle" style="text-align:center;">
           {{s.email}}
         </div>
       </div>
@@ -35,33 +35,42 @@
   <ion-header-bar class="bar bar-positive backgroundColorheader">
     <button ng-click="cancelStudentInformation()"  class="button icon  glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
     </button>
-    <h1 class="title colorTextHed" style="text-align: center;"> {{name}}</h1>
+    <h1 class="title colorTextHed fontStyle" style="text-align: center;"> {{name}}</h1>
   </ion-header-bar>
   <br>
   <br>
-
+  <div class="row">
+    <div class="col fontStyle"><b>Select Date</b>
+      <input  type="date" ng-style="dateStyle"  ng-model="datevalue">
+    </div>
+    <div class="col">
+      <button class="button button-calm button-block txtDesignbutton" ng-click="getStudentTaskList()">
+        Go
+      </button>
+    </div>
+  </div>
   <div class="card "   ng-repeat="t in taskList" style="margin-bottom: -7px;margin-top: 13px">
     <div class="item item-text-wrap backgroundColor">
           <div clas="row " style="font-size: 14px;">
-            <div class="col colorText">
+            <div class="col colorText fontStyle">
               <span>Task Title:</span>
               <span>{{t.taskTitle}}</span>
             </div>
-            <div class="col colorText">
+            <div class="col colorText fontStyle">
              <span>Subject:</span>
-             <span>{{t.subjectTitle}}</span>
+             <span>{{t.subjectCode}}</span>
             </div>
-            <div class="col colorText">
+            <div class="col colorText fontStyle">
              <span>Status:</span>
              <span>{{t.status}}</span>
             </div>
-            <div class="col colorText">
+            <!--<div class="col colorText fontStyle">
              <span>Start Date:</span>
              <span>{{t.startDate | date:'medium'}}</span>
-            </div>
-            <div class="col colorText">
-             <span>End Date:</span>
-             <span>{{t.endDate | date:'medium'}}</span>
+            </div>-->
+            <div class="col colorText fontStyle">
+             <span>Duration:</span>
+             <span>{{t.duration}}</span>
             </div>
           </div>
     </div>

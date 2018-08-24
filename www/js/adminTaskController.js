@@ -6,8 +6,8 @@ var AppContoller = angular.module('adminTaskController', []);
 
 AppContoller
   .controller(
-  "adminTaskController", ['$scope', '$state', '$mdSidenav', 'adminservice', '$ionicPopup', '$http', '$rootScope', 'utils',
-    function ($scope, $state, $mdSidenav, adminservice, $ionicPopup, $http, $rootScope, utils) {
+  "adminTaskController", ['$scope', '$state', '$mdSidenav', 'adminservice', '$ionicPopup', '$http', '$rootScope', 'utils', 'store',
+    function ($scope, $state, $mdSidenav, adminservice, $ionicPopup, $http, $rootScope, utils, store) {
       $scope.tasksData = "";
       $scope.imagePathS3 = "";
       $scope.subjectData = "";
@@ -19,7 +19,7 @@ AppContoller
 
 
       $scope.goToBack = function () {
-        $state.go('admin');
+        $state.go('teacherDash', { "teacherId": store.get('userdata').id });
       }
       $scope.isOpenRightAddTask = function () {
         $mdSidenav('rightadminTask').toggle()
@@ -49,9 +49,10 @@ AppContoller
             "subjectCode": this.subject,//"ENG",
             "sequence": "1",
             "startDate": this.startdays,//"2018-07-22 10:00:00",
-            "endDate": this.enddays,//"2018-07-22 12:00:00"
+            "duration": this.duration,//"2018-07-22 12:00:00"
             "linkUrl": $scope.imagePathS3[0],
-            "voiceNoteUrl": $scope.voiceFileS3[0]
+            "voiceNoteUrl": $scope.voiceFileS3[0],
+            "id": store.get('userdata').id
           }
           adminservice.saveTaskInfo(request).then(function (result) {
 

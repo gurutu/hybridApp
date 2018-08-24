@@ -17,18 +17,13 @@ AppContoller
          $mdSidenav('sideStudentInformation').toggle()
            .then(function () {
                if($scope.studentListInformation!=undefined ){
-                 $scope.name=name
-                 var request = {
-                 "studentId":id
-                 };
-               studentTask.studentListTaskBasedOnId(request).then(function(results) {
-               if(results.status=="200") {
-                  console.log("=============student All Task List================");
-                  console.log(results.data);
-                  $scope.taskList = results.data;
-                  console.log(  $scope.taskList);
-                  }
-               });
+                 $scope.name=name;
+                 $scope.studentId=id;
+                 $scope.teacherId=store.get('userdata').id;
+                /* var request = {
+                 "studentId":id,
+                 "teacherId":store.get('userdata').id
+                 };*/
                }
 
            });
@@ -40,8 +35,30 @@ AppContoller
 
             });
         };
+        $scope.getStudentTaskList = function(){
+        if(this.datevalue!=undefined || this.datevalue !=null ){
+         var request = {
+           "date": this.datevalue,//"2018-07-22 10:00:00",
+           "teacherId": store.get('userdata').id,
+           "studentId":$scope.studentId
+         }
+           studentTask.studentListTaskBasedOnId(request).then(function(results) {
+            if(results.status=="200") {
+               console.log("=============student All Task List================");
+               console.log(results.data);
+               $scope.taskList = results.data;
+               console.log(  $scope.taskList);
+               }
+            });
+         }else{
+               alert("Please Select Date ")
+         }
+        };
 
     $scope.init=function(){
+    $scope.dateStyle={
+            "width": $scope.widthvalue-"1"+"px",
+    }
      var request = {
               "role":"student"
             };

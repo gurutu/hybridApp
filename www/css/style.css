@@ -78,27 +78,27 @@ margin:auto;
     background-color: #f8f8f8 ! important;
 }
 .txtDesignbutton{
- 
+
 border-radius: 24px ! important;
 }
  .backgroundColor{
      background-color: #92d9f5 ! important;
  }
  .backgroundColorButton{
-      background-color: #808080 ! important;
+      background-color: #ea5c36 ! important;
  }
  .backgroundColorheader{
       background-color: #fff ! important;
  }
  .backgroundHeadingColor{
-      background-color: #808080 ! important;
+      background-color: #ea5c36 ! important;
  }
  .colorText{
     color: black ! important;
  }
  .colorTextHed{
      color: black! important;
-  }
+ }
   .buttonAssign{
      width: 100%;
      font-size: 20px;
@@ -113,4 +113,10 @@ border-radius: 24px ! important;
   .custom-card{
     min-width: 30rem;
     min-height: 30rem;
+  }
+  .fontStyle{
+      font-family: 'Short Stack', cursive ! important;
+      font-style: normal ! important;
+      font-weight: 400 ! important;
+      font-size: 20px ! important;
   }

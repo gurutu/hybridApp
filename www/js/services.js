@@ -79,7 +79,7 @@ AppServices.service('adminservice', ['$http', '$rootScope', function ($http, $ro
     return $http.post($rootScope.MAINURL + 'upload/file', JSON.stringify(request));
   }
   function getSubjectAndClass(request) {
-    return $http.get($rootScope.MAINURL + 'class/subject/select/all');
+    return $http.get($rootScope.MAINURL + 'subjects/get/all');
   }
 
   return {
@@ -115,7 +115,7 @@ AppServices.service('pushNOtification', ['$http', '$rootScope','store', function
     }else{
       return true;
     }
-   
+
   }
   return {
     saveTokenForPushNotification: saveTokenForPushNotification
@@ -135,10 +135,10 @@ AppServices.service('allClass', ['$http', '$rootScope', function ($http, $rootSc
 }]);
 AppServices.service('studentTask', ['$http', '$rootScope', function ($http, $rootScope) {
   function studentALLTaskList(request) {
-    return $http.post($rootScope.MAINURL + 'task/select/class', JSON.stringify(request));
+    return $http.post($rootScope.MAINURL + 'task/select/taskspersubjectcode', JSON.stringify(request));
   }
   function studentListTaskBasedOnId(request) {
-    return $http.post($rootScope.MAINURL + 'performance/student/gettask', JSON.stringify(request));
+    return $http.post($rootScope.MAINURL + 'task/select/taskspersubject', JSON.stringify(request));
   }
   return {
     studentALLTaskList: studentALLTaskList,

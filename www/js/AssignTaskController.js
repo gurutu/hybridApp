@@ -5,8 +5,8 @@ var AppContoller = angular.module('AssignTaskController', []);
 
 AppContoller
   .controller(
-  "AssignTaskController", ['$scope', '$mdSidenav', '$state', '$rootScope', 'stduentList', 'assignTaskToStudent', 'studentTask', '$stateParams', 'store',
-    function ($scope, $mdSidenav, $state, $rootScope, stduentList, assignTaskToStudent, studentTask, $stateParams, store) {
+  "AssignTaskController", ['$scope', '$mdSidenav', '$state', '$rootScope', 'stduentList', 'assignTaskToStudent', 'studentTask', '$stateParams', 'store', 'adminservice', 'utils',
+    function ($scope, $mdSidenav, $state, $rootScope, stduentList, assignTaskToStudent, studentTask, $stateParams, store, adminservice, utils) {
 
       $scope.show = "";
       $scope.goToBack = function () {
@@ -39,6 +39,26 @@ AppContoller
           var ref = { "studentId": subValue.id };
           $scope.checkBoxValue.push(ref);
         });
+      }
+
+      $scope.getAssiignTaskList = function () {
+      if(this.subject !=undefined && this.datevalue !=undefined){
+          var request = {
+            "subject": this.subject,//"ENG",
+            "date": this.datevalue,//"2018-07-22 10:00:00",
+            "teacherId": store.get('userdata').id ,//"2",
+          }
+          studentTask.studentALLTaskList(request).then(function (results) {
+            if (results.status == "200") {
+              console.log("=============Selected Class Task List================");
+              console.log(results.data);
+              $scope.TaskstudentListALL = results.data;
+            }
+          });
+          }else{
+                 alert("Please Select Date and Subject")
+           }
+
       }
 
       $scope.deselectCheckBox = function () {
@@ -83,19 +103,22 @@ AppContoller
       }
 
       $scope.init = function () {
-        var request = {
-          "classCode": $stateParams.paramValue
-        };
-        studentTask.studentALLTaskList(request).then(function (results) {
-          if (results.status == "200") {
-            console.log("=============Selected Class Task List================");
-            console.log(results.data);
-            $scope.TaskstudentListALL = results.data;
-          }
-        });
+
       }
+       $scope.getSubjectAndClass = function () {
+           $scope.dateStyle = {
+                 "width": $scope.widthvalue - "11" + "px",
+           }
+
+          adminservice.getSubjectAndClass().then(function (result) {
+            //var dataAll = utils.getClassSubject(result.data);
+            $scope.subjectData =result.data;
+            //$scope.classData = dataAll[1];
+          })
+       }
 
       $scope.init();
+      $scope.getSubjectAndClass();
 
 
       $scope.saveAssignTask = function (taskCode) {
@@ -103,7 +126,8 @@ AppContoller
 
         var request = {
           "taskCode": $scope.tasksCode,
-          "teacherId": store.get('userdata').id,
+          //"teacherId": store.get('userdata').id,
+          //"teacherId": store.get('userdata').id,
           "status": "assigned",
           "students": $scope.checkBoxValue
         };
