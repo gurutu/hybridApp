@@ -37,6 +37,15 @@ AppServices.service('studentService', ['$http', '$rootScope', function ($http, $
   function getUniqueSubjects(request) {
     return $http.post($rootScope.MAINURL + 'tasks/student/getuniquesubjects', JSON.stringify(request));
   }
+  function getAllSubjects() {
+    return $http.get($rootScope.MAINURL + 'subjects/get/all');
+  }
+  function getTaskForStudent(request) {
+    return $http.post($rootScope.MAINURL + 'task/select/tasksforstudent', JSON.stringify(request));
+  }
+  function getTeacherDetail(request) {
+    return $http.post($rootScope.MAINURL + 'subjects/get/teacher', JSON.stringify(request));
+  }
 
   return {
     getStudentById: getStudentById,
@@ -45,7 +54,10 @@ AppServices.service('studentService', ['$http', '$rootScope', function ($http, $
     getTaskDetailByDateAndTime: getTaskDetailByDateAndTime,
     getAllSubject: getAllSubject,
     saveTaskStatus: saveTaskStatus,
-    getUniqueSubjects: getUniqueSubjects
+    getUniqueSubjects: getUniqueSubjects,
+    getAllSubjects:getAllSubjects,
+    getTaskForStudent:getTaskForStudent,
+    getTeacherDetail:getTeacherDetail
   }
 
 }]);
@@ -777,7 +789,7 @@ AppServices.factory('Util2', [function () {
       minutes = Math.floor(t / 60) % 60;
       t -= minutes * 60;
       seconds = Math.floor(t % 60);
-      return [days + 'd', hours + 'h', minutes + 'm', seconds + 's'].join(' ');
+      return [ hours + 'h', minutes + 'm', seconds + 's'].join(' ');//days + 'd',
     }
   }
 

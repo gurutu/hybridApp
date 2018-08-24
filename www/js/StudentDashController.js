@@ -6,9 +6,9 @@ var AppContoller = angular.module('StudentDashController', []);
 AppContoller
   .controller(
   "StudentDashController", ['$scope', '$mdSidenav', '$stateParams', 'studentService', 'logoutUser', 'utils',
-    'store', 'Util2', '$interval', '$ionicPopup','NativeTost','$rootScope',
-    function ($scope, $mdSidenav, $stateParams, studentService, logoutUser, utils, store, Util2, $interval, 
-      $ionicPopup,NativeTost,$rootScope) {
+    'store', 'Util2', '$interval', '$ionicPopup','NativeTost','$rootScope','$state','$filter',
+    function ($scope, $mdSidenav, $stateParams, studentService, logoutUser, utils, store, Util2, $interval,
+      $ionicPopup,NativeTost,$rootScope,$state,$filter) {
 
       $scope.show = "";
       $scope.studentData = "";
@@ -30,7 +30,7 @@ AppContoller
       $scope.widthvalue = document.getElementById("getwidth").offsetWidth;
       //document.getElementById("datestudent").style.width=screen.width-"24"+"px";
       $scope.dateStyle={
-        "width": $scope.widthvalue-"1"+"px",
+        "width": $scope.widthvalue-"9"+"px",
       }
       $scope.logoutUser = function () {
         logoutUser.userLogout();
@@ -40,7 +40,6 @@ AppContoller
         try {
           myVideo.pause();
           voice.pause();
-        voice.pause();
         } catch (error) {
         }
         
@@ -93,8 +92,11 @@ AppContoller
       }
 
       $scope.isOpenRightProblem = function () {
-        $mdSidenav('rightTaskProblem').toggle()
-          .then(function () { });
+        $state.go("substudentdash",{StudentId:"4",ClassCode:"Hello"});
+        /* $mdSidenav('rightTaskProblem').toggle()
+          .then(function () {
+           
+           }); */
       };
       $scope.cancelProblem = function () {
         $mdSidenav('rightTaskProblem').close()
@@ -258,23 +260,33 @@ $scope.showPopupFinish = function() {
         })
       }
 
-      $scope.getSubject = function () {
-        var requestSub = {
+      $scope.getAllSubject = function () {
+        /* var requestSub = {
           "classCode": $scope.studentData.classCode
-        }
-        studentService.getAllSubject(requestSub).then(function (result) {
-          $scope.subjectData = result.data;
+        } */
+        studentService.getAllSubjects().then(function (result) {
+          $scope.subjectData =result.data;
         })
       }
 
       $scope.init = function () {
         studentService.getStudentById(request).then(function (result) {
           $scope.studentData = result.data[0];
-          $scope.getSubject();
+         // $scope.getSubject();
         })
       }
 
-      $scope.init();
-      // $scope.getTask();
+      $scope.goToStudentTashPage=function(date,subjectCode){
+        if (this.datevalue == undefined) {
+          NativeTost.showTost('Please Select Date','long','top');
+          return true;
+        }
+       var datevalu= $filter('date')(date,'yyyy-MM-dd');
+        $state.go("substudentdash",{StudentId:$scope.studentData.id,subject:subjectCode,currentDate:datevalu});
+      }
+
+       $scope.init();
+       //$scope.getTask();
+       $scope.getAllSubject();
 
     }]);

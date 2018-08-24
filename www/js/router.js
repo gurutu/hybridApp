@@ -55,7 +55,7 @@ angular.module('app.routes', ['ngMaterial',
       });
     $stateProvider
       .state('substudentdash', {
-        url: '/substudentdash',
+        url: '/substudentdash/:StudentId/:subject/:currentDate',
         templateUrl: 'template/subStudentTask.html',
         controller: 'SubStudentDashController'
       });

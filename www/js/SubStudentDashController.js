@@ -6,9 +6,9 @@ var AppContoller = angular.module('SubStudentDashController', []);
 AppContoller
   .controller(
   "SubStudentDashController", ['$scope', '$mdSidenav', '$stateParams', 'studentService', 'logoutUser', 'utils',
-    'store', 'Util2', '$interval', '$ionicPopup','NativeTost',
+    'store', 'Util2', '$interval', '$ionicPopup','NativeTost','$state',
     function ($scope, $mdSidenav, $stateParams, studentService, logoutUser, utils, store, Util2, $interval, 
-      $ionicPopup,NativeTost) {
+      $ionicPopup,NativeTost,$state) {
 
       $scope.show = "";
       $scope.studentData = "";
@@ -23,9 +23,33 @@ AppContoller
       $scope.taskStartTime = "";
       $scope.currentDateTime = new Date();
       $scope.coundownValue = "";
+      $scope.hours="";
+      $scope.seconds="";
+      $scope.minutes=""
+      $scope.simpleDate=new Date();
       var interval;
+      $scope.teacherDetail="";
+      $scope.subjectValue=$stateParams.subject;
+      $scope.pauseButton=true;
+      $scope.counDownMinutes="";
 
 
+      $interval(function () {
+        $scope.makeClock();
+      },1000);
+
+      $scope.stopVideoVoice=function(){
+        try {
+          myVideo.pause();
+          voice.pause();
+        } catch (error) {
+        }
+        
+      }
+
+      $scope.goToBack = function () {
+        $state.go("studentDash",{studentId:$stateParams.StudentId});
+      }
 
       $scope.logoutUser = function () {
         logoutUser.userLogout();
@@ -62,7 +86,7 @@ AppContoller
 
         $scope.show = true;
       }
-      $scope.getAllTaskBasedOnSubject = function (val) {
+     /*  $scope.getAllTaskBasedOnSubject = function (val) {
         $scope.subjectCodeValue = val;
         var requestfilter = {
           "studentId": $stateParams.studentId,
@@ -74,7 +98,7 @@ AppContoller
           $scope.studentSingleTaskData = [];
           $scope.studentSingleTaskData = result.data;
         })
-      }
+      } */
 
       $scope.isOpenRightProblem = function () {
         $mdSidenav('rightTaskProblem').toggle()
@@ -91,6 +115,7 @@ AppContoller
       };
 
       $scope.cancel = function () {
+        $scope.stopVideoVoice();
         $mdSidenav('rightMain').close()
           .then(function () {
           });
@@ -99,6 +124,7 @@ AppContoller
       $scope.saveTaskStatus = function (status, id, sDate, eDate) {
         if (status == 'completed') {
           eDate = new Date();
+          $scope.stopVideoVoice();
         }
         var requestSta = {
           "status": status,
@@ -110,7 +136,8 @@ AppContoller
         studentService.saveTaskStatus(requestSta).then(function (result) {
           // $scope.singleTaskData=result.data[0];
           // $scope.getTask();
-          $scope.getAllTaskBasedOnSubject($scope.subjectCodeValue);
+         // $scope.getAllTaskBasedOnSubject($scope.subjectCodeValue);
+         $scope.init();
         })
 
       }
@@ -124,11 +151,18 @@ AppContoller
         $scope.fileShow = "";
         studentService.getTaskDetailById(requeatTaskId).then(function (result) {
           $scope.singleTaskData = result.data[0];
-          $scope.getTheInterval($scope.singleTaskData.endDate);
-          // $scope.singleTaskData.linkUrl='http://kmmc.in/wp-content/uploads/2014/01/lesson2.pdf';
+          var curr=new Date();
+          var minutes=curr.getMinutes();
+          var minutes1=minutes+$scope.singleTaskData.duration;
+          $scope.getTheInterval(curr.setMinutes(minutes1));
+          if($scope.singleTaskData.voiceNoteUrl!=null){
+            voice=document.getElementsByTagName('audio')[1];
+            voice.src=$scope.singleTaskData.voiceNoteUrl;
+            voice.load();
+          }
           if ($scope.singleTaskData.linkUrl != null) {
             $scope.fileShow = utils.findfileExtention($scope.singleTaskData.linkUrl);
-            var myVideo = "";
+             
             if ($scope.fileShow == 'video') {
               myVideo = document.getElementsByTagName('video')[0];
             } else if ($scope.fileShow == 'audio') {
@@ -140,24 +174,37 @@ AppContoller
             }
             if ($scope.fileShow != 'image' && $scope.fileShow != 'pdf') {
               myVideo.src = $scope.singleTaskData.linkUrl;
+             
               myVideo.load();
-              myVideo.play();
+             // myVideo.play();
             }
 
           }
 
         })
       }
+      //Timer Puse
+      $scope.pauseTimeInterval=function(value){
+           if(value=='pause'){
+            $scope.pauseButton=false;
+            $interval.cancel(interval);
+           }else{
+            $scope.pauseButton=true;
+           }
+      }
+
       // Timer value Add By Pranav 
       $scope.getTheInterval = function (endDate) {
         $scope.flagFirst=" ";
-        var future = new Date('08/11/2018 09:42 PM');
+        var future = new Date(endDate);
         if(future.getTime()>new Date().getTime()){
         interval = $interval(function () {
-          var diff = Math.floor(future.getTime() - new Date().getTime()) / 1000;
-          val = Util2.dhms(diff);
-          $scope.checkTimer(val);
+          if($scope.pauseButton){
+            var diff = Math.floor(future.getTime() - new Date().getTime()) / 1000;
+            val = Util2.dhms(diff);
+            $scope.checkTimer(val);
             $scope.coundownValue = val;
+          }
         }, 1000);
       }else{
         //alert("This test is expired");
@@ -165,13 +212,20 @@ AppContoller
       }
      //Make funtion 
      $scope.checkTimer=function(param){
-      if(val.split(" ")[0]=="0d"&&val.split(" ")[1]=="0h"&&val.split(" ")[2]=="1m"){
+       if(val.split(" ")[0]!="0h"){
+
+       }
+       if(val.split(" ")[1]=="1m"){
+
+      }
+
+      if(val.split(" ")[0]=="0h"&&val.split(" ")[1]=="1m"){
         if($scope.flagFirst==" "){
           $scope.flagFirst=true;
           $scope.showPopup();
         }
        // return true;
-      }else if(val.split(" ")[0]=="0d"&&val.split(" ")[1]=="0h"&&val.split(" ")[2]=="0m"&&val.split(" ")[3]=="0s"){
+      }else if(val.split(" ")[0]=="0h"&&val.split(" ")[1]=="0m"&&val.split(" ")[2]=="0s"){
         $scope.stopTimer();
        $scope.showPopupFinish();
        // return true;
@@ -184,6 +238,14 @@ AppContoller
       $scope.stopTimer = function () {
         $interval.cancel(interval);
       }
+      $scope.makeClock=function(){
+        var d=new Date();
+        $scope.simpleDate=d;
+        $scope.hours=d.getHours();
+        $scope.seconds=d.getSeconds();
+        $scope.minutes=d.getMinutes();
+      }
+     
 
       // A confirm dialog
       $scope.showConfirm = function (task, status) {
@@ -243,13 +305,27 @@ $scope.showPopupFinish = function() {
       }
 
       $scope.init = function () {
-        studentService.getStudentById(request).then(function (result) {
-          $scope.studentData = result.data[0];
-          $scope.getSubject();
+        var requestSub = {
+          "studentId":$stateParams.StudentId,
+          "subject":$stateParams.subject,
+          "date":$stateParams.currentDate
+        }
+        studentService.getTaskForStudent(requestSub).then(function (result) {
+          $scope.studentSingleTaskData = result.data;
         })
       }
-
+      $scope.getTeacherDetail=function(){
+        var request={
+          "subjectTitle":$stateParams.subject
+        }
+        studentService.getTeacherDetail(request).then(function(result){
+          $scope.teacherDetail= result.data[0];
+        })
+      }
+     
       $scope.init();
+      $scope.getTeacherDetail();
       // $scope.getTask();
+     // $scope.getAllTaskBasedOnSubject();
 
     }]);

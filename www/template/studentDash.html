@@ -133,7 +133,7 @@
 <ion-view view-title="Student">
   <div class="bar bar-header bar-positive backgroundColorheader">
     <!-- <button class="button button-icon icon ion-navicon"></button>-->
-    <div class="h1 title colorTextHed">{{studentData.name}} Profile</div>
+    <div class="h1 title colorTextHed fontStyle">{{studentData.name}} Profile</div>
     <button class="button button-icon icon ion-log-out colorTextHed" ng-click="logoutUser()"></button>
   </div>
   <ion-content class="backgroundColor">
@@ -152,25 +152,25 @@
       <img src="https://image.ibb.co/eF0PoG/person_1.jpg" class="userIco">
     </div>
     <div class="row text-center">
-      <div class="col-sm-12 text-center sp" style="margin-bottom: 0px;">
+      <div class="col-sm-12 text-center sp fontStyle" style="margin-bottom: 0px;">
         <h2 style="color:black">{{studentData.name}}</h2>
       </div>
 
     </div>
     <div class="row text-center sp">
-      <div class="col-sm-12 text-center sp colorText" style="margin-top: 0px;padding-top: 0px;">
+      <div class="col-sm-12 text-center sp colorText fontStyle" style="margin-top: 0px;padding-top: 0px;">
         <p>{{studentData.email}}</p>
       </div>
     </div>
     <div class="row text-center sp">
-      <div class="col-sm-12 text-center sp colorText" style="margin-top: 0px;padding-top: 0px;">
+      <div class="col-sm-12 text-center sp colorText fontStyle" style="margin-top: 0px;padding-top: 0px;">
         <p>{{studentData.phone}}</p>
       </div>
     </div>
 
     <div class="row" style=" border-top: 2px inset #fff;">
       <div class="col" style="text-align: center;">
-        <label class="colorText" style="font-size: 17px;">Select Date</label>
+        <label class="colorText fontStyle" style="font-size: 17px;">Select Date</label>
        
         <input  type="date" ng-style="dateStyle"  ng-model="datevalue">
       </div>
@@ -183,24 +183,33 @@
 
     </div>
 
-    <p style="color:red;text-align: center;">{{datealert}}</p>
-    <div class="row">
-      <div class="col">
-        <button class="button button-calm button-block txtDesignbutton" id="getwidth" ng-click="showTask()">
+     <p style="color:red;text-align: center;">{{datealert}}</p>
+    <div class="row" >
+      <div class="col" id="getwidth">
+       <!--  <button class="button button-calm button-block txtDesignbutton"  ng-click="showTask()">
           See Task
-        </button>
+        </button> -->
       </div>
     </div>
 
-    <ul class="list">
+    <!-- <ul class="list">
       <li class="item backgroundColor " ng-repeat="task in studentTaskData ">
-        <div class="row" ng-click="isOpenRightProblem();getAllTaskBasedOnSubject(task.subjectCode)">
+        <div class="row" ng-click="isOpenRightProblem();"> getAllTaskBasedOnSubject(task.subjectCode) 
           <div class="col-80 colorText">
             {{task.subjectTitle}}
           </div>
         </div>
       </li>
-    </ul>
+    </ul> -->
+    <div class="row" style="display: block;"> 
+        <div class="col-xs-6 col-sm-6 col-md-6" style="text-align: center;padding: 10px;" ng-repeat="sub in subjectData">
+          <md-button class="md-fab fontStyle" ng-click="goToStudentTashPage(datevalue,sub.subjectTitle)" aria-label="Eat cake" style="background-color: #387ef5;width: 100px;height: 100px;">
+            {{sub.subjectTitle}}
+        </md-button>
+        </div>
+    </div>
+</div>
+
   </ion-content>
 </ion-view>
 <md-sidenav md-component-id="rightTaskProblem" class="md-sidenav-right backgroundColor"  style="overflow: unset;min-width: 100%;position: fixed;">
@@ -216,7 +225,7 @@
   <ul class="list" style="margin-top: 18px">
     <li class="item backgroundColor " ng-repeat="task in studentSingleTaskData ">
       <div class="row">
-        <div class="col-80 colorText" style="padding-top: 26px;">
+        <div class="col-70 colorText" style="padding-top: 26px;">
           {{task.taskTitle}}
         </div>
         <div class="col">
@@ -241,102 +250,6 @@
 </md-sidenav>
 
 
-<md-sidenav md-component-id="rightMain" class="md-sidenav-right backgroundColor" style="min-width: 100%;">
-
-  <div class="bar bar-header">
-
-      <button ng-click="cancel()" class="button glyphicon glyphicon-menu-left backgroundColorButton"></button>
-      <div class="h1 title">{{singleTaskData.subjectCode}} Problem</div>
-      <!--<button class="button button-clear button-positive">
-      {{coundownValue}}
-      </button>-->
-
-</div>
-  <br>
-  <br>
-  <br>
-<!-- <button ng-click="getTheInterval(singleTaskData.endDate)"></button> -->
-<!-- <p ng-click="stopTimer()">Stop Timer</p> -->
-  <div class="row colorText">
-    <div class="col">
-      <p class="wordStyle">Title: <span style="float: right;">Time Remaining:</span></p>
-      <span class="titleCut">{{singleTaskData.taskTitle}}</span><span style="float: right;">{{coundownValue}}</span>
-    </div>
-  </div>
-  <div class="row colorText">
-    <div class="col">
-      <p class="wordStyle">Discription:</p>
-      {{singleTaskData.taskDescription}}
-    </div>
-  </div>
-  <div class="row colorText">
-    <div class="col">
-      <p class="wordStyle">
-        Start Date:
-      </p>
-      {{singleTaskData.startDate | date:"MM/dd/yyyy 'at' h:mma"}}
-    </div>
-    <div class="col colorText">
-      <p class="wordStyle">
-        End Date:
-      </p>
-      {{singleTaskData.endDate | date:"MM/dd/yyyy 'at' h:mma"}}
-    </div>
-  </div>
-  <div class="row colorText">
-    <div class="col">
-      <div ng-show="fileShow=='image'">
-
-        <img id="myImg" src="{{singleTaskData.linkUrl}}" alt="Snow" style="width:100%;">
-
-        <!-- The Modal -->
-        <!-- <div id="myModal" class="modal">
-          <span class="close1">&times;</span>
-          <img class="modal-content" id="img01">
-          <div id="caption"></div>
-        </div> -->
-      </div>
-      <div ng-show="fileShow=='video'">
-        <video controls width="100%">
-        </video>
-        <!--<iframe width="560" height="300" ng-src="singleTaskData.linkUrl " frameborder="0" allowfullscreen controls></iframe>
-    -->
-      </div>
-      <div ng-show="fileShow=='audio'">
-        <audio controls width="100%">
-          <source src="{{singleTaskData.linkUrl}}">
-          <source src="{{singleTaskData.linkUrl}}">
-        </audio>
-      </div>
-      <div ng-show="fileShow=='pdf'" id="PDFVIEW">
-        <!-- <embed  src="/lesson2.pdf" width="600" height="500" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
-        <object width="100%" height="100%" ng-attr-data="{{singleTaskData.linkUrl}}" ></object>-->
-
-      </div>
-
-
-
-    </div>
-  </div>
-
-  <div class="row colorText" ng-show="singleTaskData.voiceNoteUrl!=null">
-     <div class="col" style="text-align: center">
-        <div >
-            <audio controls width="100%" id="voiceData">
-            </audio>
-          </div>
-     </div>
-  </div>
-
-  <div class="row colorText">
-    <div class="col">
-      <button class="button button-calm button-block txtDesignbutton" ng-click="cancel();saveTaskStatus('completed',singleTaskData.id,taskStartTime,currentDateTime);">
-        Completed
-      </button>
-    </div>
-  </div>
-
-</md-sidenav>
 <script>
  /*  // Get the modal
   var modal = document.getElementById('myModal');
