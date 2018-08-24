@@ -5,22 +5,28 @@
       font-size: 12px;
     }
 </style>
-<ion-header-bar class="bar bar-positive backgroundColorheader">
+<!-- <ion-header-bar class="bar bar-positive backgroundColorheader">
   <button ng-click="goToBack()"  class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
   </button>
   <h1 class="title colorTextHed fontStyle" style="text-align: center;">Student Task Information</h1>
-</ion-header-bar>
-<div class="card" style=" margin: 44px 0px;" >
+</ion-header-bar> -->
+<div class="bar bar-header bar-positive backgroundColorheader">
+    <button class="button button-icon icon ion-arrow-left-c backgroundColorButton " ng-click="goToBack()"></button>
+    <div class="h1 title colorTextHed">Student Task Information</div>
+    <!--<button class="button button-clear button-positive">Remove</button>-->
+</div>
+<ion-content class="backgroundColor has-header">
+<div class="card">
   <div class="item item-text-wrap headingCart backgroundHeadingColor">
     <div class="row" style="text-align: center;">
-      <div class="col colorTextHed fontStyle" ><span >Name : </span></div>
+      <div class="col colorTextHed fontStyle" id="getwidth"><span >Name : </span></div>
       <div class="col colorTextHed fontStyle" ><span >Email Id : </span></div>
     </div>
   </div>
  <!-- <button class="button button-positive" style="background-color: #fff;">-->
-    <div class="item item-text-wrap backgroundColor" style="font-size: 12px; background-color: #fff;" ng-repeat="s in studentListInformation" ng-click="sideNavStudentTaskInformation(s.id,s.name)">
+    <div class="item item-text-wrap backgroundColor" style="font-size: 12px; background-color: #fff;" ng-repeat="s in studentListInformation | orderBy:'name'" ng-click="sideNavStudentTaskInformation(s.id,s.name)">
       <div class="row">
-        <div class="col colorText fontStyle" style="text-align:center;">
+        <div class="col colorText fontStyle"  style="text-align:center;">
           {{s.name}}
         </div>
         <div class="col colorText fontStyle" style="text-align:center;">
@@ -30,7 +36,7 @@
     </div>
   <!--</button>-->
 </div>
-
+</ion-content>
 <md-sidenav md-component-id="sideStudentInformation" class="md-sidenav-right" style="min-width: 100%;">
   <ion-header-bar class="bar bar-positive backgroundColorheader">
     <button ng-click="cancelStudentInformation()"  class="button icon  glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
@@ -43,8 +49,8 @@
     <div class="col fontStyle"><b>Select Date</b>
       <input  type="date" ng-style="dateStyle"  ng-model="datevalue">
     </div>
-    <div class="col">
-      <button class="button button-calm button-block txtDesignbutton" ng-click="getStudentTaskList()">
+    <div class="col" >
+      <button class="button button-calm button-block txtDesignbutton" style="margin-top: 26px;" ng-click="getStudentTaskList()">
         Go
       </button>
     </div>

@@ -12,7 +12,7 @@ AppContoller
      $scope.goToBack = function(){
         $state.go('teacherDash',{"teacherId": store.get('userdata').id});
       };
-
+      
     $scope.sideNavStudentTaskInformation = function(id,name){
          $mdSidenav('sideStudentInformation').toggle()
            .then(function () {
@@ -71,5 +71,11 @@ AppContoller
         }
      });
     }
+   
     $scope.init();
+    $scope.widthvalue = document.getElementById("getwidth").offsetWidth;
+    //document.getElementById("datestudent").style.width=screen.width-"24"+"px";
+    $scope.dateStyle={
+      "width":$scope.widthvalue -"9"+"px"
+    }
   }]);
