@@ -33,7 +33,7 @@ AppContoller
       $scope.pauseButton=true;
       $scope.counDownMinutes="";
       $scope.coundownMain="";
-
+      $scope.taskid="";
 
       $interval(function () {
         $scope.makeClock();
@@ -276,6 +276,7 @@ AppContoller
 
         confirmPopup.then(function (res) {
           if (res) {
+            $scope.taskid= task.id;
             $scope.isOpenRight();
             $scope.getTaskDetail(task.taskCode);
             $scope.saveTaskStatus(status, task.id, $scope.currentDateTime, $scope.currentDateTime);

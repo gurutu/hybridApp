@@ -8,8 +8,8 @@ var app = angular.module('starter', ['ionic', 'app.routes',
   'ionicLazyLoad',
   'ui.bootstrap',
   'ngAnimate',
-  'dateParser'
-
+  'dateParser',
+   'timer'
 ])
 
 app.run(function ($ionicPlatform, $rootScope, utils, $cordovaPushV5, $http, pushNOtification) {
