@@ -32,6 +32,7 @@ AppContoller
       $scope.subjectValue=$stateParams.subject;
       $scope.pauseButton=true;
       $scope.counDownMinutes="";
+      $scope.coundownMain="";
 
 
       $interval(function () {
@@ -154,6 +155,7 @@ AppContoller
           var curr=new Date();
           var minutes=curr.getMinutes();
           var minutes1=minutes+$scope.singleTaskData.duration;
+          $scope.coundownMain=curr.setMinutes(minutes1);
           $scope.getTheInterval(curr.setMinutes(minutes1));
           if($scope.singleTaskData.voiceNoteUrl!=null){
             voice=document.getElementsByTagName('audio')[1];
@@ -184,12 +186,19 @@ AppContoller
         })
       }
       //Timer Puse
+      var timeImp=0;
       $scope.pauseTimeInterval=function(value){
            if(value=='pause'){
             $scope.pauseButton=false;
+            timeImp=$scope.counDownMinutes;
+          //  $interval.cencle(interval);
             $interval.cancel(interval);
            }else{
             $scope.pauseButton=true;
+            var curr=new Date();
+          var minutes=curr.getMinutes();
+          var minutes1=minutes+parseInt(timeImp);
+          $scope.getTheInterval(curr.setMinutes(minutes1));
            }
       }
 
@@ -211,13 +220,24 @@ AppContoller
       }
       }
      //Make funtion 
-     $scope.checkTimer=function(param){
+     $scope.checkTimer=function(val){
+       var har=0;
+       var min=0;
+       var sec=0;
        if(val.split(" ")[0]!="0h"){
-
+        har=val.split(" ")[0].substring(0, val.split(" ")[0].length - 1)*60;
        }
-       if(val.split(" ")[1]=="1m"){
-
+       if(val.split(" ")[1]!="0m"){
+        min=val.split(" ")[1].substring(0, val.split(" ")[1].length - 1);
+      } 
+      if($scope.pauseButton){
+        if(har!=0&&min!=0){
+          $scope.counDownMinutes=parseInt(har)+parseInt(min);
+        }else if(har==0){
+          $scope.counDownMinutes=min;
+        }
       }
+      
 
       if(val.split(" ")[0]=="0h"&&val.split(" ")[1]=="1m"){
         if($scope.flagFirst==" "){
@@ -319,6 +339,17 @@ $scope.showPopupFinish = function() {
           "subjectTitle":$stateParams.subject
         }
         studentService.getTeacherDetail(request).then(function(result){
+          $scope.teacherDetail= result.data[0];
+        })
+      }
+      $scope.saveTheDuration=function(){
+        $scope.stopTimer();
+        var request={
+          "studentDuration":$scope.counDownMinutes,
+          "studentId":$stateParams.StudentId,
+          "taskCode":$scope.singleTaskData.taskCode
+        }
+        studentService.saveTheDuration(request).then(function(result){
           $scope.teacherDetail= result.data[0];
         })
       }

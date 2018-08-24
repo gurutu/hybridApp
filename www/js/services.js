@@ -46,7 +46,9 @@ AppServices.service('studentService', ['$http', '$rootScope', function ($http, $
   function getTeacherDetail(request) {
     return $http.post($rootScope.MAINURL + 'subjects/get/teacher', JSON.stringify(request));
   }
-
+  function saveTheDuration(request) {
+    return $http.post($rootScope.MAINURL + 'task/select/taskcode', JSON.stringify(request));
+  }
   return {
     getStudentById: getStudentById,
     getAllStudentTask: getAllStudentTask,
@@ -57,7 +59,8 @@ AppServices.service('studentService', ['$http', '$rootScope', function ($http, $
     getUniqueSubjects: getUniqueSubjects,
     getAllSubjects:getAllSubjects,
     getTaskForStudent:getTaskForStudent,
-    getTeacherDetail:getTeacherDetail
+    getTeacherDetail:getTeacherDetail,
+    saveTheDuration:saveTheDuration
   }
 
 }]);

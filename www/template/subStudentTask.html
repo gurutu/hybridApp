@@ -92,7 +92,7 @@
 
     <div class="bar bar-header">
   
-        <button ng-click="cancel()" class="button glyphicon glyphicon-menu-left backgroundColorButton"></button>
+        <button ng-click="cancel();saveTheDuration();" class="button glyphicon glyphicon-menu-left backgroundColorButton"></button>
         <div class="h1 title fontStyle">{{subjectValue}} Problem</div>
         <!--<button class="button button-clear button-positive">
         {{coundownValue}}
@@ -185,7 +185,7 @@
   
     <div class="row colorText">
       <div class="col">
-        <button class="button button-calm button-block txtDesignbutton fontStyle" ng-click="cancel();saveTaskStatus('completed',singleTaskData.id,taskStartTime,currentDateTime);">
+        <button class="button button-calm button-block txtDesignbutton fontStyle" ng-click="cancel();saveTaskStatus('completed',singleTaskData.id,taskStartTime,currentDateTime);saveTheDuration();">
           Completed
         </button>
       </div>
