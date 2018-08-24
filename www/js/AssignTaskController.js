@@ -12,6 +12,12 @@ AppContoller
       $scope.goToBack = function () {
         $state.go('teacherDash', { "teacherId": store.get('userdata').id });
       };
+      $scope.widthvalue = document.getElementById("getwidth").offsetWidth;
+      //document.getElementById("datestudent").style.width=screen.width-"24"+"px";
+      $scope.dateStyle={
+        "width": $scope.widthvalue-"9"+"px",
+      }
+
       $rootScope.MAINURL = "http://13.232.113.147:80/app/";
       $scope.studentListClass = "";
       $scope.checkBoxValue = [];
