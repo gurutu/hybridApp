@@ -45,14 +45,14 @@ AppContoller
             "taskTitle": this.title,//"English HW",
             "taskDescription": this.discription,//"Fill in the blanks chapter 1",
             "schoolCode": "SC1",
-            "classCode": this.class,//"CC1",
+            //"classCode": this.class,//"CC1",
             "subjectCode": this.subject,//"ENG",
             "sequence": "1",
-            "startDate": this.startdays,//"2018-07-22 10:00:00",
+            "date": this.startdays,//"2018-07-22 10:00:00",
             "duration": this.duration,//"2018-07-22 12:00:00"
             "linkUrl": $scope.imagePathS3[0],
             "voiceNoteUrl": $scope.voiceFileS3[0],
-            "id": store.get('userdata').id
+            "teacherId": store.get('userdata').id
           }
           adminservice.saveTaskInfo(request).then(function (result) {
 
@@ -154,9 +154,9 @@ AppContoller
 
       $scope.getSubjectAndClass = function () {
         adminservice.getSubjectAndClass().then(function (result) {
-          var dataAll = utils.getClassSubject(result.data);
-          $scope.subjectData = dataAll[0];
-          $scope.classData = dataAll[1];
+         // var dataAll = utils.getClassSubject(result.data);
+         $scope.subjectData = result.data;
+         // $scope.classData = dataAll[1];
         })
       }
 

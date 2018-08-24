@@ -50,15 +50,15 @@
   <br>
 
 
-  <div class="row colorText">
+<!--  <div class="row colorText">
     <div class="col-20 lableDesign fontStyle" ><span >Class:</span></div>
     <div class="col" id="getwidth">
-     <!-- <input class="form-control" ng-model="class">-->
+     &lt;!&ndash; <input class="form-control" ng-model="class">&ndash;&gt;
       <select ng-model="class" class="form-control fontStyle">
         <option ng-repeat="sub in classData" ng-value="sub.classCode">{{sub.classTitle}}</option>
       </select>
     </div>
-  </div>
+  </div>-->
   <div class="row colorText">
     <div class="col-20 lableDesign fontStyle" ><span >Date:</span></div>
     <div class="col">
@@ -75,8 +75,8 @@
     <div class="col-20 lableDesign fontStyle" ><span >Subject: </span></div>
     <div class="col">
       <!--<input class="form-control" ng-model="subject">-->
-      <select ng-model="subject" class="form-control">
-        <option ng-repeat="sub in subjectData" ng-value="sub.subjectCode">{{sub.subjectTitle}}</option>
+      <select ng-model="subject" class="form-control fontStyle">
+        <option ng-repeat="sub in subjectData" class="fontStyle" ng-value="sub.subjectCode">{{sub.subjectTitle}}</option>
       </select>
     </div>
   </div>
