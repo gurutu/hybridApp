@@ -23,26 +23,19 @@
 
         </div>
          <div class="col " style="    margin-top: 16px;" >
+           
                  <div class="row">
-                    <div class="col" style="font-size: 50px">
-                       {{hours}} 
+                    <div class="col" style="font-size: 50px;font-family: Agency FB;text-align: center;color: #e83b2d;">
+                        {{simpleDate | date:"hh : mm  a"}}
+                        <p style="text-transform: uppercase;">
+                            {{simpleDate | date:"EEE"}}
+                        </p>
                     </div>
-                    <div class="col" style="font-size: 50px;text-align : center; padding-top: 0px;">
-                          :
-                    </div>
-                    <div class="col" style="font-size: 50px">
-                          {{minutes}}  
-                    </div>
-                    <div class="col" style="font-size: 50px;text-align : center; padding-top: 0px;">
-                            :
-                    </div>
-                    <div class="col" style="font-size: 50px">
-                        {{seconds}}
-                    </div>
+                    
                  </div>
                  <div class="row">
-                    <div class="col" style="font-size: 46px;text-align: center">
-                        {{simpleDate|date:'dd-MM-yyyy'}}
+                    <div class="col" style="font-size: 50px;color: #e83b2d;text-align: center;font-family: Agency FB;margin-top: -25px;text-transform: uppercase;">
+                        {{simpleDate|date:'dd      MMM'}}
                     </div>
                  </div>
          </div>
@@ -107,7 +100,7 @@
     <div class="row colorText">
       <div class="col">
         <p class="wordStyle fontStyle" style="font-size: 30px !important;">Title: <span style="float: right;">Time Remaining:</span></p>
-        <span class="titleCut fontStyle" style="font-size: 20px;">{{singleTaskData.taskTitle}}</span><span style="float: right;font-size: 20px;">{{coundownValue}}</span>
+        <span class="titleCut fontStyle" style="font-size: 20px;">{{singleTaskData.taskTitle}}</span><span style="float: right;font-size: 30px;font-family: Agency FB;color: #ff0074">{{coundownValue}}</span>
       </div>
     </div>
     <div class="row colorText">
@@ -134,7 +127,7 @@
        <div class="col colorText">
         <!-- <p class="wordStyle">
           End Date:
-        </p> --> <div style="font-size: 20px;">{{singleTaskData.date | date:"MM/dd/yyyy"}}</div>
+        </p> --> <div style="font-size: 20px;font-family: Agency FB;">{{singleTaskData.date | date:"MM/dd/yyyy"}}</div>
         <!-- {{singleTaskData.endDate | date:"MM/dd/yyyy 'at' h:mma"}} -->
       </div> 
     </div>

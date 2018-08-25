@@ -152,11 +152,10 @@ AppContoller
         $scope.fileShow = "";
         studentService.getTaskDetailById(requeatTaskId).then(function (result) {
           $scope.singleTaskData = result.data[0];
-          var curr=new Date();
-          var minutes=curr.getMinutes();
-          var minutes1=minutes+$scope.singleTaskData.duration;
-          $scope.coundownMain=curr.setMinutes(minutes1);
-          $scope.getTheInterval(curr.setMinutes(minutes1));
+            var currDate= new Date();
+            currDate.setMinutes(currDate.getMinutes() +  $scope.singleTaskData.duration);
+         // $scope.coundownMain=currDate;
+          $scope.getTheInterval(currDate);
           if($scope.singleTaskData.voiceNoteUrl!=null){
             voice=document.getElementsByTagName('audio')[1];
             voice.src=$scope.singleTaskData.voiceNoteUrl;
@@ -190,15 +189,15 @@ AppContoller
       $scope.pauseTimeInterval=function(value){
            if(value=='pause'){
             $scope.pauseButton=false;
-            timeImp=$scope.counDownMinutes;
+            /* timeImp=$scope.counDownMinutes;
           //  $interval.cencle(interval);
-            $interval.cancel(interval);
+            $interval.cancel(interval); */
            }else{
             $scope.pauseButton=true;
-            var curr=new Date();
+           /*  var curr=new Date();
           var minutes=curr.getMinutes();
           var minutes1=minutes+parseInt(timeImp);
-          $scope.getTheInterval(curr.setMinutes(minutes1));
+          $scope.getTheInterval(curr.setMinutes(minutes1)); */
            }
       }
 
@@ -206,13 +205,16 @@ AppContoller
       $scope.getTheInterval = function (endDate) {
         $scope.flagFirst=" ";
         var future = new Date(endDate);
-        if(future.getTime()>new Date().getTime()){
+        var startDate=new Date().getTime();
+        if(future.getTime()>startDate){
         interval = $interval(function () {
           if($scope.pauseButton){
-            var diff = Math.floor(future.getTime() - new Date().getTime()) / 1000;
+            var diff = Math.floor(future.getTime() - startDate) / 1000;
             val = Util2.dhms(diff);
             $scope.checkTimer(val);
             $scope.coundownValue = val;
+            startDate = new Date(startDate);
+            startDate.setSeconds(startDate.getSeconds() + 1);
           }
         }, 1000);
       }else{
