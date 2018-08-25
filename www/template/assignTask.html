@@ -99,11 +99,14 @@
     </div>
 
     <div class="card " ng-repeat="student in studentListClass">
-      <div class="item item-text-wrap " style="height: 74px;">
+      <div class="item item-text-wrap " style="height: 115px;">
         <div class="row">
           <div class="col-70 fontStyle">
-            <b>Name:</b>
+            <b>First Name:</b>
             <span> {{student.name}}</span>
+            <br>
+            <b>Last Name:</b>
+            <span> {{student.lastName}}</span>
             <br>
             <b>Email Id:</b>
             <span>{{student.email}}</span>

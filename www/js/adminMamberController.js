@@ -111,7 +111,8 @@ AppContoller
           "password": "N/A",
           "role": role,
           "phone": this.phone,
-          "name": this.name
+          "name": this.name,
+          "lastName": this.lastName
         }
         if (role == "student") {
           $scope.request = {
@@ -120,7 +121,9 @@ AppContoller
             "role": role,
             "phone": this.phone,
             "name": this.name,
-            "class": this.myClass
+            "class": this.myClass,
+            "lastName": this.lastName
+
           }
         }
         adminservice.saveUserInfo($scope.request).then(function (result) {

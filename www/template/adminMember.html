@@ -36,7 +36,8 @@
           <div class="item item-text-wrap">
             <div class="row" >
               <div class="col-80 fontStyle">
-                <b>Name:</b><p>{{x.name}}</p>
+                <b>First Name:</b><p>{{x.name}}</p>
+                <b>Last Name :</b><p>{{x.lastName}}</p>
                 <b>Email:</b><p>{{x.email}}</p>
                 <b>Phone No:</b><p>{{x.phone}}</p>
               </div>
@@ -65,7 +66,8 @@
         <div class="item item-text-wrap">
           <div class="row" >
             <div class="col-80 fontStyle">
-              <b>Name:</b><p>{{x.name}}</p>
+              <b>First Name:</b><p>{{x.name}}</p>
+              <b>Last Name :</b><p>{{x.lastName}}</p>
               <b>Email:</b><p>{{x.email}}</p>
               <b>Phone No:</b><p>{{x.phone}}</p>
             </div>
@@ -95,7 +97,8 @@
         <div class="item item-text-wrap">
           <div class="row" >
             <div class="col-80 fontStyle">
-              <b>Name:</b><p>{{x.name}}</p>
+              <b>First Name:</b><p>{{x.name}}</p>
+              <b>Last Name :</b><p>{{x.lastName}}</p>
               <b>Email:</b><p>{{x.email}}</p>
               <b>Phone No:</b><p>{{x.phone}}</p>
             </div>
@@ -134,9 +137,15 @@
   <br>
 
   <div class="row colorText">
-    <div class="col-30 lableDesign fontStyle" ><span >Name : </span></div>
+    <div class="col-30 lableDesign fontStyle" ><span >First Name : </span></div>
     <div class="col">
       <input class="form-control txtDesignbutton" ng-model="name">
+    </div>
+  </div>
+  <div class="row colorText">
+    <div class="col-30 lableDesign fontStyle" ><span >Last Name : </span></div>
+    <div class="col">
+      <input class="form-control txtDesignbutton" ng-model="lastName">
     </div>
   </div>
   <div class="row colorText">
@@ -182,9 +191,15 @@
   <br>
 
   <div class="row colorText fontStyle">
-    <div class="col-30 lableDesign" ><span >Name : </span></div>
+    <div class="col-30 lableDesign" ><span >First Name : </span></div>
     <div class="col">
       <input class="form-control txtDesignbutton fontStyle" ng-model="name">
+    </div>
+  </div>
+  <div class="row colorText fontStyle">
+    <div class="col-30 lableDesign" ><span >Last Name : </span></div>
+    <div class="col">
+      <input class="form-control txtDesignbutton fontStyle" ng-model="lastName">
     </div>
   </div>
   <div class="row colorText fontStyle">
@@ -229,9 +244,15 @@
   <br>
 
   <div class="row colorText fontStyle">
-    <div class="col-30 lableDesign" ><span >Name : </span></div>
+    <div class="col-30 lableDesign" ><span >First Name : </span></div>
     <div class="col">
       <input class="form-control txtDesignbutton"  ng-model="name">
+    </div>
+  </div>
+  <div class="row colorText fontStyle">
+    <div class="col-30 lableDesign" ><span >Last Name : </span></div>
+    <div class="col">
+      <input class="form-control txtDesignbutton"  ng-model="lastName">
     </div>
   </div>
   <div class="row colorText fontStyle">
@@ -246,7 +267,7 @@
       <input class="form-control txtDesignbutton"  ng-model="phone">
     </div>
   </div>
-  <div class="row colorText fontStyle">
+  <!--<div class="row colorText fontStyle">
     <div class="col-30 lableDesign" ><span >Class :</span></div>
     <div class="col">
       <select class="form-control txtDesignbutton fontStyle" ng-model="myClass">
@@ -254,7 +275,7 @@
         <option ng-repeat="c in classList" class="fontStyle" value="{{c.classCode}}">{{c.classTitle}}</option>
       </select>
     </div>
-  </div>
+  </div>-->
   <div class="row colorText fontStyle">
     <div class="col-30 lableDesign" ><span >Type : </span></div>
     <div class="col">

@@ -28,14 +28,22 @@
         </div>
     <div class="row text-center">
       <div class="col-sm-12 text-center sp" style="margin-bottom: 0px;">
+        <span>First Name:
+        <h2 style="color:black;" class="fontStyle">{{teacherData.name}}</h2></span>
+      </div>
 
-        <h2 style="color:black;" class="fontStyle">{{teacherData.name}}</h2>
+    </div>
+    <div class="row text-center">
+      <div class="col-sm-12 text-center sp" style="margin-bottom: 0px;">
+        <span>Last Name:
+        <h2 style="color:black;" class="fontStyle">{{teacherData.lastName}}</h2></span>
       </div>
 
     </div>
     <div class="row text-center sp">
       <div class="col-sm-12 text-center sp colorText" style="margin-top: 0px;padding-top: 0px;">
-        <p class="fontStyle">{{teacherData.email}}</p>
+         <span>EmailId:
+           <p class="fontStyle">{{teacherData.email}}</p></span>
       </div>
     </div>
 
@@ -103,7 +111,7 @@
     <br>
     <br>
     <form ng-submit="uploadPhotoFile()" >
-  
+
         <div class="row colorText fontStyle" >
           <div class="col" style="text-align: center;">
            <input type="file" id="file" name="file"  />
