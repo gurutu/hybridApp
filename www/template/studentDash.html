@@ -149,9 +149,17 @@
     </div>-->
 
     <div class="row" style="text-align:center;">
-      <img src="https://image.ibb.co/eF0PoG/person_1.jpg" class="userIco">
+      <div class="col">
+          <img src="{{studentData.profileUrl}}" ng-if="studentData.profileUrl!=undefine"class="userIco">
+          <img src="https://image.ibb.co/eF0PoG/person_1.jpg" ng-if="studentData.profileUrl==undefine" class="userIco">
+      </div>
     </div>
-    <div class="row text-center">
+    <div class="row" style="text-align:center;">
+        <div class="col" style="margin-top: -56px;margin-left: 86px;">
+            <i class="icon ion-ios-camera" ng-click="isOpenRightProblem()" style="font-size: 53px;color: #387ef5;"></i>
+        </div>
+      </div>
+    <div class="row text-center" style="margin-top: -21px;">
       <div class="col-sm-12 text-center sp fontStyle" style="margin-bottom: 0px;">
         <h2 style="color:black">{{studentData.name}}</h2>
       </div>
@@ -216,34 +224,25 @@
   <ion-header-bar class="bar bar-positive backgroundColorheader">
     <button ng-click="cancelProblem()" class="button icon 	glyphicon glyphicon-menu-left backgroundColorButton" style="display: block">
     </button>
-    <h1 class="title colorTextHed" style="text-align: center;">{{singleTaskData.subjectCode}} Problem</h1>
+    <h1 class="title colorTextHed" style="text-align: center;">Photo Upload</h1>
   </ion-header-bar>
   <br>
   <br>
+  <form ng-submit="uploadPhotoFile()" >
 
- <ion-scroll>
-  <ul class="list" style="margin-top: 18px">
-    <li class="item backgroundColor " ng-repeat="task in studentSingleTaskData ">
-      <div class="row">
-        <div class="col-70 colorText" style="padding-top: 26px;">
-          {{task.taskTitle}}
+      <div class="row colorText fontStyle" >
+        <div class="col" style="text-align: center;">
+         <input type="file" id="file" name="file"  />
         </div>
-        <div class="col">
-          <button class="button button-block button-calm txtDesignbutton" ng-if="task.status=='Assigned'||task.status=='assigned'"
-            ng-click="showConfirm(task,'In progress')">
-            Start
-          </button>
-          <button class="button button-block button-energized txtDesignbutton" ng-if="task.status=='In Progress'||task.status=='In progress'"
-            ng-click="showConfirm(task,'In progress')">
-            Start
-          </button>
-          <button class="button button-block txtDesignbutton" ng-if="task.status=='completed'||task.status=='Completed'">
-            End
-          </button>
+        <div  style="padding-top: 10px;">
+          <input type="submit" name="Upload File" class="fontStyle" value="Update Photo" style="color: #000;">
+         <!--<button ng-click="uploadFile()" >Upload File</button>-->
         </div>
       </div>
-    </li>
-  </ul>
+    </form>
+
+ <ion-scroll>
+  
 </ion-scroll>
 
 

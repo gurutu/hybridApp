@@ -49,6 +49,9 @@ AppServices.service('studentService', ['$http', '$rootScope', function ($http, $
   function saveTheDuration(request) {
     return $http.post($rootScope.MAINURL + 'task/student/updateduration', JSON.stringify(request));
   }
+  function saveFileInDB(request) {
+    return $http.post($rootScope.MAINURL + 'user/updatephoto', JSON.stringify(request));
+  }
   return {
     getStudentById: getStudentById,
     getAllStudentTask: getAllStudentTask,
@@ -60,7 +63,8 @@ AppServices.service('studentService', ['$http', '$rootScope', function ($http, $
     getAllSubjects:getAllSubjects,
     getTaskForStudent:getTaskForStudent,
     getTeacherDetail:getTeacherDetail,
-    saveTheDuration:saveTheDuration
+    saveTheDuration:saveTheDuration,
+    saveFileInDB:saveFileInDB
   }
 
 }]);

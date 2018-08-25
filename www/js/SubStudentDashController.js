@@ -153,7 +153,11 @@ AppContoller
         studentService.getTaskDetailById(requeatTaskId).then(function (result) {
           $scope.singleTaskData = result.data[0];
             var currDate= new Date();
-            currDate.setMinutes(currDate.getMinutes() +  $scope.singleTaskData.duration);
+            if(store.get($scope.taskid)){
+              currDate.setMinutes(currDate.getMinutes() +  parseInt(store.get($scope.taskid)));
+            }else{
+              currDate.setMinutes(currDate.getMinutes() +  $scope.singleTaskData.duration);
+            }
          // $scope.coundownMain=currDate;
           $scope.getTheInterval(currDate);
           if($scope.singleTaskData.voiceNoteUrl!=null){
@@ -267,7 +271,12 @@ AppContoller
         $scope.seconds=d.getSeconds();
         $scope.minutes=d.getMinutes();
       }
-     
+     $scope.simpleShowConfirm=function(task, status){
+      $scope.taskid= task.id;
+      $scope.isOpenRight();
+      $scope.getTaskDetail(task.taskCode);
+      $scope.saveTaskStatus(status, task.id, $scope.currentDateTime, $scope.currentDateTime);
+     }
 
       // A confirm dialog
       $scope.showConfirm = function (task, status) {
@@ -347,14 +356,15 @@ $scope.showPopupFinish = function() {
       }
       $scope.saveTheDuration=function(){
         $scope.stopTimer();
-        var request={
+        store.set($scope.taskid, $scope.counDownMinutes);
+        /* var request={
           "studentDuration":$scope.counDownMinutes,
           "studentId":$stateParams.StudentId,
           "taskCode":$scope.singleTaskData.taskCode
         }
         studentService.saveTheDuration(request).then(function(result){
          // $scope.teacherDetail= result.data[0];
-        })
+        }) */
       }
      
       $scope.init();

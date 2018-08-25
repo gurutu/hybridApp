@@ -6,9 +6,9 @@ var AppContoller = angular.module('StudentDashController', []);
 AppContoller
   .controller(
   "StudentDashController", ['$scope', '$mdSidenav', '$stateParams', 'studentService', 'logoutUser', 'utils',
-    'store', 'Util2', '$interval', '$ionicPopup','NativeTost','$rootScope','$state','$filter',
+    'store', 'Util2', '$interval', '$ionicPopup','NativeTost','$rootScope','$state','$filter','$http',
     function ($scope, $mdSidenav, $stateParams, studentService, logoutUser, utils, store, Util2, $interval,
-      $ionicPopup,NativeTost,$rootScope,$state,$filter) {
+      $ionicPopup,NativeTost,$rootScope,$state,$filter,$http) {
 
       $scope.show = "";
       $scope.studentData = "";
@@ -26,6 +26,9 @@ AppContoller
       var interval;
       var voice;
       var myVideo;
+      $scope.imagePathS3="";
+
+
      
       $scope.widthvalue = document.getElementById("getwidth").offsetWidth;
       //document.getElementById("datestudent").style.width=screen.width-"24"+"px";
@@ -92,11 +95,11 @@ AppContoller
       }
 
       $scope.isOpenRightProblem = function () {
-        $state.go("substudentdash",{StudentId:"4",ClassCode:"Hello"});
-        /* $mdSidenav('rightTaskProblem').toggle()
+        //$state.go("substudentdash",{StudentId:"4",ClassCode:"Hello"});
+         $mdSidenav('rightTaskProblem').toggle()
           .then(function () {
            
-           }); */
+           }); 
       };
       $scope.cancelProblem = function () {
         $mdSidenav('rightTaskProblem').close()
@@ -285,8 +288,44 @@ $scope.showPopupFinish = function() {
         $state.go("substudentdash",{StudentId:$scope.studentData.id,subject:subjectCode,currentDate:datevalu});
       }
 
+      $scope.fileUpload=function(){
+        var request={
+          "profileUrl":$scope.imagePathS3,
+          "id":$stateParams.studentId
+        }
+        studentService.saveFileInDB(request).then(function(result){
+          alert("File Successfully Uploaded");
+          $scope.cancelProblem();
+          $scope.init();
+          $scope.getAllSubject();
+        })
+      }
+
+      $scope.uploadPhotoFile = function () {
+        var formData = new FormData();
+        var f = document.getElementById('file').files[0];
+        formData.append("document", f);
+        var request = {
+          method: 'POST',
+          url: $rootScope.MAINURL + 'upload/file',
+          data: formData,
+          headers: {
+            'Content-Type': undefined
+          }
+        };
+        // SEND THE FILES.
+        $http(request)
+          .success(function (d) {
+           
+            $scope.imagePathS3 = d[0];
+            $scope.fileUpload();
+          })
+          .error(function () {
+          });
+      }
+
+
        $scope.init();
-       //$scope.getTask();
        $scope.getAllSubject();
 
     }]);
