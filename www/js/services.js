@@ -47,7 +47,7 @@ AppServices.service('studentService', ['$http', '$rootScope', function ($http, $
     return $http.post($rootScope.MAINURL + 'subjects/get/teacher', JSON.stringify(request));
   }
   function saveTheDuration(request) {
-    return $http.post($rootScope.MAINURL + 'task/select/taskcode', JSON.stringify(request));
+    return $http.post($rootScope.MAINURL + 'task/student/updateduration', JSON.stringify(request));
   }
   return {
     getStudentById: getStudentById,
