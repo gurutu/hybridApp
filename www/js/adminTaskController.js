@@ -97,7 +97,7 @@ AppContoller
 
       $scope.uploadFile = function () {
         var formData = new FormData();
-        var f = document.getElementById('file').files[0];
+        var f = document.getElementById('filedata').files[0];
         formData.append("document", f);
         var request = {
           method: 'POST',
