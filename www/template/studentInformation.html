@@ -19,13 +19,13 @@
 <div class="card">
   <div class="item item-text-wrap headingCart backgroundHeadingColor">
     <div class="row" style="text-align: center;">
-      <div class="col colorTextHed fontStyle" id="getwidth"><span >First Name : </span></div>
-      <div class="col colorTextHed fontStyle" id="getwidth"><span >Last Name : </span></div>
-      <div class="col colorTextHed fontStyle" ><span >Email Id : </span></div>
+      <div class="col colorTextHed fontStyle" id="getwidth" ng-click="filter('name')"><span >First Name : </span></div>
+      <div class="col colorTextHed fontStyle" ng-click="filter('lastName')"><span >Last Name : </span></div>
+      <div class="col colorTextHed fontStyle" ng-click="filter('email')"><span >Email Id : </span></div>
     </div>
   </div>
  <!-- <button class="button button-positive" style="background-color: #fff;">-->
-    <div class="item item-text-wrap backgroundColor" style="font-size: 12px; background-color: #fff;" ng-repeat="s in studentListInformation | orderBy:'name'" ng-click="sideNavStudentTaskInformation(s.id,s.name)">
+    <div class="item item-text-wrap backgroundColor" style="font-size: 12px; background-color: #fff;" ng-repeat="s in studentListInformation | orderBy:filterValue" ng-click="sideNavStudentTaskInformation(s.id,s.name)">
       <div class="row">
         <div class="col-33 colorText fontStyle"  style="text-align:center;">
           {{s.name}}

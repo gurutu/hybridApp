@@ -8,10 +8,16 @@ AppContoller
   "StudentInformationController",['$scope','$mdSidenav', '$state', '$rootScope', 'studentTask','student','store',
   function($scope,$mdSidenav,$state, $rootScope,studentTask,student,store) {
 
+    $scope.filterValue="";
+
     $scope.show="";
      $scope.goToBack = function(){
         $state.go('teacherDash',{"teacherId": store.get('userdata').id});
       };
+
+      $scope.filter=function(val){
+        $scope.filterValue=val;
+      }  
       
     $scope.sideNavStudentTaskInformation = function(id,name){
          $mdSidenav('sideStudentInformation').toggle()

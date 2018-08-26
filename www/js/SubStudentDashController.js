@@ -48,6 +48,8 @@ AppContoller
         
       }
 
+     
+
       $scope.goToBack = function () {
         $state.go("studentDash",{studentId:$stateParams.StudentId});
       }
