@@ -303,8 +303,8 @@ AppContoller
      //Alert Box When Last 5 minits
       $scope.showPopup = function() {
         var alertPopup = $ionicPopup.alert({
-          title: 'Harry Up',
-          template: '<div style="text-align:center;">Only 10 Minits</div>'
+          title: 'Note',
+          template: '<div style="text-align:center;">Try and complete task before timer runs out!</div>'
         });
         alertPopup.then(function(res) {
           console.log('Thank you for not eating my delicious ice cream cone');
@@ -314,7 +314,7 @@ AppContoller
 $scope.showPopupFinish = function() {
   var alertPopup = $ionicPopup.alert({
     title: 'Task Finish ',
-    template: '<div style="text-align:center;">Task has been Finished</div>'
+    template: '<div style="text-align:center;">Task has been Finished</div><audio controls autoplay style="display: none;"><source src="img/ring.mp3" type="audio/mpeg"></audio>'
   });
   alertPopup.then(function(res) {
     $scope.cancel();
