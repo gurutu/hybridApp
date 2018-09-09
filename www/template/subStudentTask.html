@@ -41,8 +41,8 @@
          </div>
          <div class="col fontStyle" style="text-align:center;margin-top: 0px;">
           
-            <img ng-if="teacherDetail.profileUrl==undefined" src="https://image.ibb.co/eF0PoG/person_1.jpg" style="height: 200px;width: 200px;" class="userIco">
-            <img ng-if="teacherDetail.profileUrl!=undefined" ng-src="teacherDetail.profileUrl" style="height: 200px;width: 200px;" class="userIco">
+            <img ng-if="teacherDetail==undefined||utils.isNullAndEmpty(teacherDetail.profileUrl)" src="https://image.ibb.co/eF0PoG/person_1.jpg" style="height: 200px;width: 200px;" class="userIco">
+            <img ng-if="teacherDetail!=undefined && !utils.isNullAndEmpty(teacherDetail.profileUrl)" ng-src="teacherDetail.profileUrl" style="height: 200px;width: 200px;" class="userIco">
             <p style="font-size: 29px;"> {{teacherDetail.name}}</p>
           </div>
       </div>

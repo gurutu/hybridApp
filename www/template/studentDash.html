@@ -147,11 +147,11 @@
        <img src="https://res.cloudinary.com/gurutu/image/upload/v1532168222/user1.png" class="userIco">
       </div>
     </div>-->
-
+   
     <div class="row" style="text-align:center;">
       <div class="col">
-          <img src="{{studentData.profileUrl}}" ng-if="studentData.profileUrl!=undefine"class="userIco">
-          <img src="https://image.ibb.co/eF0PoG/person_1.jpg" ng-if="studentData.profileUrl==undefine" class="userIco">
+          <img src="{{studentData.profileUrl}}" ng-if="utils.isNullAndEmpty(studentData.profileUrl)" class="userIco">
+          <img src="https://image.ibb.co/eF0PoG/person_1.jpg" ng-if="!utils.isNullAndEmpty(studentData.profileUrl)" class="userIco">
       </div>
     </div>
     <div class="row" style="text-align:center;">

@@ -317,7 +317,8 @@ $scope.showPopupFinish = function() {
     template: '<div style="text-align:center;">Task has been Finished</div><audio controls autoplay style="display: none;"><source src="img/ring.mp3" type="audio/mpeg"></audio>'
   });
   alertPopup.then(function(res) {
-    $scope.cancel();
+    //$scope.cancel();
+    $scope.stopVideoVoice();
     console.log('Thank you for not eating my delicious ice cream cone');
   });
 };
